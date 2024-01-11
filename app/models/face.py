@@ -12,4 +12,4 @@ class Face(db.Model):
 
     id = db.Column(db.Integer(), primary_key = True)
     url = db.Column(db.String(255))
-    avatar = relationship("Avatar", back_populates="faces")
+    avatar = relationship("Avatar", back_populates="face")

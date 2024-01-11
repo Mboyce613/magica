@@ -13,4 +13,4 @@ class Body(db.Model):
 
     id = db.Column(db.Integer(), primary_key = True)
     url = db.Column(db.String(255))
-    avatar = relationship("Avatar", back_populates="bodies")
+    avatar = relationship("Avatar", back_populates="body")

@@ -13,4 +13,4 @@ class Background(db.Model):
 
     id = db.Column(db.Integer(), primary_key = True)
     url = db.Column(db.String(255))
-    avatar = relationship("Avatar", back_populates="backgrounds")
+    avatar = relationship("Avatar", back_populates="background")
