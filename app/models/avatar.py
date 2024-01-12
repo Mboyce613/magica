@@ -12,14 +12,14 @@ class Avatar(db.Model):
 
 
     id = db.Column(db.Integer(), primary_key = True)
-    user_id = db.Column(db.Integer(), ForeignKey("users.id"), nullable = False)
-    background_id = db.Column(db.Integer, ForeignKey("backgrounds.id"), nullable = False)
-    hair_id = db.Column(db.Integer(), ForeignKey("hair.id"))
-    face_id = db.Column(db.Integer(), ForeignKey("faces.id"))
-    body_id = db.Column(db.Integer(), ForeignKey("bodies.id"))
+    user_id = db.Column(db.Integer(), db.ForeignKey(add_prefix_for_prod('users.id')), nullable = False)
+    background_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("backgrounds.id")), nullable = False)
+    hair_id = db.Column(db.Integer(), db.ForeignKey(add_prefix_for_prod("hair.id")))
+    face_id = db.Column(db.Integer(), db.ForeignKey(add_prefix_for_prod("faces.id")))
+    body_id = db.Column(db.Integer(), db.ForeignKey(add_prefix_for_prod("bodies.id")))
 
     user = relationship("User", back_populates="avatar")
-    background = relationship("Background", back_populates="avatar")
-    hair = relationship("Hair", back_populates="avatar")
-    face = relationship("Face", back_populates="avatar")
-    body = relationship("Body", back_populates="avatar")
+    background = relationship("Background", back_populates="background")
+    hair = relationship("Hair", back_populates="hair")
+    face = relationship("Face", back_populates="face")
+    body = relationship("Body", back_populates="body")

@@ -13,7 +13,7 @@ class Daily(db.Model):
 
 
     id = db.Column(db.Integer(), primary_key = True)
-    user_id = db.Column(db.Integer(), ForeignKey("users.id"), nullable = False)
+    user_id = db.Column(db.Integer(), db.ForeignKey(add_prefix_for_prod("users.id")), nullable = False)
     title = db.Column(db.String(255), nullable = False)
     notes = db.Column(db.String(255))
     difficulty = db.Column(db.Integer, nullable = False)
