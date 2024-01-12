@@ -23,4 +23,5 @@ class To_do(db.Model):
     checklist = db.Column(db.String(255), nullable = False)
     completed = db.Column(db.Boolean, nullable = False)
 
-    user = relationship("User", back_populates="users")
+    # user = relationship("User", back_populates="users")
+    user = relationship("User", back_populates="to_do")

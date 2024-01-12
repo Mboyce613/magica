@@ -19,7 +19,7 @@ class Avatar(db.Model):
     body_id = db.Column(db.Integer(), ForeignKey("bodies.id"))
 
     user = relationship("User", back_populates="avatar")
-    background = relationship("Background", back_populates="background")
-    hair = relationship("Hair", back_populates="hair")
-    face = relationship("Face", back_populates="face")
-    body = relationship("Body", back_populates="body")
+    background = relationship("Background", back_populates="avatar")
+    hair = relationship("Hair", back_populates="avatar")
+    face = relationship("Face", back_populates="avatar")
+    body = relationship("Body", back_populates="avatar")

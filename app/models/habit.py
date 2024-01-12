@@ -22,4 +22,5 @@ class Habit(db.Model):
     streak = db.Column(db.Integer, nullable = False)
     completed = db.Column(db.Boolean, nullable = False)
 
-    user = relationship("User", back_populates="users")
+    # user = relationship("User", back_populates="users")
+    user = relationship("User", back_populates="habit")
