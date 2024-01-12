@@ -20,6 +20,9 @@ class User(db.Model, UserMixin):
     exp = db.Column(db.Integer, default=0, nullable=False)
     
     avatar = relationship("Avatar", back_populates="user", uselist=False)
+    daily = relationship("Daily", back_populates="user")
+    to_do = relationship("To_do", back_populates="user")
+    habit = relationship("Habit", back_populates="user")
 
     @property
     def password(self):
