@@ -1,18 +1,41 @@
 import { NavLink } from "react-router-dom";
 import ProfileButton from "./ProfileButton";
+import { useDispatch, useSelector } from "react-redux";
 import "./Navigation.css";
+import { useState } from "react";
+
 
 function Navigation() {
-  return (
-    <ul>
-      <li>
-        <NavLink to="/">Home</NavLink>
-      </li>
+  const sessionUser = useSelector((state) => state.session.user);
+  const [user, setUser] = useState(false)
 
-      <li>
-        <ProfileButton />
-      </li>
-    </ul>
+  if(sessionUser) setUser(true)
+  return (
+    <section>
+    {user ? <div>
+
+      <div>
+      <NavLink to="/">Home</NavLink>
+      </div>
+      
+      <div>
+      <ProfileButton />
+      </div>
+
+    </ div> :
+    <div>
+      <div>
+      <NavLink to='/'>Home</NavLink>
+      </div>
+      <div>
+        <NavLink to='signup'>Get Started</NavLink>
+      </div>
+      <div>
+        <NavLink to='login'>Log In</NavLink>
+      </div>
+    </div>
+    }
+    </section>
   );
 }
 
