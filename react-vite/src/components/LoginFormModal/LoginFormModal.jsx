@@ -27,6 +27,24 @@ function LoginFormModal() {
       closeModal();
     }
   };
+  const handleDemoUser = async (e)=>{
+    e.preventDefault();
+    setEmail('Demo-lition')
+    setPassword('password')
+    setErrors({});
+    const serverResponse = await dispatch(
+      thunkLogin({
+        email,
+        password,
+      })
+    );
+
+    if (serverResponse) {
+      setErrors(serverResponse);
+    } else {
+      closeModal();
+    }
+  }
 
   return (
     <>
