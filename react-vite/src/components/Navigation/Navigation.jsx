@@ -7,12 +7,10 @@ import { useState } from "react";
 
 function Navigation() {
   const sessionUser = useSelector((state) => state.session.user);
-  const [user, setUser] = useState(false)
-
-  if(sessionUser) setUser(true)
+  
   return (
     <section>
-    {user ? <div>
+    {sessionUser ? <div>
 
       <div>
       <NavLink to="/">Home</NavLink>
