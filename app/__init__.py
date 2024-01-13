@@ -7,6 +7,14 @@ from flask_login import LoginManager
 from .models import db, User
 from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
+from .api.avatar_routes import avatar_routes
+from .api.background_routes import background_routes
+from .api.body_routes import body_routes
+from .api.daily_routes import daily_routes
+from .api.face_routes import face_routes
+from .api.habit_routes import habit_routes
+from .api.hair_routes import hair_routes
+from .api.to_do_routes import to_do_routes
 from .seeds import seed_commands
 from .config import Config
 from app.models.db import db, environment, SCHEMA
@@ -29,6 +37,14 @@ app.cli.add_command(seed_commands)
 app.config.from_object(Config)
 app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
+app.register_blueprint(avatar_routes, url_prefix='/api/avatar')
+app.register_blueprint(background_routes, url_prefix='/api/background')
+app.register_blueprint(body_routes, url_prefix='/api/body')
+app.register_blueprint(daily_routes, url_prefix='/api/daily')
+app.register_blueprint(face_routes, url_prefix='/api/face')
+app.register_blueprint(habit_routes, url_prefix='/api/habit')
+app.register_blueprint(hair_routes, url_prefix='/api/hair')
+app.register_blueprint(to_do_routes, url_prefix='/api/to_do')
 db.init_app(app)
 Migrate(app, db)
 

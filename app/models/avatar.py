@@ -14,7 +14,7 @@ class Avatar(db.Model):
     id = db.Column(db.Integer(), primary_key = True)
     user_id = db.Column(db.Integer(), db.ForeignKey(add_prefix_for_prod('users.id')), nullable = False)
     background_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("backgrounds.id")), nullable = False)
-    hair_id = db.Column(db.Integer(), db.ForeignKey(add_prefix_for_prod("hair.id")))
+    hair_id = db.Column(db.Integer(), db.ForeignKey(add_prefix_for_prod("hairs.id")))
     face_id = db.Column(db.Integer(), db.ForeignKey(add_prefix_for_prod("faces.id")))
     body_id = db.Column(db.Integer(), db.ForeignKey(add_prefix_for_prod("bodies.id")))
 

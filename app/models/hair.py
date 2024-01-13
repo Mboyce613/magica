@@ -5,7 +5,7 @@ from .db import db, environment, SCHEMA, add_prefix_for_prod
 
 
 class Hair(db.Model):
-    __tablename__ = 'hair'
+    __tablename__ = 'hairs'
 
     if environment == "production":
         __table_args__ = {'schema': SCHEMA}
