@@ -25,3 +25,16 @@ class To_do(db.Model):
 
     # user = relationship("User", back_populates="users")
     user = relationship("User", back_populates="to_do")
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'userId': self.user_id,
+            'title': self.title,
+            'notes': self.notes,
+            'difficulty': self.difficulty,
+            'tags': self.tags,
+            'dueDate': self.due_date,
+            'checklist': self.checklist,
+            'completed': self.completed
+        }

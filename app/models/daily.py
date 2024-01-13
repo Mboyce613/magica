@@ -26,3 +26,19 @@ class Daily(db.Model):
     completed = db.Column(db.Boolean, nullable = False)
 
     user = relationship("User", back_populates="daily")
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'userId': self.user_id,
+            'title': self.title,
+            'notes': self.notes,
+            'difficulty': self.difficulty,
+            'duration': self.duration,
+            'tags': self.tags,
+            'start_date': self.start_date,
+            'days': self.days,
+            'checklist': self.checklist,
+            'streak': self.streak,
+            'completed': self.completed
+        }
