@@ -28,11 +28,11 @@ def seed():
         # the schema name (see comment in users.py undo_users function).
         # Make sure to add all your other model's undo functions below
     seed_users()
-    seed_avatars()
     seed_backgrounds()
     seed_hair()
     seed_bodies()
     seed_faces()
+    seed_avatars()
     seed_dailies()
     seed_habits()
     seed_to_dos()
