@@ -6,11 +6,18 @@ from logging.config import fileConfig
 from flask import current_app
 
 from alembic import context
+# migrations/env.py file
 
+from sqlalchemy import engine_from_config
+from sqlalchemy import pool
+
+
+
+# add new import and environment variable
 import os
 environment = os.getenv("FLASK_ENV")
 SCHEMA = os.environ.get('SCHEMA')
-
+# ...
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
 config = context.config
