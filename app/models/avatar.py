@@ -23,3 +23,13 @@ class Avatar(db.Model):
     hair = relationship("Hair", back_populates="avatar")
     face = relationship("Face", back_populates="avatar")
     body = relationship("Body", back_populates="avatar")
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'userId': self.user_id,
+            'backgroundId': self.background_id,
+            'hairId': self.hair_id,
+            'faceId': self.face_id,
+            'bodyId': self.body_id
+        }

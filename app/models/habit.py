@@ -24,3 +24,17 @@ class Habit(db.Model):
 
     # user = relationship("User", back_populates="users")
     user = relationship("User", back_populates="habit")
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'userId': self.user_id,
+            'title': self.title,
+            'notes': self.notes,
+            'difficulty': self.difficulty,
+            'duration': self.duration,
+            'tags': self.tags,
+            'positive': self.positive,
+            'streak': self.streak,
+            'completed': self.completed
+        }
