@@ -11,22 +11,17 @@ function Avatar({userId}){
     const avatars = useSelector((state)=>state.avatars)
     const backgrounds = useSelector((state)=>state.backgrounds)
     console.log(avatars)
-    useEffect(()=>{
-        dispatch()
-          .then(()=>{
-            setIsLoaded(true)
-          }
-            )
-    },[avatars, backgrounds, isLoaded])
+    // useEffect(()=>{
+    //     dispatch()
+    //       .then(()=>{
+    //         setIsLoaded(true)
+    //       }
+    //         )
+    // },[avatars, backgrounds, isLoaded])
     return (
 
       <>
-        <div>hello</div>
-        <div>Avatar Component</div>
-        {userId}
-        <div>Habit Component</div>
-        <div>Daily Component</div>
-        <div>To Do Component</div>
+        <div>Hello from Avatar</div>
       </>
 
     )

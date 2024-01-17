@@ -5,7 +5,7 @@ import { getAllAvatars } from "../../redux/avatar";
 import { thunkSignup } from "../../redux/session";
 import { getAllBackgrounds } from "../../redux/backround";
 import Avatar from "../Avatar/Avatar";
-import Habit from "../Habit/Habit";
+import Habit from "../Habit/habit"
 
 
 function HomePage(){
@@ -27,7 +27,6 @@ function HomePage(){
     return (
 
       <>
-        <div>hello</div>
         <div>Avatar Component</div>
         <Avatar userId = {sessionUser.id}/>
         <div>Habit Component</div>
