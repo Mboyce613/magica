@@ -6,9 +6,25 @@ import {
 } from "redux";
 import thunk from "redux-thunk";
 import sessionReducer from "./session";
+import avatarReducer from "./avatar";
+import backgroundReducer from "./backround";
+import bodyReducer from "./body";
+import dailyReducer from "./daily";
+import faceReducer from "./face";
+import habitReducer from "./habit";
+import hairReducer from "./hair";
+import toDoReducer from "./toDo";
 
 const rootReducer = combineReducers({
   session: sessionReducer,
+  avatars: avatarReducer,
+  backgrounds:backgroundReducer,
+  bodies:bodyReducer,
+  faces:faceReducer,
+  dailies:dailyReducer,
+  habits:habitReducer,
+  hairs:hairReducer,
+  toDos:toDoReducer
 });
 
 let enhancer;
