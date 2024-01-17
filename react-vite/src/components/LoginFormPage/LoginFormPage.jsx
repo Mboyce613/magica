@@ -36,10 +36,10 @@ function LoginFormPage() {
     setErrors({});
     setEmail('demo@aa.io')
     setPassword('password')
-    
+
     const demoEmail = 'demo@aa.io'
     const demoPassword = 'password'
-    
+
     const serverResponse = await dispatch(
       thunkLogin({
         'email':demoEmail,
@@ -69,7 +69,7 @@ function LoginFormPage() {
         </label>
         {errors.email && <p>{errors.email}</p>}
         <label>
-          Password
+          Passwords
           <input
             type="password"
             value={password}
