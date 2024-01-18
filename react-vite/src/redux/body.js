@@ -54,7 +54,7 @@ const bodyReducer = (state = {}, action)=>{
             newState = {}
             console.log("ACTION", action, 'line 55')
             console.log(action.bodyId, '-----store')
-            if(action.bodyId.bodyId && action.bodyId.bodyId !== undefined){
+            if(action.bodyId && action.bodyId !== undefined){
                 action.bodyId.forEach(ele => {
                     newState[ele.id] = ele
                 })
