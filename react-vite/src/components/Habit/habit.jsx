@@ -7,18 +7,27 @@ import { Link } from "react-router-dom";
 import { getAllHabits } from "../../redux/habit";
 
 const Habit = ({userId})=>{
-    console.log ("userId from habits",userId)
-    const [habits, setHabits] = useState("")
+    // const [habits, setHabits] = useState("")
+    const [isLoading, setIsLoading] = useState(true);
     const dispatch = useDispatch()
-    const habit = useSelector((state)=> state.habits)
-
+    const habits = useSelector((state)=> state.habits)
+    // console.log(userId)
     useEffect(() =>{
         dispatch(getAllHabits(userId))
-    },[dispatch, userId])
-    
+        .then(() => setIsLoading(false));
+    },[])
+
+
+if (!isLoading) {
     return (
+        <>
         <div>Hello from Habits</div>
-    )
+        <div>Habits</div>
+        {/* {console.log("habits",Object.values(habits))} */}
+        <ul>{Object.values(habits).map(habit =>(
+        <li>{habit.title}</li>))}</ul>
+        </>)
+}
 }
 
 export default Habit

@@ -5,13 +5,13 @@ from app.models import Habit
 habit_routes = Blueprint('habits', __name__)
 
 
-@habit_routes.route('/')
+@habit_routes.route('/<int:userId>')
 # @login_required
-def habits():
+def habits(userId):
     """
     Query for all habits and returns them in a list of habit dictionaries
     """
-    habits = Habit.query.all()
+    habits = Habit.query.filter(Habit.user_id == userId)
     return {'habits': [habit.to_dict() for habit in habits]}
 
 
