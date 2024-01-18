@@ -15,7 +15,7 @@ export const getAvatar =(avatar)=>({
 
 export const getAllAvatars = () => async (dispatch)=>{
     const res = await fetch('/api/avatars')
-    console.log(res, '----------')
+    // console.log(res, '----------')
     if(res.ok){
         const data = await res.json()
         dispatch(loadAvatars(data))
@@ -26,7 +26,7 @@ export const getAllAvatars = () => async (dispatch)=>{
 
 export const getAvatarsById = (avatar) => async (dispatch)=>{
     const res = await fetch(`/api/avatars/${avatar}`)
-    console.log(res, '----------')
+    // console.log(res, '----------')
     if(res.ok){
         const data = await res.json()
         dispatch(getAvatar([data]))
@@ -40,7 +40,7 @@ const avatarReducer = (state = {}, action)=>{
     switch(action.type){
         case LOAD_AVATARS:
             newState = {}
-            console.log(action.avatars, '-----store')
+            // console.log(action.avatars, '-----store')
             if(action.avatars && action.avatars !== undefined){
                 action.avatars.forEach(ele => {
                     newState[ele.id] = ele
@@ -53,8 +53,8 @@ const avatarReducer = (state = {}, action)=>{
 
         case GET_AVATAR:
             newState = {}
-            console.log("ACTION", action, 'line 56')
-            console.log(action.avatar, '-----store')
+            // console.log("ACTION", action, 'line 56')
+            // console.log(action.avatar, '-----store')
             if(action.avatar && action.avatar !== undefined){
                 action.avatar.forEach(ele => {
                     newState[ele.id] = ele
