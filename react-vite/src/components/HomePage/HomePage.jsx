@@ -11,19 +11,19 @@ import Habit from "../Habit/habit"
 function HomePage(){
     const sessionUser = useSelector((state) => state.session.user);
     if(!sessionUser) return <Navigate to='signup' replace={true}/>
-    console.log("SESSION USER ID", sessionUser.id)
+    // console.log("SESSION USER ID", sessionUser.id)
     const [isLoaded, setIsLoaded] = useState(false)
     const dispatch = useDispatch()
     const avatars = useSelector((state)=>state.avatars)
     const backgrounds = useSelector((state)=>state.backgrounds)
-    console.log(avatars)
+    // console.log(avatars)
     useEffect(()=>{
         dispatch(getAllAvatars())
           .then(()=>{
             setIsLoaded(true)
           }
             )
-    },[avatars, backgrounds, isLoaded])
+    },[])
     return (
 
       <>
