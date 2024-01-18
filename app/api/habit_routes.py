@@ -6,7 +6,7 @@ habit_routes = Blueprint('habits', __name__)
 
 
 @habit_routes.route('/')
-@login_required
+# @login_required
 def habits():
     """
     Query for all habits and returns them in a list of habit dictionaries
@@ -16,7 +16,7 @@ def habits():
 
 
 @habit_routes.route('/<int:id>')
-@login_required
+# @login_required
 def habit(id):
     """
     Query for a habit by id and returns that habit in a dictionary
