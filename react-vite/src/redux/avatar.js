@@ -18,7 +18,7 @@ export const getAllAvatars = () => async (dispatch)=>{
     // console.log(res, '----------')
     if(res.ok){
         const data = await res.json()
-        dispatch(loadAvatars(data))
+        dispatch(loadAvatars([data]))
         return data
     }
     return res

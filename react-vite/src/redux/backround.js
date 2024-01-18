@@ -38,7 +38,7 @@ const backgroundReducer = (state = {}, action)=>{
     switch(action.type){
         case LOAD_BACKGROUNDS:
             newState = {}
-            console.log(action.backgrounds, '-----store')
+            // console.log(action.backgrounds, '-----store')
             if(action.backgrounds && action.backgrounds !== undefined){
                 // action.backgrounds.forEach(ele => {
                     
@@ -51,8 +51,8 @@ const backgroundReducer = (state = {}, action)=>{
         
         case GET_BACKGROUND:
             newState = {}
-            console.log("ACTION", action, 'line 54')
-            console.log(action.backgroundId, '-----store')
+            // console.log("ACTION", action, 'line 54')
+            // console.log(action.backgroundId, '-----store')
             if(action.backgroundId && action.backgroundId !== undefined){
                 action.backgroundId.forEach(ele => {
                     newState[ele.id] = ele
