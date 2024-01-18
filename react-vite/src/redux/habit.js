@@ -1,4 +1,4 @@
-// import { csrfFetch } from "./csrf"
+import { csrfFetch } from "./csrf"
 
 const LOAD_Habits= 'habits/loadHabits'
 
@@ -9,7 +9,7 @@ export const loadHabits=(habits)=>({
 
 export const getAllHabits = () => async (dispatch)=>{
     const res = await fetch('/api/habits')
-    console.log(res.text(), '----------')
+    // console.log(res.text(), '----------')
     if(res.ok){
         const data = await res.json()
         dispatch(loadHabits(data))
@@ -26,7 +26,7 @@ const habitReducer = (state = {}, action)=>{
             console.log(action.habits, '-----store')
             if(action.habits && action.habits !== undefined){
                 // action.habits.forEach(ele => {
-                    
+
                 //     newState[ele.id] = ele
                 // })
             }else{
