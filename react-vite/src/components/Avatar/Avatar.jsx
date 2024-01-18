@@ -61,18 +61,26 @@ function Avatar({userId}){
     return (
       <>
         <div>Hello from Avatar</div>
-        <p>Background</p>
-        {backgrounds[1] && <p>{`${backgrounds[1].url}`}</p>}
-        {backgrounds[1] && <img src={Background_Blue}/>}
-        <p>Body</p>
-        {body[1] && <p>{`${body[1].url}`}</p>}
-        {body[1] && <img src={BodyBlue}/>}
-        <p>Face</p>
-        {face[1] && <p>{`${face[1].url}`}</p>}
-        {face[1] && <img src={Face2}/>}
-        <p>Hair</p>
-        {hair[1] && <p>{`${hair[1].url}`}</p>}
-        {hair[1] && <img src={Hat_Blue}/>}
+        {/* <p>Background</p> */}
+        {/* {backgrounds[1] && <p>{`${backgrounds[1].url}`}</p>} */}
+        {backgrounds[1] && backgrounds[1].id === 1 &&<img src={Background_Red}/>}
+        {backgrounds[1] && backgrounds[1].id === 2 &&<img src={Background_Blue}/>}
+        {backgrounds[1] && backgrounds[1].id === 3 &&<img src={Background_Green}/>}
+        {/* <p>Body</p> */}
+        {/* {body[1] && <p>{`${body[1].url}`}</p>} */}
+        {body[1] && body[1].id === 1 &&<img src={BodyRed}/>}
+        {body[1] && body[1].id === 2 &&<img src={BodyBlue}/>}
+        {body[1] && body[1].id === 3 &&<img src={BodyGreen}/>}
+        {/* <p>Face</p> */}
+        {/* {face[1] && <p>{`${face[1].url}`}</p>} */}
+        {face[1] && face[1].id === 1 &&<img src={Face1}/>}
+        {face[1] && face[1].id === 2 &&<img src={Face2}/>}
+        {face[1] && face[1].id === 3 &&<img src={Face3}/>}
+        {/* <p>Hair</p> */}
+        {/* {hair[1] && <p>{`${hair[1].url}`}</p>} */}
+        {hair[1] && hair[1].id === 1 &&<img src={Hat_Red}/>}
+        {hair[1] && hair[1].id === 2 &&<img src={Hat_Blue}/>}
+        {hair[1] && hair[1].id === 3 &&<img src={Hat_Green}/>}
       </>
 
     )
