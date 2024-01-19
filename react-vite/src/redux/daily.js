@@ -9,7 +9,6 @@ export const loadDailies=(dailies)=>({
 
 export const getAllDailies = () => async (dispatch)=>{
     const res = await fetch('/api/dailies')
-    console.log(res.text(), '----------')
     if(res.ok){
         const data = await res.json()
         dispatch(loadDailies(data))
@@ -23,12 +22,10 @@ const dailyReducer = (state = {}, action)=>{
     switch(action.type){
         case LOAD_DAILIES:
             newState = {}
-            console.log(action.dailies, '-----store')
-            if(action.dailies && action.dailies !== undefined){
-                // action.dailies.forEach(ele => {
-                    
-                //     newState[ele.id] = ele
-                // })
+            if(action.dailies.daily && action.dailies.daily !== undefined){
+                action.dailies.daily.forEach(ele => {
+                    newState[ele.id] = ele
+                })
             }else{
                 newState = null
             }
