@@ -7,6 +7,10 @@ import { getBackgroundById } from "../../redux/backround";
 import { getBodyById } from "../../redux/body";
 import { getFaceById } from "../../redux/face";
 import { getHairById } from "../../redux/hair";
+import { useModal } from "../../context/Modal";
+import AvatarLink from "./avatarLink";
+import AvatarModalPage from "./avatarModelPage";
+import OpenModalButton from "../OpenModalButton/OpenModalButton";
 import Background_Blue from '../../../../app/graphics/Background_Blue.png'
 import Background_Green from '../../../../app/graphics/Background_Green.png'
 import Background_Red from '../../../../app/graphics/Background_Red.png'
@@ -25,6 +29,7 @@ function Avatar({userId}){
     if(!sessionUser) return <Navigate to='signup' replace={true}/>
     const [isLoaded, setIsLoaded] = useState(false)
     const dispatch = useDispatch()
+    const { closeModal } = useModal();
     const avatars = useSelector((state)=>state.avatars)
     const backgrounds = useSelector((state)=>state.backgrounds)
     const body = useSelector((state)=>state.bodies)
@@ -63,9 +68,10 @@ function Avatar({userId}){
         <div>Hello from Avatar</div>
         {/* <p>Background</p> */}
         {/* {backgrounds[1] && <p>{`${backgrounds[1].url}`}</p>} */}
-        {backgrounds[1] && backgrounds[1].id === 1 &&<img src={Background_Red}/>}
-        {backgrounds[1] && backgrounds[1].id === 2 &&<img src={Background_Blue}/>}
-        {backgrounds[1] && backgrounds[1].id === 3 &&<img src={Background_Green}/>}
+        {<OpenModalButton modalComponent={<AvatarModalPage />}/>}
+        {backgrounds[1] && backgrounds[1].id === 1 &&<img src={Background_Red} />}
+        {backgrounds[2] && backgrounds[2].id === 2 &&<img src={Background_Blue} />}
+        {backgrounds[3] && backgrounds[3].id === 3 &&<img src={Background_Green} />}
         {/* <p>Body</p> */}
         {/* {body[1] && <p>{`${body[1].url}`}</p>} */}
         {body[1] && body[1].id === 1 &&<img src={BodyRed}/>}

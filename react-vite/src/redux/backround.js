@@ -40,10 +40,10 @@ const backgroundReducer = (state = {}, action)=>{
             newState = {}
             // console.log(action.backgrounds, '-----store')
             if(action.backgrounds && action.backgrounds !== undefined){
-                // action.backgrounds.forEach(ele => {
+                action.backgrounds.forEach(ele => {
                     
-                //     newState[ele.id] = ele
-                // })
+                    newState[ele.id] = ele
+                })
             }else{
                 newState = null
             }
