@@ -6,6 +6,7 @@ avatar_routes = Blueprint('avatars', __name__)
 
 
 @avatar_routes.route('/')
+
 @login_required
 def avatars():
     """

@@ -22,4 +22,5 @@ def body(id):
     Query for a body by id and returns that body in a dictionary
     """
     body = Body.query.get(id)
+    print('!!!!!!!!!!!!!!!', body)
     return body.to_dict()

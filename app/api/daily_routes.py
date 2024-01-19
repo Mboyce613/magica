@@ -6,7 +6,7 @@ daily_routes = Blueprint('dailies', __name__)
 
 
 @daily_routes.route('/')
-@login_required
+# @login_required
 def dailies():
     """
     Query for all dailies and returns them in a list of daily dictionaries
@@ -16,7 +16,7 @@ def dailies():
 
 
 @daily_routes.route('/<int:id>')
-@login_required
+# @login_required
 def daily(id):
     """
     Query for a daily by id and returns that daily in a dictionary
