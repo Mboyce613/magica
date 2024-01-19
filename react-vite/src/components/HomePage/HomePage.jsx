@@ -5,6 +5,8 @@ import { getAllAvatars } from "../../redux/avatar";
 import { thunkSignup } from "../../redux/session";
 import { getAllBackgrounds } from "../../redux/backround";
 import DailiesComponent from "../DailiesComponent/DailiesCom";
+import Avatar from "../Avatar/Avatar";
+import Habit from "../Habit/habit"
 
 function HomePage(){
     const sessionUser = useSelector((state) => state.session.user);
