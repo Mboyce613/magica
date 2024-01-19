@@ -23,7 +23,7 @@ const habitReducer = (state = {}, action)=>{
     switch(action.type){
         case LOAD_Habits:
             newState = {}
-            console.log(action.habits, '-----store')
+            // console.log(action.habits, '-----store')
             if(action.habits.habits && action.habits.habits !== undefined){
                 action.habits.habits.forEach(ele => {
 
