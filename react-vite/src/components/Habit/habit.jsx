@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getAllHabits } from "../../redux/habit";
 import OpenModalMenuItem from "../Navigation/OpenModalMenuItem";
+import HabitLink from "./HabitLink";
 
 const Habit = ({userId})=>{
     // const [habits, setHabits] = useState("")
@@ -26,7 +27,7 @@ if (!isLoading) {
         <div>Habits</div>
         {/* {console.log("habits",Object.values(habits))} */}
         <ul>{Object.values(habits).map(habit =>(
-        <li>{habit.title}</li>))}</ul>
+        <HabitLink habit = {habit}/>))}</ul>
         </>)
 }
 }
