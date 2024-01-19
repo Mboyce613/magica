@@ -15,7 +15,7 @@ export const getHair =(hairId)=>({
 
 export const getAllHairs = () => async (dispatch)=>{
     const res = await fetch('/api/hairs')
-    console.log(res.text(), '----------')
+    // console.log(res.text(), '----------')
     if(res.ok){
         const data = await res.json()
         dispatch(loadHairs(data))
@@ -39,7 +39,7 @@ const hairReducer = (state = {}, action)=>{
     switch(action.type){
         case LOAD_HAIRS:
             newState = {}
-            console.log(action.hairs, '-----store')
+            // console.log(action.hairs, '-----store')
             if(action.hairs && action.hairs !== undefined){
                 // action.hairs.forEach(ele => {
                     
