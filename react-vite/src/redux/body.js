@@ -15,7 +15,7 @@ export const getBody =(bodyId)=>({
 
 export const getAllBodies = () => async (dispatch)=>{
     const res = await fetch('/api/bodies')
-    console.log(res.text(), '----------')
+    // console.log(res.text(), '----------')
     if(res.ok){
         const data = await res.json()
         dispatch(loadBodies(data))
@@ -39,7 +39,7 @@ const bodyReducer = (state = {}, action)=>{
     switch(action.type){
         case LOAD_BODIES:
             newState = {}
-            console.log(action.bodies, '-----store')
+            // console.log(action.bodies, '-----store')
             if(action.bodies.bodies && action.bodies.bodies !== undefined){
                 action.bodies.forEach(ele => {
                     
@@ -52,8 +52,8 @@ const bodyReducer = (state = {}, action)=>{
 
         case GET_BODY:
             newState = {}
-            console.log("ACTION", action, 'line 55')
-            console.log(action.bodyId, '-----store')
+            // console.log("ACTION", action, 'line 55')
+            // console.log(action.bodyId, '-----store')
             if(action.bodyId && action.bodyId !== undefined){
                 action.bodyId.forEach(ele => {
                     newState[ele.id] = ele

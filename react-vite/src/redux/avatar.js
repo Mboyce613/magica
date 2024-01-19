@@ -42,9 +42,9 @@ const avatarReducer = (state = {}, action)=>{
             newState = {}
             // console.log(action.avatars, '-----store')
             if(action.avatars && action.avatars !== undefined){
-                action.avatars.forEach(ele => {
-                    newState[ele.id] = ele
-                })
+                // action.avatars.forEach(ele => {
+                //     newState[ele.id] = ele
+                // })
             }else{
                 newState = null
             }
