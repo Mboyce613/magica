@@ -23,9 +23,15 @@ function HomePage(){
     //         )
     // },[avatars, backgrounds, isLoaded])
     return (
-        <div>
-          <DailiesComponent/>
-        </div>
+      <>
+      <div>Avatar Component</div>
+      <Avatar userId = {sessionUser.id}/>
+      <div>Habit Component</div>
+      <Habit userId = {sessionUser.id}/>
+      <div>Daily Component</div>
+      <DailiesComponent userId = {sessionUser.id}/>
+      <div>To Do Component</div>
+    </>
     )
 }
 export default HomePage;
