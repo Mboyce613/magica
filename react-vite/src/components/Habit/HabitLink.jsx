@@ -22,7 +22,7 @@ const HabitLink = (habit) =>{
         {/* <div>Hello from HabitLink</div> */}
         <OpenModalButton
         buttonText={habit.habit.title}
-        modalComponent={<HabitModelPage habit = {habit}/>}
+        modalComponent={<HabitModelPage habit = {habit.habit}/>}
         />
         <button>Minus</button>
         </div>
