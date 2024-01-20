@@ -1,12 +1,12 @@
 from flask import Blueprint, jsonify
 from flask_login import login_required
-from app.models import Background
+from app.models import Background, User, Avatar
 
 background_routes = Blueprint('backgrounds', __name__)
 
 
 @background_routes.route('/')
-@login_required
+# @login_required
 def backgrounds():
     """
     Query for all backgrounds and returns them in a list of background dictionaries

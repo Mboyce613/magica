@@ -41,7 +41,7 @@ const bodyReducer = (state = {}, action)=>{
             newState = {}
             // console.log(action.bodies, '-----store')
             if(action.bodies.bodies && action.bodies.bodies !== undefined){
-                action.bodies.forEach(ele => {
+                action.bodies.bodies.forEach(ele => {
                     
                     newState[ele.id] = ele
                 })

@@ -3,6 +3,7 @@
 const LOAD_BACKGROUNDS= 'backgrounds/loadBackgrounds'
 const GET_BACKGROUND= 'backgrounds/getBackground'
 
+
 export const loadBackgrounds=(backgrounds)=>({
     type:LOAD_BACKGROUNDS,
     backgrounds
@@ -12,6 +13,7 @@ export const getBackground =(backgroundId)=>({
     type:GET_BACKGROUND,
     backgroundId
 })
+
 
 export const getAllBackgrounds = () => async (dispatch)=>{
     const res = await fetch('/api/backgrounds')
@@ -40,7 +42,8 @@ const backgroundReducer = (state = {}, action)=>{
             newState = {}
             // console.log(action.backgrounds, '-----store')
             if(action.backgrounds && action.backgrounds !== undefined){
-                action.backgrounds.forEach(ele => {
+                // console.log("ACTION.BACKGROUNDS LINE 43", action.backgrounds)
+                action.backgrounds.backgrounds.forEach(ele => {
                     
                     newState[ele.id] = ele
                 })

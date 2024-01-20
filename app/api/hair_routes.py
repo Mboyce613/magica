@@ -6,7 +6,7 @@ hair_routes = Blueprint('hairs', __name__)
 
 
 @hair_routes.route('/')
-@login_required
+# @login_required
 def hairs():
     """
     Query for all hairs and returns them in a list of hair dictionaries
