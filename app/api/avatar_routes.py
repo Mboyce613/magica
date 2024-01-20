@@ -43,6 +43,7 @@ def updateAvatarBackground(id):
     avatar.hair_id = hairId
     avatar.face_id = faceId
     avatar.body_id = bodyId
+    
     db.session.add(avatar)
     db.session.commit()
     return avatar.to_dict()
