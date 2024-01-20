@@ -1,68 +1,118 @@
-import { csrfFetch } from "./csrf"
+import { csrfFetch } from "./csrf";
 
-const LOAD_Habits='habits/loadHabits'
-const UPDATE_Habit='habits/UPDATE_HABIT'
+const LOAD_Habits = "habits/loadHabits";
+const UPDATE_Habit = "habits/UPDATE_HABIT";
+const DELETE_Habit = "habits/DELETE";
+const CREATE_Habit = 'habits/CREATE'
 
-export const loadHabits=(habits)=>({
-    type:LOAD_Habits,
-    habits
-})
+export const loadHabits = (habits) => ({
+  type: LOAD_Habits,
+  habits,
+});
 
-export const updateHabit=(habit)=>({
-    type:UPDATE_Habit,
-    habit
-})
+export const updateHabit = (habit) => ({
+  type: UPDATE_Habit,
+  habit,
+});
 
-export const getAllHabits = (userId) => async (dispatch)=>{
-    const res = await fetch(`/api/habits/${userId}`)
-    // console.log(res.text(), '----------')
-    if(res.ok){
-        const data = await res.json()
-        dispatch(loadHabits(data))
-        return data
+export const deleteHabit = (habitId) => ({
+  type: DELETE_Habit,
+  habitId,
+});
+
+export const createHabit = (habit) => ({
+    type: CREATE_Habit,
+    habit,
+  });
+
+
+export const getAllHabits = (userId) => async (dispatch) => {
+  const res = await fetch(`/api/habits/${userId}`);
+  // console.log(res.text(), '----------')
+  if (res.ok) {
+    const data = await res.json();
+    dispatch(loadHabits(data));
+    return data;
+  }
+  return res;
+};
+
+export const updateHabitMaker = (habit, habitId) => async (dispatch) => {
+  const res = await csrfFetch(`/api/habits/${habitId}`, {
+    method: "PUT",
+    body: JSON.stringify(habit),
+  });
+  const data = await res.json();
+  if (res.ok) {
+    // const groups = await res.json()
+    dispatch(updateHabit(habit));
+    return data;
+  } else {
+    throw res;
+  }
+};
+
+export const createHabitMaker = (habit) => async (dispatch) => {
+  const res = await csrfFetch(`/api/habits`, {
+    method: "POST",
+    body: JSON.stringify(habit),
+  });
+  const data = await res.json();
+  if (res.ok) {
+    // const groups = await res.json()
+    dispatch(createHabit(habit));
+    return data;
+  } else {
+    throw res;
+  }
+};
+
+export const habitDeleteFetch = (habitId) => async (dispatch) => {
+  const res = await csrfFetch(`/api/habits/${habitId}`, {
+    method: "DELETE",
+  });
+  const data = await res.json();
+  res.data = data;
+  if (res.ok) {
+    dispatch(deleteHabit(data));
+  } else {
+    throw res;
+  }
+};
+
+const habitReducer = (state = {}, action) => {
+  // let newState = null
+  switch (action.type) {
+    case LOAD_Habits:
+      let newState = {};
+      // console.log(action.habits, '-----store')
+      if (action.habits.habits && action.habits.habits !== undefined) {
+        action.habits.habits.forEach((ele) => {
+          newState[ele.id] = ele;
+        });
+      } else {
+        newState = null;
+      }
+      return newState;
+    case CREATE_Habit: {
+      const habits = { ...state };
+      habits[action.habit.id] = action.habit;
+      return { ...habits };
     }
-    return res
-}
-export const updateHabitMaker = (habit,habitId)=>async(dispatch)=>{
-    const res= await csrfFetch(`/api/habits/${habitId}`,{
-      method: "PUT",
-      body: JSON.stringify(habit)
-    })
-    const data = await res.json()
-    if (res.ok) {
-      // const groups = await res.json()
-      dispatch(updateHabit(habit));
-      return data
-    } else {
-      throw res;
+
+    case UPDATE_Habit: {
+      const habits = { ...state };
+      habits[action.habit.id] = action.habit;
+      return { ...habits };
     }
-    }
+    case DELETE_Habit:
+      newState = { ...state };
+      delete newState[action.habitId];
+      return { ...newState, habits };
 
+    default:
+      return state;
+  }
+};
 
-const habitReducer = (state = {}, action)=>{
-    let newState = null
-    switch(action.type){
-        case LOAD_Habits:
-            newState = {}
-            // console.log(action.habits, '-----store')
-            if(action.habits.habits && action.habits.habits !== undefined){
-                action.habits.habits.forEach(ele => {
-                    newState[ele.id] = ele
-                })
-            }else{
-                newState = null
-            }
-            return newState
-        case UPDATE_Habit: {
-                const habits = { ...state };
-                console.log("from habits reducer", state)
-                console.log("from groups reducer, action",action)
-                habits[action.habit.id] = action.habit;
-            return { ...habits };
-              }
-
-        default:return state
-    }
-}
-
-export default habitReducer
+export default habitReducer;
