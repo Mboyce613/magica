@@ -9,6 +9,9 @@ function SignupFormPage() {
   const sessionUser = useSelector((state) => state.session.user);
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
+  const [firstname, setFirstname] = useState("")
+  const [lastname, setLastname] = useState("")
+  const [exp, setExp] = useState(0)
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState({});
@@ -30,13 +33,16 @@ function SignupFormPage() {
         email,
         username,
         password,
+        firstname,
+        lastname,
+        exp
       })
     );
 
     if (serverResponse) {
       setErrors(serverResponse);
     } else {
-      navigate("/");
+      navigate("makeAvatar");
     }
   };
 
@@ -65,6 +71,26 @@ function SignupFormPage() {
           />
         </label>
         {errors.username && <p>{errors.username}</p>}
+        <label>
+          First Name
+          <input
+            type="text"
+            value={firstname}
+            onChange={(e) => setFirstname(e.target.value)}
+            required
+          />
+        </label>
+        {errors.firstname && <p>{errors.firstname}</p>}
+        <label>
+          Last Name
+          <input
+            type="text"
+            value={lastname}
+            onChange={(e) => setLastname(e.target.value)}
+            required
+          />
+        </label>
+        {errors.lastname && <p>{errors.lastname}</p>}
         <label>
           Password
           <input
