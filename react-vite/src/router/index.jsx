@@ -3,7 +3,7 @@ import LoginFormPage from '../components/LoginFormPage';
 import SignupFormPage from '../components/SignupFormPage';
 import Layout from './Layout';
 import HomePage from '../components/HomePage';
-import createAvatarPage from '../components/Avatar/createAvatarPage';
+import CreateAvatarPage from '../components/Avatar/createAvatarPage';
 
 export const router = createBrowserRouter([
   {
@@ -23,7 +23,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "makeAvatar",
-        element: <createAvatarPage />,
+        element: <CreateAvatarPage />,
       },
     ],
   },
