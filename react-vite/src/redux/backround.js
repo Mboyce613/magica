@@ -16,7 +16,7 @@ export const getBackground =(backgroundId)=>({
 
 
 export const getAllBackgrounds = () => async (dispatch)=>{
-    const res = await fetch('/api/backgrounds')
+    const res = await fetch('/api/backgrounds/')
     if(res.ok){
         const data = await res.json()
         dispatch(loadBackgrounds(data))

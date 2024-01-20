@@ -34,7 +34,15 @@ def updateAvatarBackground(id):
     """
     avatar = Avatar.query.get(id)
     backgroundId = request.json['backgroundId']
+    hairId = request.json['hairId']
+    faceId = request.json['faceId']
+    bodyId = request.json['bodyId']
+
+
     avatar.background_id = backgroundId
+    avatar.hair_id = hairId
+    avatar.face_id = faceId
+    avatar.body_id = bodyId
     db.session.add(avatar)
     db.session.commit()
     return avatar.to_dict()
