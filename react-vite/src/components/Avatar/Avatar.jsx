@@ -60,7 +60,7 @@ function Avatar({userId}){
         <div>Hello from Avatar</div>
         {/* <p>Background</p> */}
         {/* {backgrounds[1] && <p>{`${backgrounds[1].url}`}</p>} */}
-        {<OpenModalButton modalComponent={<AvatarModalPage />}/>}
+        {<OpenModalButton modalComponent={<AvatarModalPage userId={userId}/>}/>}
         {backgrounds[avatar.backgroundId] && avatar.backgroundId === 1 &&<img src={Background_Red} />}
         {backgrounds[avatar.backgroundId] && avatar.backgroundId === 2 &&<img src={Background_Blue} />}
         {backgrounds[avatar.backgroundId] && avatar.backgroundId === 3 &&<img src={Background_Green} />}
