@@ -7,10 +7,11 @@ export const loadDailies=(dailies)=>({
     dailies
 })
 
-export const getAllDailies = () => async (dispatch)=>{
-    const res = await fetch('/api/dailies')
+export const getAllDailies = (userId) => async (dispatch)=>{
+    const res = await fetch(`/api/dailies/${userId}`)
     if(res.ok){
         const data = await res.json()
+        console.log(data, '------')
         dispatch(loadDailies(data))
         return data
     }

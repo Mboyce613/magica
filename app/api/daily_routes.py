@@ -5,13 +5,14 @@ from app.models import Daily
 daily_routes = Blueprint('dailies', __name__)
 
 
-@daily_routes.route('/')
+@daily_routes.route('/<int:userId>')
 # @login_required
-def dailies():
+def dailies(userId):
     """
     Query for all dailies and returns them in a list of daily dictionaries
     """
-    dailies = Daily.query.all()
+    # dailies = Daily.query.all()
+    dailies = Daily.query.filter(Daily.user_id == userId)
     return {'daily': [daily.to_dict() for daily in dailies]}
 
 

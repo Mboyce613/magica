@@ -6,12 +6,13 @@ import DailyComponent from "../DailyComponent/DailyComponent";
 function DailiesComponent (){
     const [isLoaded, setIsLoaded] = useState(false)
     const [addDaily, setAddDaily] = useState('')
+    const sessionUser = useSelector(state => state.session.user)
     const dailies = useSelector(state => state.dailies)
     const dispatch = useDispatch()
-    console.log(dailies, '-----')
+    console.log(sessionUser, '-----')
 
     useEffect(()=>{
-        dispatch(getAllDailies())
+        dispatch(getAllDailies(sessionUser.id))
           .then(()=>{
             setIsLoaded(true)
           })
