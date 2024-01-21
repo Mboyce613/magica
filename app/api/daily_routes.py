@@ -1,10 +1,13 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, request
 from flask_login import login_required
 from app.models import Daily
 
 daily_routes = Blueprint('dailies', __name__)
 
-
+@daily_routes.route('/', methods=['POST'])
+def post_daily():
+    recieved_data = request.json
+    
 @daily_routes.route('/<int:userId>')
 # @login_required
 def dailies(userId):
