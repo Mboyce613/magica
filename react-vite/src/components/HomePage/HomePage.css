@@ -8,11 +8,14 @@
     grid-auto-rows: minmax(100px,auto);
     /* max-width: auto; */
     width: 100%;
+    padding: 2px;
     margin: auto;
+    grid-column-gap: 5px;
     grid-template-areas:
     "avatar avatar avatar avatar"
     "habit daily toDo ."
     "habit daily toDo ."
+
 }
 
 .avatarComponent {
@@ -21,12 +24,19 @@
 
 .habitComponent {
     grid-area: habit;
+    /* background-color: purple; */
 }
 
 .dailyComponent {
     grid-area: daily;
+    border: solid rgb(198, 198, 198);
+    border-radius: 4px;
+    padding: 2px;
 }
 
 .todoComponent {
     grid-area: toDo;
+    border: solid rgb(198, 198, 198);
+    border-radius: 4px;
+    padding: 2px;
 }

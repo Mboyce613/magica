@@ -43,18 +43,21 @@ const HabitLink = (habit) =>{
 
     return (
         <>
-        <div>
+        <div className="habitNavBox">
         <button
+        // className="plusButton"
+        class="fa-solid fa-circle-plus"
         onClick={handleCompleted}
-        >Plus</button>
+        ></button>
         {/* <div>Hello from HabitLink</div> */}
         <OpenModalButton
         buttonText={habit.habit.title}
         modalComponent={<HabitModelPage habit = {habit.habit}/>}
         />
         <button
+        class="fa-solid fa-circle-minus"
         onClick={handleNotCompleted}
-        >Minus</button>
+        ></button>
         </div>
         </>
     )
