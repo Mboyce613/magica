@@ -74,10 +74,13 @@ const HabitModalPage = (habit) =>{
 
     return (
         <>
-         <div><button
+        <div className="habitModalBox">
+         <div className="buttonDiv"><button
+        class="fa-regular fa-trash-can"
         onClick={handleDelete}
-        >Delete Habit</button>
+        ></button>
         <button
+        className="submitHabitButton"
         onClick={handleCancel}
         type="cancel"
         >Cancel</button>
@@ -88,10 +91,7 @@ const HabitModalPage = (habit) =>{
         >
         <div>
         <h2>Edit Habit</h2>
-        <button
-        type = "submit"
-        onClick={handleSubmit}
-        >Save</button>
+
         </div>
         <div>
         <h3>Name of your new Habit?</h3>
@@ -156,8 +156,17 @@ const HabitModalPage = (habit) =>{
             onChange={handleTags}
         ></input>
         </div>
+        <div
+        className="submitHabit"
+        >
+        <button
+        className="submitHabitButton"
+        type = "submit"
+        onClick={handleSubmit}
+        >Save Habit</button>
+        </div>
         </form>
-
+        </div>
         </>
     )
 }

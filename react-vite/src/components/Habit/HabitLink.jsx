@@ -53,6 +53,7 @@ const HabitLink = (habit) =>{
         <OpenModalButton
         buttonText={habit.habit.title}
         modalComponent={<HabitModelPage habit = {habit.habit}/>}
+        buttonClass={"habitModalButton"}
         />
         <button
         class="fa-solid fa-circle-minus"

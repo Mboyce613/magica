@@ -11,19 +11,19 @@ function Navigation() {
   return (
     <>
     <hr className='solid'/>
-    <div className="navFlexBox">
+    <div >
 
     <section>
-    {sessionUser ? <div>
-      <div className="title">
-        <h1>Habicka Magicka</h1>
+    {sessionUser ? <div className="navFlexBox">
+      <div >
+        <h1 className="title">Habicka Magicka</h1>
       </div>
       <div>
-      <NavLink to="/">Home</NavLink>
+      <h1 class="fa-solid fa-dragon"></h1>
       </div>
 
-      <div className="profileButton">
-      <ProfileButton />
+      <div className="Profile" >
+      <ProfileButton className="profileButton" />
       </div>
 
     </ div> :
