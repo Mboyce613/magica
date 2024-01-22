@@ -41,10 +41,10 @@ const faceReducer = (state = {}, action)=>{
             newState = {}
             // console.log(action.faces, '-----store')
             if(action.faces && action.faces !== undefined){
-                // action.faces.forEach(ele => {
+                action.faces.faces.forEach(ele => {
                     
-                //     newState[ele.id] = ele
-                // })
+                    newState[ele.id] = ele
+                })
             }else{
                 newState = null
             }

@@ -6,7 +6,7 @@ body_routes = Blueprint('bodies', __name__)
 
 
 @body_routes.route('/')
-@login_required
+# @login_required
 def bodies():
     """
     Query for all bodies and returns them in a list of body dictionaries

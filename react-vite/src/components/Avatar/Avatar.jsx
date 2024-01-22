@@ -7,6 +7,10 @@ import { getBackgroundById } from "../../redux/backround";
 import { getBodyById } from "../../redux/body";
 import { getFaceById } from "../../redux/face";
 import { getHairById } from "../../redux/hair";
+import { useModal } from "../../context/Modal";
+import AvatarLink from "./avatarLink";
+import AvatarModalPage from "./avatarModelPage";
+import OpenModalButton from "../OpenModalButton/OpenModalButton";
 import Background_Blue from '../../../../app/graphics/Background_Blue.png'
 import Background_Green from '../../../../app/graphics/Background_Green.png'
 import Background_Red from '../../../../app/graphics/Background_Red.png'
@@ -25,12 +29,14 @@ function Avatar({userId}){
     if(!sessionUser) return <Navigate to='signup' replace={true}/>
     const [isLoaded, setIsLoaded] = useState(false)
     const dispatch = useDispatch()
-    const avatars = useSelector((state)=>state.avatars)
+    const { closeModal } = useModal();
+    const avatar = useSelector((state)=>state.avatars)
     const backgrounds = useSelector((state)=>state.backgrounds)
     const body = useSelector((state)=>state.bodies)
     const face = useSelector((state)=>state.faces)
     const hair = useSelector((state)=>state.hairs)
 
+    
     // console.log('BACKGROUND LOG 16', backgrounds[1])
     // console.log("Avatar line 13",avatars)
     useEffect(()=>{
@@ -41,9 +47,6 @@ function Avatar({userId}){
             dispatch(getFaceById(data.faceId))
             dispatch(getHairById(data.hairId))
           })
-          // .then((data)=>{
-          //   dispatch(getBodyById(data.bodyId))
-          // })
           .then(()=>{
             setIsLoaded(true)
             
@@ -51,36 +54,31 @@ function Avatar({userId}){
             )
     },[])
 
-    // useEffect(()=>{
-    //   dispatch(getAvatarsById(userId))
-    //   .then((data)=>{
-    //     dispatch(getBodyById(data.bodyId))
-    //   })
-    // },[])
 
     return (
       <>
         <div>Hello from Avatar</div>
         {/* <p>Background</p> */}
         {/* {backgrounds[1] && <p>{`${backgrounds[1].url}`}</p>} */}
-        {backgrounds[1] && backgrounds[1].id === 1 &&<img src={Background_Red}/>}
-        {backgrounds[1] && backgrounds[1].id === 2 &&<img src={Background_Blue}/>}
-        {backgrounds[1] && backgrounds[1].id === 3 &&<img src={Background_Green}/>}
+        {<OpenModalButton modalComponent={<AvatarModalPage userId={userId}/>}/>}
+        {backgrounds[avatar.backgroundId] && avatar.backgroundId === 1 &&<img src={Background_Red} />}
+        {backgrounds[avatar.backgroundId] && avatar.backgroundId === 2 &&<img src={Background_Blue} />}
+        {backgrounds[avatar.backgroundId] && avatar.backgroundId === 3 &&<img src={Background_Green} />}
         {/* <p>Body</p> */}
         {/* {body[1] && <p>{`${body[1].url}`}</p>} */}
-        {body[1] && body[1].id === 1 &&<img src={BodyRed}/>}
-        {body[2] && body[2].id === 2 &&<img src={BodyBlue}/>}
-        {body[3] && body[3].id === 3 &&<img src={BodyGreen}/>}
+        {body[avatar.bodyId] && avatar.bodyId === 1 &&<img src={BodyRed}/>}
+        {body[avatar.bodyId] && avatar.bodyId === 2 &&<img src={BodyBlue}/>}
+        {body[avatar.bodyId] && avatar.bodyId === 3 &&<img src={BodyGreen}/>}
         {/* <p>Face</p> */}
         {/* {face[1] && <p>{`${face[1].url}`}</p>} */}
-        {face[1] && face[1].id === 1 &&<img src={Face1}/>}
-        {face[2] && face[2].id === 2 &&<img src={Face2}/>}
-        {face[3] && face[3].id === 3 &&<img src={Face3}/>}
+        {face[avatar.faceId] && avatar.faceId === 1 &&<img src={Face1}/>}
+        {face[avatar.faceId] && avatar.faceId === 2 &&<img src={Face2}/>}
+        {face[avatar.faceId] && avatar.faceId === 3 &&<img src={Face3}/>}
         {/* <p>Hair</p> */}
         {/* {hair[1] && <p>{`${hair[1].url}`}</p>} */}
-        {hair[1] && hair[1].id === 1 &&<img src={Hat_Red}/>}
-        {hair[2] && hair[2].id === 2 &&<img src={Hat_Blue}/>}
-        {hair[3] && hair[3].id === 3 &&<img src={Hat_Green}/>}
+        {hair[avatar.hairId] && avatar.hairId === 1 &&<img src={Hat_Red}/>}
+        {hair[avatar.hairId] && avatar.hairId === 2 &&<img src={Hat_Blue}/>}
+        {hair[avatar.hairId] && avatar.hairId === 3 &&<img src={Hat_Green}/>}
 
       </>
 
