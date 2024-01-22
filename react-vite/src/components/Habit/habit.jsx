@@ -53,7 +53,7 @@ if (!isLoading) {
     return (
         <>
         <div className="habitBox">
-        <div style={{fontSize:25,padding:5}}>Habits</div>
+        <div style={{fontSize:25,padding:5,backgroundColor:"orange"}}>Habits</div>
         <div>
         <form
         onSubmit={handleSubmit}

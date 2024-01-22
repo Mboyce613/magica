@@ -5,15 +5,19 @@ import HabitModelPage from "./HabitModalPage.jsx";
 import { useDispatch, useSelector } from "react-redux";
 import { updateUsersExp } from "../../redux/session.js";
 import { updateHabit } from "../../redux/habit.js";
-
+import useSound from "use-sound";
+import plusSound from "../../../public/sounds/plus.mp3"
+import minusSound from "../../../public/sounds/minus.mp3"
 
 const HabitLink = (habit) =>{
     const sessionUser = useSelector((state) => state.session.user);
     const dispatch = useDispatch()
     // console.log("session",sessionUser)
     // console.log("Habit",habit)
+    const playSound = useSound(plusSound)
 
     const handleCompleted = (e) => {
+        if (!habit.habit.completed){
         if (habit.habit.completed === false){
         let expAdd = 0
         if (habit.habit.difficulty===3){
@@ -33,12 +37,14 @@ const HabitLink = (habit) =>{
             id:sessionUser.id
         }
         dispatch(updateUsersExp(payload,sessionUser.id))
-        dispatch
+        playSound
+        }}else{
+            alert('Habit Already Done for Today!')
         }
     }
 
     const handleNotCompleted = (e) => {
-
+        // useSound(minusSound)
     }
 
     return (
