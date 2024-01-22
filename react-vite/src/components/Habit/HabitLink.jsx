@@ -10,8 +10,8 @@ import { updateHabit } from "../../redux/habit.js";
 const HabitLink = (habit) =>{
     const sessionUser = useSelector((state) => state.session.user);
     const dispatch = useDispatch()
-    console.log("session",sessionUser)
-    console.log("Habit",habit)
+    // console.log("session",sessionUser)
+    // console.log("Habit",habit)
 
     const handleCompleted = (e) => {
         if (habit.habit.completed === false){
@@ -26,7 +26,7 @@ const HabitLink = (habit) =>{
             expAdd = 5
         }
         expAdd += sessionUser.exp
-        console.log(expAdd)
+        // console.log(expAdd)
 
         let payload = {
             exp: expAdd,
