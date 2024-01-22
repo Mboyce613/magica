@@ -7,16 +7,22 @@ import { useState } from "react";
 
 function Navigation() {
   const sessionUser = useSelector((state) => state.session.user);
-  
+
   return (
+    <>
+    <hr className='solid'/>
+    <div className="navFlexBox">
+
     <section>
     {sessionUser ? <div>
-
+      <div className="title">
+        <h1>Habicka Magicka</h1>
+      </div>
       <div>
       <NavLink to="/">Home</NavLink>
       </div>
-      
-      <div>
+
+      <div className="profileButton">
       <ProfileButton />
       </div>
 
@@ -32,8 +38,14 @@ function Navigation() {
         <NavLink to='login'>Log In</NavLink>
       </div>
     </div>
+
     }
+
     </section>
+
+  </div>
+  <hr className='solid'/>
+  </>
   );
 }
 

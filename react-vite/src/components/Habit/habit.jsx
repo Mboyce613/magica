@@ -40,6 +40,7 @@ const Habit = ({userId})=>{
 
         let newHabit = await dispatch(createHabitMaker(payload))
         dispatch(getAllHabits(userId))
+        setTitle("")
 
             // history.push(`/groups/${group.id}`)
     //   }
@@ -58,6 +59,7 @@ if (!isLoading) {
         >
             <input
             type = "text"
+            value = {title}
             placeholder="Enter a new Habit"
             onChange={handleTitle}
             ></input>

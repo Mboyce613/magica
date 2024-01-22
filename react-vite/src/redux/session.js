@@ -1,10 +1,18 @@
 const SET_USER = 'session/setUser';
 const REMOVE_USER = 'session/removeUser';
+const UPDATE_USER_EXP = 'users/updateUserExp'
+
 
 const setUser = (user) => ({
   type: SET_USER,
   payload: user
 });
+
+const updateUserExp = (user) => ({
+  type: UPDATE_USER_EXP,
+  payload:user
+
+})
 
 const removeUser = () => ({
   type: REMOVE_USER
@@ -20,6 +28,21 @@ export const thunkAuthenticate = () => async (dispatch) => {
 
 		dispatch(setUser(data));
 	}
+};
+
+export const updateUsersExp = (exp,userId) => async (dispatch) => {
+  const res = await fetch(`/api/users/${userId}/exp`, {
+    method: "PATCH",
+    body: JSON.stringify(exp),
+    headers: { "Content-Type": "application/json" },
+  });
+  const data = await res.json();
+  if (res.ok) {
+    dispatch(updateUserExp(exp));
+    return data;
+  } else {
+    throw res;
+  }
 };
 
 export const thunkLogin = (credentials) => async dispatch => {
@@ -71,8 +94,15 @@ function sessionReducer(state = initialState, action) {
       return { ...state, user: action.payload };
     case REMOVE_USER:
       return { ...state, user: null };
+    case UPDATE_USER_EXP: {
+        const user = { ...state };
+        console.log("from user reducer", action)
+        user[action.payload.id] = action.user;
+        return { ...user };
+      }
     default:
       return state;
+
   }
 }
 

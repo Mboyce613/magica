@@ -40,12 +40,25 @@ def habit_update(id):
     tags = request.json['tags']
     streak = request.json['streak']
     user_id = request.json['userId']
-    positive = request.json['positive']
+    # positive = request.json['positive']
+    if (request.json=='false'):
+        positive = False
+    else:
+        positive = True
+
     duration = request.json['duration']
     id = request.json['id']
 
 
     habit.title = title
+    habit.completed = (completed)
+    habit.difficulty = difficulty
+    habit.notes = notes
+    habit.tags = tags
+    habit.streak = streak
+    habit.user_id = user_id
+    habit.positive = positive
+    habit.duration = duration
     db.session.commit()
     return habit.to_dict()
 

@@ -18,7 +18,7 @@ class User(db.Model, UserMixin):
     first_name = db.Column(db.String(255), nullable=False)
     last_name = db.Column(db.String(255), nullable=False)
     exp = db.Column(db.Integer, default=0, nullable=False)
-    
+
     avatar = relationship("Avatar", back_populates="user", uselist=False)
     daily = relationship("Daily", back_populates="user")
     to_do = relationship("To_do", back_populates="user")
@@ -39,5 +39,6 @@ class User(db.Model, UserMixin):
         return {
             'id': self.id,
             'username': self.username,
-            'email': self.email
+            'email': self.email,
+            'exp':self.exp
         }

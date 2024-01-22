@@ -1,0 +1,32 @@
+
+
+
+
+.mainBox {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: minmax(100px,auto);
+    /* max-width: auto; */
+    width: 100%;
+    margin: auto;
+    grid-template-areas:
+    "avatar avatar avatar avatar"
+    "habit daily toDo ."
+    "habit daily toDo ."
+}
+
+.avatarComponent {
+    grid-area: avatar;
+}
+
+.habitComponent {
+    grid-area: habit;
+}
+
+.dailyComponent {
+    grid-area: daily;
+}
+
+.todoComponent {
+    grid-area: toDo;
+}

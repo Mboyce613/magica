@@ -13,12 +13,12 @@ const HabitModalPage = (habit) =>{
     const {closeModal} = useModal()
     // const [, setState] = React.useState(false);
     const dispatch = useDispatch()
-    // const [completed, setCompleted] = useState(habit.habit.completed)
+    const [completed, setCompleted] = useState(habit.habit.completed)
     const [difficulty, setDifficulty] = useState(habit.habit.difficulty)
     const [duration, setDuration] = useState(habit.habit.duration)
     const [notes, setNotes] = useState(habit.habit.notes)
     const [positive, setPositive] = useState(habit.habit.positive)
-    // const [streak, setStreak] = useState(habit.habit.streak)
+    const [streak, setStreak] = useState(habit.habit.streak)
     const [tags, setTags] = useState(habit.habit.tags)
     const [title, setTitle] = useState(habit.habit.title)
     // const history = useHistory()
@@ -94,7 +94,7 @@ const HabitModalPage = (habit) =>{
         >Save</button>
         </div>
         <div>
-        <h3>Name of your new Habit:</h3>
+        <h3>Name of your new Habit?</h3>
         <input
             type = "text"
             name = "Title"
@@ -103,7 +103,7 @@ const HabitModalPage = (habit) =>{
         ></input>
         </div>
         <div>
-        <h3>Difficulty:</h3>
+        <h3>Difficulty?</h3>
         <select
         type = "dropdown"
         defaultValue={habit.habit.difficulty}
@@ -143,8 +143,8 @@ const HabitModalPage = (habit) =>{
         defaultValue={habit.habit.positive}
         onChange={handlePositive}
         >
-        <option value={true}>Positive</option>
-        <option value={false}>Negative</option>
+        <option value={1}>Positive</option>
+        <option value={'False'}>Negative</option>
         </select>
         </div>
         <div>
