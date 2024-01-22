@@ -81,4 +81,4 @@ def habit_delete(id):
     db.session.delete(habit)
     db.session.commit()
 
-    return 'Habit Deleted Successfully'
+    return habit.to_dict()

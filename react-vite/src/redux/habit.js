@@ -15,9 +15,9 @@ export const updateHabit = (habit) => ({
   habit,
 });
 
-export const deleteHabit = (habitId) => ({
+export const deleteHabit = (habit) => ({
   type: DELETE_Habit,
-  habitId,
+  habit,
 });
 
 export const createHabit = (habit) => ({
@@ -28,7 +28,6 @@ export const createHabit = (habit) => ({
 
 export const getAllHabits = (userId) => async (dispatch) => {
   const res = await fetch(`/api/habits/${userId}`);
-  // console.log(res.text(), '----------')
   if (res.ok) {
     const data = await res.json();
     dispatch(loadHabits(data));
@@ -44,7 +43,6 @@ export const updateHabitMaker = (habit, habitId) => async (dispatch) => {
   });
   const data = await res.json();
   if (res.ok) {
-    // const groups = await res.json()
     dispatch(updateHabit(habit));
     return data;
   } else {
@@ -59,7 +57,6 @@ export const createHabitMaker = (habit) => async (dispatch) => {
   });
   const data = await res.json();
   if (res.ok) {
-    // const groups = await res.json()
     dispatch(createHabit(habit));
     return data;
   } else {
@@ -81,11 +78,10 @@ export const habitDeleteFetch = (habitId) => async (dispatch) => {
 };
 
 const habitReducer = (state = {}, action) => {
-  // let newState = null
+  let newState = null
   switch (action.type) {
     case LOAD_Habits:
-      let newState = {};
-      // console.log(action.habits, '-----store')
+       newState = {};
       if (action.habits.habits && action.habits.habits !== undefined) {
         action.habits.habits.forEach((ele) => {
           newState[ele.id] = ele;
@@ -107,8 +103,8 @@ const habitReducer = (state = {}, action) => {
     }
     case DELETE_Habit:
       newState = { ...state };
-      delete newState[action.habitId];
-      return { ...newState, habits };
+      delete newState[action.habit.id];
+      return { ...newState };
 
     default:
       return state;

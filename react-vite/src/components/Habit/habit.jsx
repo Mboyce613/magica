@@ -12,6 +12,7 @@ import { createHabitMaker } from "../../redux/habit";
 const Habit = ({userId})=>{
     // const [habits, setHabits] = useState("")
     const [isLoading, setIsLoading] = useState(true);
+    const [, setState] = React.useState(false);
     const [title, setTitle] = useState("")
     const dispatch = useDispatch()
     const habits = useSelector((state)=> state.habits)
@@ -19,7 +20,7 @@ const Habit = ({userId})=>{
     useEffect(() =>{
         dispatch(getAllHabits(userId))
         .then(() => setIsLoading(false));
-    },[])
+    },[dispatch,])
 
     const handleSubmit =async (e) => {
         e.preventDefault()
@@ -35,9 +36,10 @@ const Habit = ({userId})=>{
                         tags:"",
                         userId:userId
                         }
-        console.log("payload",payload)
+        // console.log("payload",payload)
 
         let newHabit = await dispatch(createHabitMaker(payload))
+        dispatch(getAllHabits(userId))
 
             // history.push(`/groups/${group.id}`)
     //   }
@@ -48,7 +50,6 @@ const Habit = ({userId})=>{
 if (!isLoading) {
     return (
         <>
-        <div>Hello from Habits</div>
         <div>Habits</div>
         <div>
         <form

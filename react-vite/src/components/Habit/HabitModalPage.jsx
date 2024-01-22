@@ -8,10 +8,12 @@ import { updateHabitMaker } from "../../redux/habit";
 import { habitDeleteFetch } from "../../redux/habit";
 
 
+
 const HabitModalPage = (habit) =>{
     const {closeModal} = useModal()
+    // const [, setState] = React.useState(false);
     const dispatch = useDispatch()
-    const [completed, setCompleted] = useState(habit.habit.completed)
+    // const [completed, setCompleted] = useState(habit.habit.completed)
     const [difficulty, setDifficulty] = useState(habit.habit.difficulty)
     const [duration, setDuration] = useState(habit.habit.duration)
     const [notes, setNotes] = useState(habit.habit.notes)
@@ -26,13 +28,6 @@ const HabitModalPage = (habit) =>{
     const handleSubmit =async (e) => {
         e.preventDefault()
 
-    //    function handleClick() {
-    //     forceUpdate();
-    // }
-    // handleClick()
-    //    if (!Object.values(errors).length) {
-    //     const cityState = location.split(',')
-    //     console.log("groupId",groupId)
         const payload = {
                         title:title,
                         id:habit.habit.id,
@@ -47,17 +42,12 @@ const HabitModalPage = (habit) =>{
                         userId:habit.habit.userId
                         }
 
-        console.log("payload",payload)
 
-        let newHabit = await dispatch(updateHabitMaker(payload,habit.habit.id))
-
-            // history.push(`/groups/${group.id}`)
-    //   }
-    closeModal()
+        dispatch(updateHabitMaker(payload,habit.habit.id))
+        closeModal()
     }
 
     const handleTitle = (e) => setTitle(e.target.value)
-    const handleCompleted = (e) => setCompleted(e.target.value)
     const handleDifficulty = (e) => setDifficulty(e.target.value)
     const handleDuration = (e) => setDuration(e.target.value)
     const handleNotes = (e) => setNotes(e.target.value)
@@ -67,32 +57,37 @@ const HabitModalPage = (habit) =>{
 
 
     const handleCancel = () => {
-        e.preventDefault
+        // e.preventDefault
         closeModal()
     }
     const handleDelete = (e) => {
         // e.preventDefault
-        alert("Are you Sure?")
+        let check = confirm("Delete this Habit?")
+        if (check === true){
+
         dispatch(habitDeleteFetch(habit.habit.id))
+        // setState()
+        closeModal()
+        }
     }
 
-    console.log("from habitModal",habit)
 
     return (
         <>
          <div><button
         onClick={handleDelete}
-        >Delete Habit</button></div>
+        >Delete Habit</button>
+        <button
+        onClick={handleCancel}
+        type="cancel"
+        >Cancel</button>
+        </div>
         <form
         className="Edit Habit"
         onSubmit={handleSubmit}
         >
         <div>
         <h2>Edit Habit</h2>
-        <button
-        onChange={handleCancel}
-        type="cancel"
-        >Cancel</button>
         <button
         type = "submit"
         onClick={handleSubmit}

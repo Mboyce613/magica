@@ -14,7 +14,7 @@ const HabitLink = (habit) =>{
     }
 
 
-    console.log("from habitLink",habit)
+    // console.log("from habitLink",habit)
     return (
         <>
         <div>
