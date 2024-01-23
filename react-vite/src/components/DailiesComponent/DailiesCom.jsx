@@ -9,7 +9,7 @@ function DailiesComponent (){
     const sessionUser = useSelector(state => state.session.user)
     const dailies = useSelector(state => state.dailies)
     const dispatch = useDispatch()
-    console.log(dailyTitle, '-----')
+    
     const handleEnter = (e)=>{
         if(e.key === "Enter"){
             if(!dailyTitle.length){
@@ -22,12 +22,12 @@ function DailiesComponent (){
                     "difficulty":1,
                     "duration":1,
                     "tags":"",
-                    "start_date":new Date().toISOString().slice(0, 10),
-                    "days":'["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]',
+                    "start_date":`${new Date().toISOString().slice(0, 10)}`,
+                    "days":"Sun Mon Tue Wed Thu Fri Sat",
                     "checklist":"",
                     "streak":0,
                     "completed":"False"
-                })).then((res)=>setDailyTitle(res.message))
+                })).then((res)=>setDailyTitle(''))
             }
         }
     }
@@ -56,10 +56,12 @@ function DailiesComponent (){
                 <div>
                     {Object.values(dailies).map(daily =>{
                         // console.log(daily)
-                        return (<div key={daily.id}>
-                            <div>checkbox</div>
+                        return <div key={daily.id}>
+                            <div>
+                                <input type="checkbox"/>
+                            </div>
                             <div>{daily.title}</div>
-                        </div>)
+                        </div>
                     })}
                 </div>
             </div>

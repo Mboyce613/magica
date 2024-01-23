@@ -24,11 +24,15 @@ export const getAllDailies = (userId) => async (dispatch)=>{
     return res
 }
 
-export const addDaily = () => async (dispatch)=>{
-    const res = await csrfFetch(`/api/dailies`)
+export const addDaily = (daily) => async (dispatch)=>{
+    const res = await csrfFetch(`/api/dailies/`,{
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify(daily)
+    })
     if(res.ok){
         const data = await res.json()
-        dispatch(recieveDaily)
+        dispatch(recieveDaily(daily))
         return data
     }
     return res
