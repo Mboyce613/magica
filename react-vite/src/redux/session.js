@@ -96,7 +96,7 @@ function sessionReducer(state = initialState, action) {
       return { ...state, user: null };
     case UPDATE_USER_EXP: {
         const user = { ...state };
-        console.log("from user reducer", action)
+        // console.log("from user reducer", action)
         user[action.payload.id] = action.user;
         return { ...user };
       }

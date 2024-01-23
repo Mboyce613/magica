@@ -42,7 +42,7 @@ function HomePage(){
       <DailiesComponent userId = {sessionUser.id}/>
       </div>
       <div className="todoComponent">
-        <ToDo />
+        <ToDo userId = {sessionUser.id}/>
       </div>
       </div>
     </>

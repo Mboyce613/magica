@@ -6,6 +6,7 @@
     border: solid rgb(198, 198, 198);
     border-radius: 4px;
     padding: 2px;
+    max-width: 300px;
 }
 
 .habitNavBox {
@@ -16,9 +17,12 @@
 
 }
 .newHabit {
-width: 94%;
-height: 20px;
-padding: 5px
+width: 95%;
+height: 30px;
+padding: 5px;
+background-color: rgb(223, 220, 220);
+border-radius: 4px;
+
 }
 
 .HabitNav {
@@ -34,11 +38,14 @@ padding: 5px
     font-size: 30px;
     background-color: aqua;
     color: rgba(0, 0, 0, 0.3);
+    height: 80px;
+
 }
 
 .habitModalButton {
     background-color: white;
     border: 0;
+    font-size: 20px;
 }
 
 .habitModalBox {
