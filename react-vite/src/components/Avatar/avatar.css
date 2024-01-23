@@ -1,3 +1,78 @@
 .modelselect:active{
     border: solid;
 }
+
+.avatarSection{
+    position: relative;
+    height: 200px;
+    max-width: 200px;
+    max-height: 200px;
+    width: 200px;
+    display: grid;
+    grid-template-columns: repeat(3, 66px);
+    grid-template-rows: repeat(3, 66px);
+    /* position: absolute; */
+    /* float: left; */
+}
+
+.avatarParts{
+    position: relative;
+}
+
+.avatarOpenModelButton{
+    position: relative;
+    z-index: 5;
+    border: 5px solid;
+    width: 200px;
+    height: 200px;
+    background-color: transparent;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 3;
+}
+
+.avatarBackground{
+    position: relative;
+    z-index: 0;
+    width: 200px;
+    height: 200px;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 3;
+}
+
+.avatarBody{
+    position: relative; 
+    z-index: 2; 
+    grid-column-start: 2;
+    grid-column-end: 2;
+    grid-row-start: 3;
+    grid-row-end: 3;
+    height: 100%;
+    width: 100%;
+}
+
+.avatarFace{
+    position: relative;
+    z-index: 3;
+    align-self: self-start;
+    grid-column-start: 2;
+    grid-column-end: 2;
+    grid-row-start: 2;
+    grid-row-end: 2;
+    height: 66px;
+    width: 66px; 
+}
+
+.avatarHair{
+    position: relative;
+    z-index: 4;
+    height: 100%;
+    width: 100%;
+    grid-column-start: 2;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 1;
+}
