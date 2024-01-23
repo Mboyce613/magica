@@ -7,17 +7,23 @@ import { useState } from "react";
 
 function Navigation() {
   const sessionUser = useSelector((state) => state.session.user);
-  
-  return (
-    <section>
-    {sessionUser ? <div>
 
-      <div>
-      <NavLink to="/">Home</NavLink>
+  return (
+    <>
+    <hr className='solid'/>
+    <div >
+
+    <section>
+    {sessionUser ? <div className="navFlexBox">
+      <div >
+        <h1 className="title">Habicka Magicka</h1>
       </div>
-      
       <div>
-      <ProfileButton />
+      <h1 class="fa-solid fa-dragon"></h1>
+      </div>
+
+      <div className="Profile" >
+      <ProfileButton className="profileButton" />
       </div>
 
     </ div> :
@@ -32,8 +38,14 @@ function Navigation() {
         <NavLink to='login'>Log In</NavLink>
       </div>
     </div>
+
     }
+
     </section>
+
+  </div>
+  <hr className='solid'/>
+  </>
   );
 }
 

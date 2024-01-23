@@ -7,6 +7,8 @@ import { getAllBackgrounds } from "../../redux/backround";
 import DailiesComponent from "../DailiesComponent/DailiesCom";
 import Avatar from "../Avatar/Avatar";
 import Habit from "../Habit/habit"
+import ToDo from "../ToDo/ToDo";
+import "./HomePage.css"
 
 function HomePage(){
     const sessionUser = useSelector((state) => state.session.user);
@@ -26,13 +28,23 @@ function HomePage(){
     // },[avatars, backgrounds, isLoaded])
     return (
       <>
-      <div>Avatar Component</div>
+      <div className="mainBox">
+      <div
+      className="avatarComponent"
+      >
       <Avatar userId = {sessionUser.id}/>
-      <div>Habit Component</div>
+      <hr className='solid'/>
+      </div>
+      <div className="habitComponent">
       <Habit userId = {sessionUser.id}/>
-      <div>Daily Component</div>
+      </div>
+      <div className="dailyComponent">
       <DailiesComponent userId = {sessionUser.id}/>
-      <div>To Do Component</div>
+      </div>
+      <div className="todoComponent">
+        <ToDo userId = {sessionUser.id}/>
+      </div>
+      </div>
     </>
     )
 }

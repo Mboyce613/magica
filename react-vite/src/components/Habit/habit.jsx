@@ -8,10 +8,12 @@ import { getAllHabits } from "../../redux/habit";
 import OpenModalMenuItem from "../Navigation/OpenModalMenuItem";
 import HabitLink from "./HabitLink";
 import { createHabitMaker } from "../../redux/habit";
+import "./habit.css"
 
 const Habit = ({userId})=>{
     // const [habits, setHabits] = useState("")
     const [isLoading, setIsLoading] = useState(true);
+    const [, setState] = React.useState(false);
     const [title, setTitle] = useState("")
     const dispatch = useDispatch()
     const habits = useSelector((state)=> state.habits)
@@ -19,7 +21,7 @@ const Habit = ({userId})=>{
     useEffect(() =>{
         dispatch(getAllHabits(userId))
         .then(() => setIsLoading(false));
-    },[])
+    },[dispatch,])
 
     const handleSubmit =async (e) => {
         e.preventDefault()
@@ -35,9 +37,11 @@ const Habit = ({userId})=>{
                         tags:"",
                         userId:userId
                         }
-        console.log("payload",payload)
+        // console.log("payload",payload)
 
         let newHabit = await dispatch(createHabitMaker(payload))
+        dispatch(getAllHabits(userId))
+        setTitle("")
 
             // history.push(`/groups/${group.id}`)
     //   }
@@ -48,24 +52,28 @@ const Habit = ({userId})=>{
 if (!isLoading) {
     return (
         <>
-        <div>Hello from Habits</div>
-        <div>Habits</div>
+        <div className="habitBox">
+        <div style={{fontSize:25,padding:5,backgroundColor:"orange"}}>Habits</div>
         <div>
         <form
         onSubmit={handleSubmit}
-        className = "NewHabit"
+        className = "NewHabitForm"
         >
             <input
+            className="newHabit"
             type = "text"
+            value = {title}
             placeholder="Enter a new Habit"
             onChange={handleTitle}
             ></input>
         </form>
         {/* {console.log("habits",Object.values(habits))} */}
-        <div>{Object.values(habits).map(habit =>(
-        <HabitLink habit = {habit}/>))}</div>
+        <div className="HabitNav">{Object.values(habits).map(habit =>(
+        <HabitLink className="habitList" habit = {habit}/>))}</div>
         </div>
-        </>)
+        </div>
+        </>
+        )
 }
 }
 

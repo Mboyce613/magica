@@ -8,15 +8,17 @@ import { updateHabitMaker } from "../../redux/habit";
 import { habitDeleteFetch } from "../../redux/habit";
 
 
+
 const HabitModalPage = (habit) =>{
     const {closeModal} = useModal()
+    // const [, setState] = React.useState(false);
     const dispatch = useDispatch()
     const [completed, setCompleted] = useState(habit.habit.completed)
     const [difficulty, setDifficulty] = useState(habit.habit.difficulty)
     const [duration, setDuration] = useState(habit.habit.duration)
     const [notes, setNotes] = useState(habit.habit.notes)
     const [positive, setPositive] = useState(habit.habit.positive)
-    // const [streak, setStreak] = useState(habit.habit.streak)
+    const [streak, setStreak] = useState(habit.habit.streak)
     const [tags, setTags] = useState(habit.habit.tags)
     const [title, setTitle] = useState(habit.habit.title)
     // const history = useHistory()
@@ -26,13 +28,6 @@ const HabitModalPage = (habit) =>{
     const handleSubmit =async (e) => {
         e.preventDefault()
 
-    //    function handleClick() {
-    //     forceUpdate();
-    // }
-    // handleClick()
-    //    if (!Object.values(errors).length) {
-    //     const cityState = location.split(',')
-    //     console.log("groupId",groupId)
         const payload = {
                         title:title,
                         id:habit.habit.id,
@@ -47,17 +42,12 @@ const HabitModalPage = (habit) =>{
                         userId:habit.habit.userId
                         }
 
-        console.log("payload",payload)
 
-        let newHabit = await dispatch(updateHabitMaker(payload,habit.habit.id))
-
-            // history.push(`/groups/${group.id}`)
-    //   }
-    closeModal()
+        dispatch(updateHabitMaker(payload,habit.habit.id))
+        closeModal()
     }
 
     const handleTitle = (e) => setTitle(e.target.value)
-    const handleCompleted = (e) => setCompleted(e.target.value)
     const handleDifficulty = (e) => setDifficulty(e.target.value)
     const handleDuration = (e) => setDuration(e.target.value)
     const handleNotes = (e) => setNotes(e.target.value)
@@ -67,39 +57,44 @@ const HabitModalPage = (habit) =>{
 
 
     const handleCancel = () => {
-        e.preventDefault
+        // e.preventDefault
         closeModal()
     }
     const handleDelete = (e) => {
         // e.preventDefault
-        alert("Are you Sure?")
+        let check = confirm("Delete this Habit?")
+        if (check === true){
+
         dispatch(habitDeleteFetch(habit.habit.id))
+        // setState()
+        closeModal()
+        }
     }
 
-    console.log("from habitModal",habit)
 
     return (
         <>
-         <div><button
+        <div className="habitModalBox">
+         <div className="buttonDiv"><button
+        class="fa-regular fa-trash-can"
         onClick={handleDelete}
-        >Delete Habit</button></div>
+        ></button>
+        <button
+        className="submitHabitButton"
+        onClick={handleCancel}
+        type="cancel"
+        >Cancel</button>
+        </div>
         <form
         className="Edit Habit"
         onSubmit={handleSubmit}
         >
         <div>
         <h2>Edit Habit</h2>
-        <button
-        onChange={handleCancel}
-        type="cancel"
-        >Cancel</button>
-        <button
-        type = "submit"
-        onClick={handleSubmit}
-        >Save</button>
+
         </div>
         <div>
-        <h3>Name of your new Habit:</h3>
+        <h3>Name of your new Habit?</h3>
         <input
             type = "text"
             name = "Title"
@@ -108,7 +103,7 @@ const HabitModalPage = (habit) =>{
         ></input>
         </div>
         <div>
-        <h3>Difficulty:</h3>
+        <h3>Difficulty?</h3>
         <select
         type = "dropdown"
         defaultValue={habit.habit.difficulty}
@@ -148,8 +143,8 @@ const HabitModalPage = (habit) =>{
         defaultValue={habit.habit.positive}
         onChange={handlePositive}
         >
-        <option value={true}>Positive</option>
-        <option value={false}>Negative</option>
+        <option value={1}>Positive</option>
+        <option value={'False'}>Negative</option>
         </select>
         </div>
         <div>
@@ -161,8 +156,17 @@ const HabitModalPage = (habit) =>{
             onChange={handleTags}
         ></input>
         </div>
+        <div
+        className="submitHabit"
+        >
+        <button
+        className="submitHabitButton"
+        type = "submit"
+        onClick={handleSubmit}
+        >Save Habit</button>
+        </div>
         </form>
-
+        </div>
         </>
     )
 }

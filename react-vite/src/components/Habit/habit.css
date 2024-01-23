@@ -1,0 +1,101 @@
+.habitComponent {
+    display: flex;
+    flex-direction: column;
+    /* background-color: rgb(198, 198, 198); */
+    align-items: stretch;
+    border: solid rgb(198, 198, 198);
+    border-radius: 4px;
+    padding: 2px;
+    max-width: 300px;
+}
+
+.habitNavBox {
+    display: flex;
+    justify-content: space-between;
+    padding: 2px;
+    border: solid rgb(221, 219, 219);
+
+}
+.newHabit {
+width: 95%;
+height: 30px;
+padding: 5px;
+background-color: rgb(223, 220, 220);
+border-radius: 4px;
+
+}
+
+.HabitNav {
+    width: 100%;
+}
+
+.habitNavBox .fa-solid {
+    align-self: start;
+    /* padding: 6px; */
+    /* background-color: rgb(134, 210, 20); */
+    border-radius: 10%;
+    /* border-left: 10px; */
+    font-size: 30px;
+    background-color: aqua;
+    color: rgba(0, 0, 0, 0.3);
+    height: 80px;
+
+}
+
+.habitModalButton {
+    background-color: white;
+    border: 0;
+    font-size: 20px;
+}
+
+.habitModalBox {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border-radius: 10%;
+
+}
+
+.fa-trash-can {
+    font-size: 30px;
+    background-color: white;
+    border-radius: 5px;
+    padding: 10px;
+
+}
+
+.submitHabit {
+    padding-top: 20px;
+    display: flex;
+    justify-content: center;
+    background-color: orange;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.submitHabitButton {
+    font-size: 20px;
+    background-color: white;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.buttonDiv {
+    display: flex;
+    justify-content: space-around;
+    background-color: orange;
+    border-radius: 10px;
+    padding: 10px;
+
+}
+
+.habitModalBox input{
+    padding: 10px;
+    border-radius: 5px;
+
+}
+
+.habitModalBox select{
+    padding: 10px;
+    border-radius: 5px;
+}

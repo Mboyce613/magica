@@ -40,7 +40,7 @@ function ProfileButton() {
 
   return (
     <>
-      <button onClick={toggleMenu}>
+      <button className="profileModalButton" onClick={toggleMenu}>
         <i className="fas fa-user-circle" />
       </button>
       {showMenu && (
