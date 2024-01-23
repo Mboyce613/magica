@@ -12,8 +12,6 @@ import minusSound from "../../../public/sounds/minus.mp3"
 const HabitLink = (habit) =>{
     const sessionUser = useSelector((state) => state.session.user);
     const dispatch = useDispatch()
-    // console.log("session",sessionUser)
-    // console.log("Habit",habit)
     const playSound = useSound(plusSound)
 
     const handleCompleted = (e) => {
@@ -30,7 +28,6 @@ const HabitLink = (habit) =>{
             expAdd = 5
         }
         expAdd += sessionUser.exp
-        // console.log(expAdd)
 
         let payload = {
             exp: expAdd,
@@ -51,7 +48,6 @@ const HabitLink = (habit) =>{
         <>
         <div className="habitNavBox">
         <button
-        // className="plusButton"
         class="fa-solid fa-circle-plus"
         onClick={handleCompleted}
         ></button>
