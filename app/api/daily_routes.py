@@ -7,13 +7,26 @@ daily_routes = Blueprint('dailies', __name__)
 @daily_routes.route('/', methods=['POST'])
 def post_daily():
     data = request.json
-    data_item = data.get("user_id")
-    # new_daily = Daily(data.get('user_id'), data.get('title'), data.get('notes'), data.get('difficulty'), data.get('duration'), data.get('tags'), data.get('start_date'), data.get('days'), data.get('checklist'), data.get('streak'), data.get('completed'))
+    
+    user_id = data['user_id']
+    title = data['title']
+    notes = data['notes']
+    difficulty = data['difficulty']
+    tags =data['tags']
+    start_date =data['start_date']
+    days =data['days']
+    checklist =data['checklist']
+    streak =data['streak']
+    completed =data['completed']
+    duration =data['duration']
 
-    # db.session.add(new_daily)
-    # db.session.commit()
 
-    return {"message":data_item}
+    new_daily = Daily(user_id, title, notes, difficulty, duration, tags, start_date, days, checklist, streak, completed)
+
+    db.session.add(new_daily)
+    db.session.commit()
+
+    return new_daily.to_dict()
     
 @daily_routes.route('/<int:userId>')
 # @login_required
