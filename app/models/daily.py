@@ -18,10 +18,10 @@ class Daily(db.Model):
     notes = db.Column(db.String(255))
     difficulty = db.Column(db.Integer, nullable = False)
     duration = db.Column(db.Integer, nullable = False)
-    tags = db.Column(db.String(255), nullable = False)
+    tags = db.Column(db.String(255),)
     start_date = db.Column(db.Date, nullable = False)
     days = db.Column(db.String(255), nullable = False)
-    checklist = db.Column(db.String(255), nullable = False)
+    checklist = db.Column(db.String(255),)
     streak = db.Column(db.Integer, nullable = False)
     completed = db.Column(db.Boolean, nullable = False)
 

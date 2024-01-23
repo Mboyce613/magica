@@ -1,12 +1,19 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required
-from app.models import Daily
+from app.models import Daily, db
 
 daily_routes = Blueprint('dailies', __name__)
 
 @daily_routes.route('/', methods=['POST'])
 def post_daily():
-    recieved_data = request.json
+    data = request.json
+    data_item = data.get("user_id")
+    # new_daily = Daily(data.get('user_id'), data.get('title'), data.get('notes'), data.get('difficulty'), data.get('duration'), data.get('tags'), data.get('start_date'), data.get('days'), data.get('checklist'), data.get('streak'), data.get('completed'))
+
+    # db.session.add(new_daily)
+    # db.session.commit()
+
+    return {"message":data_item}
     
 @daily_routes.route('/<int:userId>')
 # @login_required
