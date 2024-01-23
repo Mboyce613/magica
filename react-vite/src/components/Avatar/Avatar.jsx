@@ -57,29 +57,32 @@ function Avatar({userId}){
 
     return (
       <>
-        <div>Hello from Avatar</div>
+        {/* <div>Hello from Avatar</div> */}
         {/* <p>Background</p> */}
         {/* {backgrounds[1] && <p>{`${backgrounds[1].url}`}</p>} */}
-        {<OpenModalButton modalComponent={<AvatarModalPage userId={userId}/>}/>}
-        {backgrounds[avatar.backgroundId] && avatar.backgroundId === 1 &&<img src={Background_Red} />}
-        {backgrounds[avatar.backgroundId] && avatar.backgroundId === 2 &&<img src={Background_Blue} />}
-        {backgrounds[avatar.backgroundId] && avatar.backgroundId === 3 &&<img src={Background_Green} />}
+        <section className="avatarSection">
+        {<OpenModalButton buttonClass={'avatarOpenModelButton'} modalComponent={<AvatarModalPage userId={userId}/>}/>}
+        {backgrounds[avatar.backgroundId] && avatar.backgroundId === 1 &&<img className="avatarBackground" src={Background_Red} />}
+        {backgrounds[avatar.backgroundId] && avatar.backgroundId === 2 &&<img className="avatarBackground" src={Background_Blue} />}
+        {backgrounds[avatar.backgroundId] && avatar.backgroundId === 3 &&<img className="avatarBackground" src={Background_Green} />}
         {/* <p>Body</p> */}
         {/* {body[1] && <p>{`${body[1].url}`}</p>} */}
-        {body[avatar.bodyId] && avatar.bodyId === 1 &&<img src={BodyRed}/>}
-        {body[avatar.bodyId] && avatar.bodyId === 2 &&<img src={BodyBlue}/>}
-        {body[avatar.bodyId] && avatar.bodyId === 3 &&<img src={BodyGreen}/>}
+        {/* <section className="avatarParts"> */}
+        {body[avatar.bodyId] && avatar.bodyId === 1 &&<img className="avatarBody" src={BodyRed}/>}
+        {body[avatar.bodyId] && avatar.bodyId === 2 &&<img className="avatarBody" src={BodyBlue}/>}
+        {body[avatar.bodyId] && avatar.bodyId === 3 &&<img className="avatarBody" src={BodyGreen}/>}
         {/* <p>Face</p> */}
         {/* {face[1] && <p>{`${face[1].url}`}</p>} */}
-        {face[avatar.faceId] && avatar.faceId === 1 &&<img src={Face1}/>}
-        {face[avatar.faceId] && avatar.faceId === 2 &&<img src={Face2}/>}
-        {face[avatar.faceId] && avatar.faceId === 3 &&<img src={Face3}/>}
+        {face[avatar.faceId] && avatar.faceId === 1 &&<img className="avatarFace" src={Face1}/>}
+        {face[avatar.faceId] && avatar.faceId === 2 &&<img className="avatarFace" src={Face2}/>}
+        {face[avatar.faceId] && avatar.faceId === 3 &&<img className="avatarFace" src={Face3}/>}
         {/* <p>Hair</p> */}
         {/* {hair[1] && <p>{`${hair[1].url}`}</p>} */}
-        {hair[avatar.hairId] && avatar.hairId === 1 &&<img src={Hat_Red}/>}
-        {hair[avatar.hairId] && avatar.hairId === 2 &&<img src={Hat_Blue}/>}
-        {hair[avatar.hairId] && avatar.hairId === 3 &&<img src={Hat_Green}/>}
-
+        {hair[avatar.hairId] && avatar.hairId === 1 &&<img className="avatarHair" src={Hat_Red}/>}
+        {hair[avatar.hairId] && avatar.hairId === 2 &&<img className="avatarHair" src={Hat_Blue}/>}
+        {hair[avatar.hairId] && avatar.hairId === 3 &&<img className="avatarHair" src={Hat_Green}/>}
+        </section>
+        {/* </section> */}
       </>
 
     )
