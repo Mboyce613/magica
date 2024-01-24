@@ -8,15 +8,17 @@ import { habitDeleteFetch } from "../../redux/habit";
 
 const DailyModal= (daily)=>{
     const dispatch = useDispatch()
-    const [title, setTitle] = useState('')
-    const [notes, setNotes] = useState('')
-    const [difficulty, setDifficulty] = useState('')
-    const [duration, setDuration] = useState('')
-    const [tags, setTags] = useState('')
-    const [startDate, setStartDate] = useState('')
-    const [days, setDays] = useState('')
-    const [checklist, setChecklist] = useState('')
-    const [completed, setCompleted] = useState('')
+    const [title, setTitle] = useState(`${daily.daily.title}`)
+    const [notes, setNotes] = useState(`${daily.daily.notes}`)
+    const [difficulty, setDifficulty] = useState(`${daily.daily.difficulty}`)
+    const [duration, setDuration] = useState(`${daily.daily.duration}`)
+    const [tags, setTags] = useState(`${daily.daily.tags}`)
+    const [startDate, setStartDate] = useState(`${daily.daily}`)
+
+    const [days, setDays] = useState(`${daily.daily}`)
+
+    const [checklist, setChecklist] = useState(`${daily.daily}`)
+    const [completed, setCompleted] = useState(`${daily.daily}`)
     
 
     return (<>
@@ -29,11 +31,27 @@ const DailyModal= (daily)=>{
             <div>
                 Title
             </div>
-            <textarea/>
+            <input 
+                type="text"
+                value={title}
+                onChange={(e)=>setTitle(e.target.value)}
+            />
             <div>Notes</div>
+            <textarea 
+                value={notes}
+                onChange={(e)=>setNotes(e.target.value)}    
+            />
         </div>
         <div>Checklist</div>
-        <textarea name="" id="" cols="30" rows="10"></textarea>
+        <>
+        {Object.values(daily).map(dailyItems =>{
+
+        })}
+        </>
+        <input
+            type="text"
+            value={}
+        />
         <div>Difficulty</div>
         <div></div>
         <div>Start Date</div>

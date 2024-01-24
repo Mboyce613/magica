@@ -44,12 +44,10 @@ function DailiesComponent (){
         <section>
             <div>
                 <div>Dailies</div>
-                <div>All</div>
-                <div>Due</div>
-                <div>Not Due</div>
             </div>
             <div>
-                <textarea
+                <input
+                    type='text'
                     value={dailyTitle}
                     placeholder="Add a Daily"
                     onChange={(e)=> setDailyTitle(e.target.value)}
@@ -65,6 +63,7 @@ function DailiesComponent (){
                             <OpenModalButton 
                             buttonText={daily.title}
                             modalComponent={<DailyModal daily={daily}/>}
+                            buttonClass={"habitModalButton"}
                             />
                         </div>
                     })}

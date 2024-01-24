@@ -5,6 +5,38 @@ import datetime
 
 daily_routes = Blueprint('dailies', __name__)
 
+@daily_routes.route('/<int:id>', methods=["PUT"])
+def daily_update(id):
+    daily = Daily.query.get(id)
+
+    if request.json['completed'] == "False" or request.json['completed'] == 'false':
+        request.json['completed'] = False
+    if request.json['completed'] == "True" or request.json['completed'] == 'true':
+        request.json['completed'] = True
+
+    title = request.json['title']
+    notes = request.json['notes']
+    difficulty = request.json['difficulty']
+    duration = request.json['duration']
+    tags = request.json['tags']
+    start_date = request.json['start_date']
+    days = request.json['days']
+    checklist = request.json['checklist']
+    completed = request.json['completed']
+
+    daily.title = title
+    daily.notes = notes
+    daily.difficulty = difficulty
+    daily.duration = duration
+    daily.tags = tags
+    daily.start_date = start_date
+    daily.days = days
+    daily.checklist = checklist
+    daily.completed = completed
+    db.session.commit()
+    return daily.to_dict()
+    
+
 @daily_routes.route('/', methods=['POST'])
 def post_daily():
     data = request.json
@@ -53,4 +85,12 @@ def daily(id):
     Query for a daily by id and returns that daily in a dictionary
     """
     daily = Daily.query.get(id)
+    return daily.to_dict()
+
+@daily_routes.route('/<int:id>', methods=["DELETE"])
+def daily_delete(id):
+    daily = Daily.query.get(id)
+
+    db.session.delete(daily)
+    db.session.commit()
     return daily.to_dict()
