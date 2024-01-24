@@ -3,6 +3,7 @@ import { csrfFetch } from "./csrf"
 const LOAD_AVATARS= 'avatar/loadAvatars'
 const GET_AVATAR= 'avatar/getAvatar'
 const UPDATE_AVATAR= 'avatar/updateAvatar'
+const DELETE_AVATAR = 'avatar/deleteAvatar'
 
 export const loadAvatars =(avatars)=>({
     type:LOAD_AVATARS,
@@ -17,6 +18,11 @@ export const getAvatar =(avatar)=>({
 export const updateAvatar =(payload)=>({
     type:UPDATE_AVATAR,
     payload
+})
+
+export const deleteAvatar =(avatar)=>({
+    type:DELETE_AVATAR,
+    avatar
 })
 
 export const getAllAvatars = () => async (dispatch)=>{
@@ -55,6 +61,16 @@ export const updateAvatarById = (payload,userId) => async (dispatch)=>{
         // console.log("PAYLOAD!!!", payload)
         dispatch(updateAvatar(payload))
         // console.log("GOT OK FROM PATCH REQUEST")
+    }
+    return res
+}
+
+export const deleteAvatarById = (avatar) => async (dispatch)=>{
+    const res = await csrfFetch(`/api/avatars/${avatar}`,{
+        method: "DELETE"
+    })
+    if(res.ok){
+        dispatch(deleteAvatar(avatar))
     }
     return res
 }
@@ -103,6 +119,16 @@ const avatarReducer = (state = {}, action)=>{
                 newState = null
             }
             return {...newState}
+
+        case DELETE_AVATAR:
+            newState = {...state}
+            // console.log("ACTION", action, 'line 56')
+            // console.log(action.avatar, '-----store')
+            newState.avatars.backgroundId = 1
+            newState.avatars.bodyId = 1
+            newState.avatars.faceId = 1
+            newState.avatars.hairId = 1
+            return newState
 
         default:return state
     }

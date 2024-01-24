@@ -2,6 +2,10 @@
     border: solid;
 }
 
+.entireAvatarSection{
+    display: flex;
+}
+
 .avatarSection{
     position: relative;
     height: 200px;
@@ -11,6 +15,7 @@
     display: grid;
     grid-template-columns: repeat(3, 66px);
     grid-template-rows: repeat(3, 66px);
+    margin: 10px;
     /* position: absolute; */
     /* float: left; */
 }
@@ -75,4 +80,21 @@
     grid-column-end: 2;
     grid-row-start: 1;
     grid-row-end: 1;
+}
+
+.avatarUserInfo{
+    display: flex;
+    flex-direction: column;
+    height: 50px;
+    justify-content: space-between;
+    margin: 10px;
+    font-size: large;
+}
+
+.avatarButtons{
+    margin: 5px;
+    width: 200px;
+    height: 25px;
+    display: flex;
+    justify-content: space-around;
 }

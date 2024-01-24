@@ -27,7 +27,7 @@ function Navigation() {
       </div>
 
     </ div> :
-    <div>
+    <div className="notLoggedIn">
       <div>
       <NavLink to='/'>Home</NavLink>
       </div>

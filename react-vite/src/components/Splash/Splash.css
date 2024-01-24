@@ -1,0 +1,57 @@
+
+.splashPage{
+    min-width: 1000px;
+    max-width: 2000px;
+    min-height: 1000px;
+    max-height: 2000px;
+    margin: 50px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.background{
+    background-image: url("../../../../app/graphics/background.png");
+}
+
+.splashTitle{
+    color: aqua;
+    font-weight: 700;
+    font-style: italic;
+    font-size: 50px;
+    text-decoration: wavy;
+}
+
+
+.splashText{
+    font-size: larger;
+    color: white;
+    font-weight: 300;
+    max-width: 100px;
+    text-decoration: underline;
+}
+
+.splashImage{
+    height: 250px;
+    width: 225px;
+}
+
+.splashbutton{
+width: 100px;
+height: 50px;
+border-radius: 10px;
+background-image: url("../../../../app/graphics/background.png");
+color: white;
+}
+
+.splashSection{
+    background-image: url("../../../../app/graphics/background.png");
+    border: 5px solid;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 275px;
+    width: 600px;
+
+}
