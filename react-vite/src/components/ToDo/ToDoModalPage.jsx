@@ -19,7 +19,7 @@ const ToDoModalPage = (toDo) =>{
     const [tags,setTags] = useState(toDo.toDo.tags)
     const {closeModal} = useModal()
     const dispatch = useDispatch()
-    let listItems = checklist?checklist?.split("##"):null
+    let listItems = checklist?checklist.split("##"):null
 
     const handleSubmit =async (e) => {
         e.preventDefault()
@@ -57,6 +57,7 @@ const ToDoModalPage = (toDo) =>{
     }
     const handleTitle = (e) => setTitle(e.target.value)
     const handleNotes = (e) => setNotes(e.target.value)
+    const handleDummy = (e) => {}
     const handleChecklist = (e) =>{
         setChecklist(`${e.target.value}##`)
 
@@ -68,7 +69,8 @@ const ToDoModalPage = (toDo) =>{
     addCheckItems()
 
     // console.log(toDo)
-
+    console.log(listItems)
+    // listItems = ["thing"]
 
     return (
         <>
@@ -110,9 +112,15 @@ const ToDoModalPage = (toDo) =>{
                 <input
                 type="text"
                 placeholder="Enter a checklist Item"
-                onChange={handleChecklist}
+                onClick={handleChecklist}
                 ></input>
-                <ul>{}</ul>
+                <ul>
+                {listItems.map(item=>(
+                <div>
+                <input type = "checkbox" onChange={handleDummy}/>
+                {item}
+                </div>
+                ))}</ul>
             </div>
 
             </form>
