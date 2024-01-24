@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllDailies, addDaily } from "../../redux/daily";
+import OpenModalButton from "../OpenModalButton/OpenModalButton";
+import DailyModal from "../DailyModal/dailyModal";
 
 function DailiesComponent (){
     const [isLoaded, setIsLoaded] = useState(false)
@@ -60,7 +62,10 @@ function DailiesComponent (){
                             <div>
                                 <input type="checkbox"/>
                             </div>
-                            <div>{daily.title}</div>
+                            <OpenModalButton 
+                            buttonText={daily.title}
+                            modalComponent={<DailyModal daily={daily}/>}
+                            />
                         </div>
                     })}
                 </div>
