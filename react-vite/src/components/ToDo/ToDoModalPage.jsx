@@ -20,7 +20,7 @@ const ToDoModalPage = (toDo) =>{
     const [tags,setTags] = useState(toDo.toDo.tags)
     const {closeModal} = useModal()
     const dispatch = useDispatch()
-    let listItems = checklist?checklist.split("##"):null
+    let listItems = checklist?checklist.split("##"):["No Items"]
 
     listItems.pop()
 
@@ -31,7 +31,6 @@ const ToDoModalPage = (toDo) =>{
                         title:title,
                         id:toDo.toDo.id,
                         checklist:checklist,
-                        completed:toDo.toDo.completed,
                         notes:notes,
                         difficulty:difficulty,
                         tags:tags,
@@ -71,6 +70,7 @@ const ToDoModalPage = (toDo) =>{
         let oldChecklist = checklist
         oldChecklist +=(`${e.target.value}##`)
         setChecklist(oldChecklist)
+        e.currentTarget.value = ""
         }
         }
     const addCheckItems = (checklist)=>{
@@ -79,7 +79,6 @@ const ToDoModalPage = (toDo) =>{
     addCheckItems()
 
     // console.log(toDo)
-    console.log(listItems)
     // listItems = ["thing"]
 
     return (

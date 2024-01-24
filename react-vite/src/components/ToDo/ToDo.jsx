@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { getAllToDos } from "../../redux/toDo";
 import ToDoLink from "./ToDoLink";
+import { createToDoMaker } from "../../redux/toDo";
 
 
 const ToDo = (userId) => {
@@ -17,25 +18,32 @@ const ToDo = (userId) => {
         dispatch(getAllToDos(userId.userId))
         .then(() => setIsLoading(false));
     },[dispatch,])
+    const date = new Date();
+
+    let day = date.getDate();
+    let month = date.getMonth() + 1;
+    let year = date.getFullYear();
+    let currentDate = `${year}-${month}-${day}`;
+
 
     const handleSubmit =async (e) => {
         e.preventDefault()
 
         const payload = {
-                        title:title,
-                        completed:false,
-                        difficulty:1,
-                        duration:1,
-                        notes:"",
-                        positive:true,
-                        streak:0,
-                        tags:"",
-                        userId:userId
-                        }
+            title:title,
+            checklist:"",
+            notes:"",
+            difficulty:1,
+            tags:"",
+            dueDate:currentDate,
+            userId:userId.userId,
+            completed:false
+            }
+
         // console.log("payload",payload)
 
-        let newHabit = await dispatch(createHabitMaker(payload))
-        dispatch(getAllHabits(userId))
+        let newToDo = await dispatch(createToDoMaker(payload))
+        dispatch(getAllToDos(userId))
         setTitle("")
 
             // history.push(`/groups/${group.id}`)

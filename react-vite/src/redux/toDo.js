@@ -22,7 +22,7 @@ export const deleteToDo = (toDo) => ({
 });
 
 export const createHabit = (toDo) => ({
-  type: CREATE_Todo,
+  type: CREATE_ToDo,
   toDo,
 });
 
@@ -51,9 +51,10 @@ export const getAllToDos = (userId) => async (dispatch) => {
   return res;
 };
 export const createToDoMaker = (toDo) => async (dispatch) => {
-  const res = await csrfFetch(`/api/to_dos`, {
+  const res = await fetch(`/api/to_dos`, {
     method: "POST",
     body: JSON.stringify(toDo),
+    headers: { "Content-Type": "application/json" },
   });
   const data = await res.json();
   if (res.ok) {
@@ -90,6 +91,11 @@ const toDoReducer = (state = {}, action) => {
         newState = null;
       }
       return newState;
+      case CREATE_ToDo: {
+        const todos = { ...state };
+        todos[action.toDo.id] = action.toDo;
+        return { ...todos };
+      }
       case UPDATE_TODO: {
         const  toDo = { ...state };
         habits[action.toDo.id] = action.toDo;

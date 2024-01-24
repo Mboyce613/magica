@@ -56,32 +56,24 @@ def to_do_update(id):
     db.session.commit()
     return to_do.to_dict()
 
-@to_do_routes.route('/<int:id>', methods=["POST"])
+@to_do_routes.route('/', methods=["POST"])
 # @login_required
 def to_do_create():
     to_do = request.json
     title = request.json['title']
     checklist = request.json['checklist']
     difficulty = request.json['difficulty']
+    completed = request.json['completed']
     notes = request.json['notes']
     tags = request.json['tags']
     user_id = request.json['userId']
-    due_date = request.json['dueDate']
-    id = request.json['id']
+    due_date = datetime.strptime((request.json['dueDate']), '%Y-%m-%d')
 
-    new_to_do = To_do
-    new_to_do.title = title
-    new_to_do.checklist = checklist
-    new_to_do.difficulty = difficulty
-    new_to_do.notes = notes
-    new_to_do.tags = tags
-    new_to_do.user_id = user_id
-    new_to_do.due_date = due_date
-
+    new_to_do = To_do(title = title,completed = completed,checklist = checklist,difficulty = difficulty,notes = notes,tags = tags,user_id= user_id,due_date=due_date)
 
     db.session.add(new_to_do)
     db.session.commit()
-    return to_do.to_dict()
+    return new_to_do.to_dict()
 
 @to_do_routes.route('/<int:id>', methods=["DELETE"])
 @login_required
