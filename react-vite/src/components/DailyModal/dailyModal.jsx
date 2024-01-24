@@ -5,32 +5,40 @@ import { useEffect } from "react";
 import { useModal } from "../../context/Modal";
 import { updateHabitMaker } from "../../redux/habit";
 import { habitDeleteFetch } from "../../redux/habit";
+// import { useDispatch, useSelector } from 'react-redux';
 
-const DailyModal= (daily)=>{
+
+const DailyModal= ({ daily})=>{
+
+    console.log(daily)
     const dispatch = useDispatch()
-    const [title, setTitle] = useState(`${daily.daily.title}`)
-    const [notes, setNotes] = useState(`${daily.daily.notes}`)
-    const [difficulty, setDifficulty] = useState(`${daily.daily.difficulty}`)
-    const [duration, setDuration] = useState(`${daily.daily.duration}`)
-    const [tags, setTags] = useState(`${daily.daily.tags}`)
-    const [startDate, setStartDate] = useState(`${daily.daily}`)
-
-    const [days, setDays] = useState(`${daily.daily}`)
-
-    const [checklist, setChecklist] = useState(`${daily.daily}`)
-    const [completed, setCompleted] = useState(`${daily.daily}`)
+    const [isLoaded, setIsLoaded] = useState(false)
+    const [title, setTitle] = useState(daily.title)
+    const [notes, setNotes] = useState(daily.notes)
+    const [difficulty, setDifficulty] = useState(daily.difficulty)
+    const [duration, setDuration] = useState(daily.duration)
+    const [tags, setTags] = useState(daily.tags)
+    const [startDate, setStartDate] = useState(daily.start)
+    const checklist = daily.checklist.
+    const [days, setDays] = useState(daily.days)
+    const [checklistItem, setChecklistItem] = useState('')
+    const [completed, setCompleted] = useState(daily.completed)
     
-
+    useEffect(()=>{
+        if(daily.title.length)setIsLoaded(true)
+    },[daily])
+    console.log(checklist)
     return (<>
+        {isLoaded && <div>
         <div>
             <div>Edit Daily</div>
             <div>
                 <div>Cancel</div>
                 <div>Save</div>
             </div>
-            <div>
+            <h3>
                 Title
-            </div>
+            </h3>
             <input 
                 type="text"
                 value={title}
@@ -50,7 +58,7 @@ const DailyModal= (daily)=>{
         </>
         <input
             type="text"
-            value={}
+            value={checklistItem}
         />
         <div>Difficulty</div>
         <div></div>
@@ -65,7 +73,8 @@ const DailyModal= (daily)=>{
         <div>Tags</div>
         
         <div>Delete this Daily</div>
-        <div>{daily.daily.title}</div>
+    </div>
+    }
     </>)
 }
 export default DailyModal

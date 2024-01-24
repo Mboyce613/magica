@@ -56,6 +56,21 @@ function DailiesComponent (){
                 <div>
                     {Object.values(dailies).map(daily =>{
                         // console.log(daily)
+                        let tempDaily = {
+                            "id":daily.id,
+                            "user_id":daily.user_id,
+                            "title": daily.title,
+                            "notes": daily.notes,
+                            "difficulty":daily.difficulty,
+                            "duration":daily.duration,
+                            "tags":daily.tags,
+                            "start_date":daily.start_date,
+                            "days":daily.checklist,
+                            "checklist":daily.checklist,
+                            "streak":daily.streak,
+                            "completed":daily.completed
+                        }
+                        console.log(tempDaily)
                         return <div key={daily.id}>
                             <div>
                                 <input type="checkbox"/>
