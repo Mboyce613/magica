@@ -94,7 +94,7 @@ const HabitModalPage = (habit) =>{
 
         </div>
         <div>
-        <h3>Name of your new Habit?</h3>
+        <h3>Name of your Habit?</h3>
         <input
             type = "text"
             name = "Title"

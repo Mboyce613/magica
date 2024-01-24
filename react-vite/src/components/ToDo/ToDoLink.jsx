@@ -15,6 +15,7 @@ const ToDoLink = (toDo) =>{
         modalComponent={<ToDoModalPage toDo = {toDo.toDo}/>}
         buttonClass={"habitModalButton"}
         />
+        
         </div>
         </>
     )
