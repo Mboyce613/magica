@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import { useModal } from "../../context/Modal";
 import { updateToDoMaker } from "../../redux/toDo";
 // import { toDoDeleteFetch } from "../../redux/toDo";
+import { toDoDeleteFetch } from "../../redux/toDo";
 
 
 
@@ -20,6 +21,8 @@ const ToDoModalPage = (toDo) =>{
     const {closeModal} = useModal()
     const dispatch = useDispatch()
     let listItems = checklist?checklist.split("##"):null
+
+    listItems.pop()
 
     const handleSubmit =async (e) => {
         e.preventDefault()
@@ -50,7 +53,7 @@ const ToDoModalPage = (toDo) =>{
         let check = confirm("Delete this To Do Item?")
         if (check === true){
 
-        // dispatch(habitDeleteFetch(toDo.toDo.id))
+        dispatch(toDoDeleteFetch(toDo.toDo.id))
         // setState()
         closeModal()
         }
@@ -58,10 +61,17 @@ const ToDoModalPage = (toDo) =>{
     const handleTitle = (e) => setTitle(e.target.value)
     const handleNotes = (e) => setNotes(e.target.value)
     const handleDummy = (e) => {}
-    const handleChecklist = (e) =>{
-        setChecklist(`${e.target.value}##`)
+    const handleDifficulty = (e) => setDifficulty(e.target.value)
+    const handleDueDate = (e) => setDueDate(e.target.value)
+    const handleTags = (e) => setTags(e.target.value)
 
-        // addCheckItems()
+
+    const handleChecklist = (e) =>{
+        if (e.key === 'Enter'){
+        let oldChecklist = checklist
+        oldChecklist +=(`${e.target.value}##`)
+        setChecklist(oldChecklist)
+        }
         }
     const addCheckItems = (checklist)=>{
         // console.log(listItems)
@@ -89,8 +99,9 @@ const ToDoModalPage = (toDo) =>{
             </div>
 
             <form
+             onKeyDown={(e) => { e.key === 'Enter' && e.preventDefault(); }}
             className="Edit Habit"
-            onSubmit={handleSubmit}>
+            >
             <h1>Edit To Do</h1>
             <h3>Name of your To Do List?</h3>
         <input
@@ -112,7 +123,7 @@ const ToDoModalPage = (toDo) =>{
                 <input
                 type="text"
                 placeholder="Enter a checklist Item"
-                onClick={handleChecklist}
+                onKeyDown={handleChecklist}
                 ></input>
                 <ul>
                 {listItems.map(item=>(
@@ -121,9 +132,48 @@ const ToDoModalPage = (toDo) =>{
                 {item}
                 </div>
                 ))}</ul>
-            </div>
 
-            </form>
+            </div>
+            <h3>Difficulty?</h3>
+        <select
+        type = "dropdown"
+        defaultValue={toDo.toDo.difficulty}
+        onChange={handleDifficulty}
+        >
+        <option value="1">Easy</option>
+        <option value="2">Medium</option>
+        <option value="3">Hard</option>
+        </select>
+        <div>
+        <h3>Due Date?</h3>
+        <input
+            type="date"
+            name="startDate"
+            min={Date()}
+            onChange={handleDueDate}
+            placeholder="MM/DD/YYYY"
+        />
+        </div>
+        <div>
+            <h3>Tags</h3>
+            <input
+            type = "text"
+            name = "Tags"
+            defaultValue={toDo.toDo.tags}
+            onChange={handleTags}
+        ></input>
+        </div>
+        <div
+        className="submitHabit"
+        >
+        <button
+        className="submitHabitButton"
+        type = "submit"
+        onClick={handleSubmit}
+        onKeyDown={(e) => { e.key === 'Enter' && e.preventDefault(); }}
+        >Save To Do List</button>
+        </div>
+        </form>
         </div>
         </>
     )

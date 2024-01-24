@@ -6,8 +6,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateUsersExp } from "../../redux/session.js";
 import { updateHabit } from "../../redux/habit.js";
 import useSound from "use-sound";
-import plusSound from "../../../public/sounds/plus.mp3"
-import minusSound from "../../../public/sounds/minus.mp3"
+import plusSound from "./sounds/plus.mp3"
+// import minusSound from "../../../public/sounds/minus.mp3"
 
 const HabitLink = (habit) =>{
     const sessionUser = useSelector((state) => state.session.user);
