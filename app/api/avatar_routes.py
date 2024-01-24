@@ -47,3 +47,24 @@ def updateAvatarBackground(id):
     db.session.add(avatar)
     db.session.commit()
     return avatar.to_dict()
+
+@avatar_routes.route('/<int:id>', methods=["DELETE"])
+@login_required
+def avatarDelete(id):
+    """
+    Query for an avatar by id and returns that avatar in a dictionary
+    """
+    avatar = Avatar.query.get(id)
+    db.session.delete(avatar)
+    db.session.commit()
+
+    avatar = Avatar(
+            user_id = id,
+            background_id = 1,
+            hair_id = 1,
+            face_id = 1,
+            body_id = 1
+            )
+    db.session.add(avatar)
+    db.session.commit()
+    return avatar.to_dict()

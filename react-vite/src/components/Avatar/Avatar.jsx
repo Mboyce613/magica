@@ -60,6 +60,7 @@ function Avatar({userId}){
         {/* <div>Hello from Avatar</div> */}
         {/* <p>Background</p> */}
         {/* {backgrounds[1] && <p>{`${backgrounds[1].url}`}</p>} */}
+        <section className="entireAvatarSection">
         <section className="avatarSection">
         {<OpenModalButton buttonClass={'avatarOpenModelButton'} modalComponent={<AvatarModalPage userId={userId}/>}/>}
         {backgrounds[avatar.backgroundId] && avatar.backgroundId === 1 &&<img className="avatarBackground" src={Background_Red} />}
@@ -81,6 +82,15 @@ function Avatar({userId}){
         {hair[avatar.hairId] && avatar.hairId === 1 &&<img className="avatarHair" src={Hat_Red}/>}
         {hair[avatar.hairId] && avatar.hairId === 2 &&<img className="avatarHair" src={Hat_Blue}/>}
         {hair[avatar.hairId] && avatar.hairId === 3 &&<img className="avatarHair" src={Hat_Green}/>}
+        </section>
+        <section className="avatarUserInfo">
+        <div>{sessionUser.username} the Mighty</div>
+        <div>Exp form habits crushed: {sessionUser.exp}</div>
+        </section>
+        </section>
+        <section className="avatarButtons">
+        {<OpenModalButton modalComponent={<AvatarModalPage userId={userId}/>} buttonText={'Edit Avatar'}/>}
+        <button>Reset Avatar</button>
         </section>
         {/* </section> */}
       </>
