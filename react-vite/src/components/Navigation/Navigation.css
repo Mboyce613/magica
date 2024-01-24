@@ -34,3 +34,22 @@ padding: 10px;
 .fa-dragon {
   font-size: 30px;
 }
+
+.notLoggedIn{
+  background-image: linear-gradient(to bottom,
+  rgb(255 255 0 / 40%),
+  rgb(0 0 255 / 40%)
+), url("../../../../app/graphics/background.png");
+padding: 10px;
+color: aqua;
+}
+
+.notLoggedIn:link{
+  color: aqua;
+  text-decoration: none;
+}
+
+.notLoggedIn:visited{
+  color: aqua;
+  text-decoration: none;
+}
