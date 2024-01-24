@@ -18,8 +18,28 @@ const ToDo = (userId) => {
         .then(() => setIsLoading(false));
     },[dispatch,])
 
-    const handleSubmit = () =>{
+    const handleSubmit =async (e) => {
+        e.preventDefault()
 
+        const payload = {
+                        title:title,
+                        completed:false,
+                        difficulty:1,
+                        duration:1,
+                        notes:"",
+                        positive:true,
+                        streak:0,
+                        tags:"",
+                        userId:userId
+                        }
+        // console.log("payload",payload)
+
+        let newHabit = await dispatch(createHabitMaker(payload))
+        dispatch(getAllHabits(userId))
+        setTitle("")
+
+            // history.push(`/groups/${group.id}`)
+    //   }
     }
     const handleTitle = (e) => setTitle(e.target.value)
 

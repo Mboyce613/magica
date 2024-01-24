@@ -1,9 +1,10 @@
 // import { csrfFetch } from "./csrf"
+import { csrfFetch } from "./csrf";
 
 const LOAD_TO_DOS = "toDos/loadToDos";
 const UPDATE_TODO = "toDos/UPDATE_HABIT";
-const DELETE_Todo = "toDos/DELETE";
-const CREATE_Todo = "toDos/CREATE";
+const DELETE_ToDo = "toDos/DELETE";
+const CREATE_ToDo = "toDos/CREATE";
 
 export const loadToDos = (toDos) => ({
   type: LOAD_TO_DOS,
@@ -15,7 +16,7 @@ export const updateToDo = (toDo) => ({
   toDo,
 });
 
-export const deleteHabit = (toDo) => ({
+export const deleteToDo = (toDo) => ({
   type: DELETE_Todo,
   toDo,
 });
@@ -26,9 +27,10 @@ export const createHabit = (toDo) => ({
 });
 
 export const updateToDoMaker = (toDo, toDoId) => async (dispatch) => {
-  const res = await csrfFetch(`/api/to_do/${toDoId}`, {
+  const res = await fetch(`/api/to_dos/${toDoId}`, {
     method: "PUT",
     body: JSON.stringify(toDo),
+    headers: { "Content-Type": "application/json" },
   });
   const data = await res.json();
   if (res.ok) {
@@ -38,6 +40,7 @@ export const updateToDoMaker = (toDo, toDoId) => async (dispatch) => {
     throw res;
   }
 };
+
 export const getAllToDos = (userId) => async (dispatch) => {
   const res = await fetch(`/api/to_dos/${userId}`);
   if (res.ok) {
@@ -46,6 +49,32 @@ export const getAllToDos = (userId) => async (dispatch) => {
     return data;
   }
   return res;
+};
+export const createToDoMaker = (toDo) => async (dispatch) => {
+  const res = await csrfFetch(`/api/to_dos`, {
+    method: "POST",
+    body: JSON.stringify(toDo),
+  });
+  const data = await res.json();
+  if (res.ok) {
+    dispatch(createHabit(toDo));
+    return data;
+  } else {
+    throw res;
+  }
+};
+
+export const toDoDeleteFetch = (toDoId) => async (dispatch) => {
+  const res = await csrfFetch(`/api/to_dos/${toDoId}`, {
+    method: "DELETE",
+  });
+  const data = await res.json();
+  res.data = data;
+  if (res.ok) {
+    dispatch(deleteToDo(data));
+  } else {
+    throw res;
+  }
 };
 
 const toDoReducer = (state = {}, action) => {
@@ -66,6 +95,11 @@ const toDoReducer = (state = {}, action) => {
         habits[action.toDo.id] = action.toDo;
         return { ...toDo };
       }
+      case DELETE_ToDo:
+      newState = { ...state };
+      delete newState[action.to_do.id];
+      return { ...newState };
+
     default:
       return state;
   }
