@@ -63,11 +63,11 @@ const ToDoModalPage = (toDo) =>{
         // addCheckItems()
         }
     const addCheckItems = (checklist)=>{
-        console.log(listItems)
+        // console.log(listItems)
     }
     addCheckItems()
 
-    console.log(toDo)
+    // console.log(toDo)
 
 
     return (
