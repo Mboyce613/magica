@@ -25,6 +25,7 @@ const Habit = ({userId})=>{
 
     const handleSubmit =async (e) => {
         e.preventDefault()
+        if (title.length >1){
 
         const payload = {
                         title:title,
@@ -45,7 +46,7 @@ const Habit = ({userId})=>{
 
             // history.push(`/groups/${group.id}`)
     //   }
-    }
+    }}
 
     const handleTitle = (e) => setTitle(e.target.value)
 

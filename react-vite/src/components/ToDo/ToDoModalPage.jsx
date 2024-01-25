@@ -11,12 +11,20 @@ import { toDoDeleteFetch } from "../../redux/toDo";
 
 
 const ToDoModalPage = (toDo) =>{
+    const date = new Date();
+
+    let day = date.getDate();
+    let month = date.getMonth() + 1;
+    let year = date.getFullYear();
+    let currentDate = `${year}-${month}-${day}`;
+
+
 
     const [title,setTitle] = useState(toDo.toDo.title)
     const [notes,setNotes] = useState(toDo.toDo.notes)
     const [checklist,setChecklist] = useState(toDo.toDo.checklist)
     const [difficulty,setDifficulty] = useState(toDo.toDo.difficulty)
-    const [dueDate,setDueDate] = useState(toDo.toDo.dueDate)
+    const [dueDate,setDueDate] = useState(currentDate)
     const [tags,setTags] = useState(toDo.toDo.tags)
     const {closeModal} = useModal()
     const dispatch = useDispatch()
@@ -45,7 +53,7 @@ const ToDoModalPage = (toDo) =>{
     }
 
     const handleCancel = () => {
-    
+
         closeModal()
     }
     const handleDelete = (e) => {
@@ -58,6 +66,7 @@ const ToDoModalPage = (toDo) =>{
         closeModal()
         }
     }
+
     const handleTitle = (e) => setTitle(e.target.value)
     const handleNotes = (e) => setNotes(e.target.value)
     const handleDummy = (e) => {}
@@ -67,13 +76,14 @@ const ToDoModalPage = (toDo) =>{
 
 
     const handleChecklist = (e) =>{
+        if (e.target.value.length > 1){
         if (e.key === 'Enter'){
         let oldChecklist = checklist
         oldChecklist +=(`${e.target.value}##`)
         setChecklist(oldChecklist)
         e.currentTarget.value = ""
         }
-        }
+        }}
     const addCheckItems = (checklist)=>{
 
     }
@@ -145,8 +155,8 @@ const ToDoModalPage = (toDo) =>{
         <h3>Due Date?</h3>
         <input
             type="date"
-            name="startDate"
-            min={Date()}
+            min={currentDate}
+            defaultValue={currentDate}
             onChange={handleDueDate}
             placeholder="MM/DD/YYYY"
         />
