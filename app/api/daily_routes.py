@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required
 from app.models import Daily, db
-import datetime
+from datetime import date, datetime
 
 daily_routes = Blueprint('dailies', __name__)
 
@@ -29,7 +29,7 @@ def daily_update(id):
     daily.difficulty = difficulty
     daily.duration = duration
     daily.tags = tags
-    daily.start_date = start_date
+    daily.start_date = datetime.strptime(start_date, '%Y-%m-%d')
     daily.days = days
     daily.checklist = checklist
     daily.completed = completed
