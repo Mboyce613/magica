@@ -45,11 +45,11 @@ const ToDoModalPage = (toDo) =>{
     }
 
     const handleCancel = () => {
-        // e.preventDefault
+    
         closeModal()
     }
     const handleDelete = (e) => {
-        // e.preventDefault
+
         let check = confirm("Delete this To Do Item?")
         if (check === true){
 
@@ -75,12 +75,9 @@ const ToDoModalPage = (toDo) =>{
         }
         }
     const addCheckItems = (checklist)=>{
-        // console.log(listItems)
+
     }
     addCheckItems()
-
-    // console.log(toDo)
-    // listItems = ["thing"]
 
     return (
         <>
