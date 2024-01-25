@@ -38,8 +38,6 @@ const Habit = ({userId})=>{
                         tags:"",
                         userId:userId
                         }
-        // console.log("payload",payload)
-
         let newHabit = await dispatch(createHabitMaker(payload))
         dispatch(getAllHabits(userId))
         setTitle("")
