@@ -1,0 +1,37 @@
+
+.signupForm{
+    background-image: linear-gradient(to bottom,
+    rgb(255 255 0 / 40%),
+    rgb(0 0 255 / 40%)
+  ), url("../Assets/background.png");
+  padding: 10px;
+}
+
+.signupForm form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 500px;
+    align-items: baseline;
+    /* background-image: linear-gradient(to bottom,
+    rgb(255 255 0 / 40%),
+    rgb(0 0 255 / 40%)
+  ), url("../../../../app/graphics/background.png");; */
+}
+
+.signupForm label{
+    padding: 10px;
+    margin: 10px;
+}
+
+.signupForm input{
+    margin: 10px;
+}
+
+.thatDangH1{
+    background-image: url("../../../../app/graphics/background.png");
+}
+
+.errors{
+  color: red;
+}

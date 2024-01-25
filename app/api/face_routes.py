@@ -6,7 +6,7 @@ face_routes = Blueprint('faces', __name__)
 
 
 @face_routes.route('/')
-@login_required
+# @login_required
 def faces():
     """
     Query for all faces and returns them in a list of face dictionaries

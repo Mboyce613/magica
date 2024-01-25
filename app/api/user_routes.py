@@ -1,6 +1,7 @@
 from flask import Blueprint, jsonify
 from flask_login import login_required
-from app.models import User
+from app.models import User,db
+from flask import request
 
 user_routes = Blueprint('users', __name__)
 
@@ -22,4 +23,18 @@ def user(id):
     Query for a user by id and returns that user in a dictionary
     """
     user = User.query.get(id)
+    return user.to_dict()
+
+@user_routes.route('/<int:id>/exp', methods = {'PATCH'})
+@login_required
+def user_exp(id):
+    """
+    Query for a user by id and returns that user in a dictionary
+    """
+    user = User.query.get(id)
+    exp = request.json['exp']
+
+    user.exp = exp
+    db.session.commit()
+
     return user.to_dict()

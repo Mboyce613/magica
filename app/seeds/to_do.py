@@ -7,11 +7,11 @@ new_date = date.today()
 # Adds a demo user, you can add other users here if you want
 def seed_to_dos():
     demo = To_do(
-        user_id = 1, title = 'Prep D&D', notes = 'Encounter: Beholder.', difficulty = 1, tags = '["sleep","wake","morning"]', due_date = new_date , checklist = '["HP", "AC", "Moves"]', completed = False)
+        user_id = 1, title = 'Prep D&D', notes = 'Encounter: Beholder.', difficulty = 1, tags = 'sleep wake morning', due_date = new_date , checklist = 'HP##AC##Moves##', completed = False)
     marnie = To_do(
-        user_id = 1, title = 'Email Players', notes = 'Tell them to bring snacks.', difficulty = 2, tags = '["lift","get_good","just_do_it"]', due_date = new_date, checklist = '["snickers", "Chips", "Soda"]', completed = False)
+        user_id = 1, title = 'Email Players', notes = 'Tell them to bring snacks.', difficulty = 2, tags = 'lift get_good just_do_it', due_date = new_date, checklist = 'snickers##Chips##Soda##', completed = False)
     bobbie = To_do(
-        user_id = 1, title = 'Run Session', notes = 'TPK?', difficulty = 3, tags = '["sleep","night"]', due_date = new_date, checklist = '["Bring new character sheets"]', completed = False)
+        user_id = 1, title = 'Run Session', notes = 'TPK?', difficulty = 3, tags = 'sleep night', due_date = new_date, checklist = 'Bring new character sheets##', completed = False)
 
     db.session.add(demo)
     db.session.add(marnie)

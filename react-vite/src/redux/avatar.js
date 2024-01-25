@@ -1,7 +1,9 @@
-// import { csrfFetch } from "./csrf"
+import { csrfFetch } from "./csrf"
 
 const LOAD_AVATARS= 'avatar/loadAvatars'
 const GET_AVATAR= 'avatar/getAvatar'
+const UPDATE_AVATAR= 'avatar/updateAvatar'
+const DELETE_AVATAR = 'avatar/deleteAvatar'
 
 export const loadAvatars =(avatars)=>({
     type:LOAD_AVATARS,
@@ -10,6 +12,16 @@ export const loadAvatars =(avatars)=>({
 
 export const getAvatar =(avatar)=>({
     type:GET_AVATAR,
+    avatar
+})
+
+export const updateAvatar =(payload)=>({
+    type:UPDATE_AVATAR,
+    payload
+})
+
+export const deleteAvatar =(avatar)=>({
+    type:DELETE_AVATAR,
     avatar
 })
 
@@ -31,6 +43,35 @@ export const getAvatarsById = (avatar) => async (dispatch)=>{
         const data = await res.json()
         dispatch(getAvatar([data]))
         return data
+    }
+    return res
+}
+
+export const updateAvatarById = (payload,userId) => async (dispatch)=>{
+    // backgroundId = payload.backgroundId
+    const res = await csrfFetch(`/api/avatars/${userId}`,{
+        method: "PUT",
+        body: JSON.stringify(payload)
+      })
+    // console.log(res, '----------')
+    if(res.ok){
+        // const data = await res.json()
+        // dispatch(getAvatar([data]))
+        // return data
+        // console.log("PAYLOAD!!!", payload)
+        dispatch(updateAvatar(payload))
+        // console.log("GOT OK FROM PATCH REQUEST")
+    }
+    return res
+}
+
+export const deleteAvatarById = (avatar) => async (dispatch)=>{
+    // console.log("TRYING TO DELETE AVATAR")
+    const res = await csrfFetch(`/api/avatars/${avatar}`,{
+        method: "DELETE"
+    })
+    if(res.ok){
+        dispatch(deleteAvatar(avatar))
     }
     return res
 }
@@ -57,11 +98,38 @@ const avatarReducer = (state = {}, action)=>{
             // console.log(action.avatar, '-----store')
             if(action.avatar && action.avatar !== undefined){
                 action.avatar.forEach(ele => {
-                    newState[ele.id] = ele
+                    newState = ele
                 })
             }else{
                 newState = null
             }
+            return newState
+
+        case UPDATE_AVATAR:
+            newState = {...state}
+            // console.log("ACTION", action, 'line 56')
+            // console.log(action.avatar, '-----store')
+            if(action.payload && action.payload !== undefined){
+                // console.log('I GOT HERE', newState)
+                // console.log("ACTION", action)
+                newState.backgroundId = action.payload.backgroundId
+                newState.hairId = action.payload.hairId
+                newState.faceId = action.payload.faceId
+                newState.bodyId = action.payload.bodyId
+            }else{
+                newState = null
+            }
+            return {...newState}
+
+        case DELETE_AVATAR:
+            newState = {...state}
+            // console.log("ACTION", action, 'line 56')
+            // console.log(action.avatar, '-----store')
+            console.log("NEWSTATE LINE 128",newState)
+            newState.backgroundId = 1
+            newState.bodyId = 1
+            newState.faceId = 1
+            newState.hairId = 1
             return newState
 
         default:return state

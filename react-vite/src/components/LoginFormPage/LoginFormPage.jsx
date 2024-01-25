@@ -12,7 +12,7 @@ function LoginFormPage() {
   let [password, setPassword] = useState("");
   const [errors, setErrors] = useState({});
 
-  if (sessionUser) return <Navigate to="/" replace={true} />;
+  if (sessionUser) return <Navigate to="home" replace={true} />;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -27,7 +27,7 @@ function LoginFormPage() {
     if (serverResponse) {
       setErrors(serverResponse);
     } else {
-      navigate("/");
+      navigate("home");
     }
   };
 
@@ -49,12 +49,13 @@ function LoginFormPage() {
     if (serverResponse) {
       setErrors(serverResponse);
     } else {
-      navigate("/");
+      navigate("home");
     }
   };
 
   return (
     <>
+    <section className="signupForm">
       <h1>Log In</h1>
       {errors.length > 0 &&
         errors.map((message) => <p key={message}>{message}</p>)}
@@ -80,6 +81,7 @@ function LoginFormPage() {
         <button type="submit">Log In</button>
       </form>
         <button onClick={handleDemoUser}>Demo User</button>
+        </section>
     </>
   );
 }

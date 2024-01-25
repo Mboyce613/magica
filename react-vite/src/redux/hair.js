@@ -41,10 +41,10 @@ const hairReducer = (state = {}, action)=>{
             newState = {}
             // console.log(action.hairs, '-----store')
             if(action.hairs && action.hairs !== undefined){
-                // action.hairs.forEach(ele => {
+                action.hairs.hairs.forEach(ele => {
                     
-                //     newState[ele.id] = ele
-                // })
+                    newState[ele.id] = ele
+                })
             }else{
                 newState = null
             }

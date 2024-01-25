@@ -3,6 +3,8 @@ import LoginFormPage from '../components/LoginFormPage';
 import SignupFormPage from '../components/SignupFormPage';
 import Layout from './Layout';
 import HomePage from '../components/HomePage';
+import CreateAvatarPage from '../components/Avatar/createAvatarPage';
+import Splash from '../components/Splash/Splash';
 
 export const router = createBrowserRouter([
   {
@@ -10,7 +12,7 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <HomePage />,
+        element: <Splash />,
       },
       {
         path: "login",
@@ -20,6 +22,14 @@ export const router = createBrowserRouter([
         path: "signup",
         element: <SignupFormPage />,
       },
+      {
+        path: "makeAvatar",
+        element: <CreateAvatarPage />,
+      },
+      {
+        path: "home",
+        element: <HomePage />
+      }
     ],
   },
 ]);

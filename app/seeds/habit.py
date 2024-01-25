@@ -7,11 +7,11 @@ new_date = date.today()
 # Adds a demo user, you can add other users here if you want
 def seed_habits():
     demo = Habit(
-        user_id = 1, title = 'Wake up on time', notes = '7am.', difficulty = 1, duration = 1, tags = '["sleep","wake","morning"]', positive = 1 , streak = 0, completed = False)
+        user_id = 1, title = 'Wake up on time', notes = '7am.', difficulty = 1, duration = 1, tags = 'sleep wake morning', positive = 1 , streak = 0, completed = False)
     marnie = Habit(
-        user_id = 1, title = 'Go to gym', notes = 'And dont skip leg day.', difficulty = 2, duration = 2, tags = '["lift","get_good","just_do_it"]', positive = 1, streak = 0, completed = False)
+        user_id = 1, title = 'Go to gym', notes = 'And dont skip leg day.', difficulty = 2, duration = 2, tags = 'lift get_good just_do_it', positive = 1, streak = 0, completed = False)
     bobbie = Habit(
-        user_id = 1, title = 'Stay up too late', notes = 'Bed by 11pm.', difficulty = 3, duration = 3, tags = '["sleep","night"]', positive = 0, streak = 0, completed = False)
+        user_id = 1, title = 'Stay up too late', notes = 'Bed by 11pm.', difficulty = 3, duration = 3, tags = 'sleep night', positive = 0, streak = 0, completed = False)
 
     db.session.add(demo)
     db.session.add(marnie)

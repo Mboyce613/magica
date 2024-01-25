@@ -5,6 +5,10 @@ import { getAllAvatars } from "../../redux/avatar";
 import { thunkSignup } from "../../redux/session";
 import { getAllBackgrounds } from "../../redux/backround";
 import DailiesComponent from "../DailiesComponent/DailiesCom";
+import Avatar from "../Avatar/Avatar";
+import Habit from "../Habit/habit"
+import ToDo from "../ToDo/ToDo";
+import "./HomePage.css"
 
 function HomePage(){
     const sessionUser = useSelector((state) => state.session.user);
@@ -23,9 +27,25 @@ function HomePage(){
     //         )
     // },[avatars, backgrounds, isLoaded])
     return (
-        <div>
-          <DailiesComponent/>
-        </div>
+      <>
+      <div className="mainBox">
+      <div
+      className="avatarComponent"
+      >
+      <Avatar userId = {sessionUser.id}/>
+      <hr className='solid'/>
+      </div>
+      <div className="habitComponent">
+      <Habit userId = {sessionUser.id}/>
+      </div>
+      <div className="dailyComponent">
+      <DailiesComponent userId = {sessionUser.id}/>
+      </div>
+      <div className="todoComponent">
+        <ToDo userId = {sessionUser.id}/>
+      </div>
+      </div>
+    </>
     )
 }
 export default HomePage;
