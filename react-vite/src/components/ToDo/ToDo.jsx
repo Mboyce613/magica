@@ -28,6 +28,7 @@ const ToDo = (userId) => {
 
     const handleSubmit =async (e) => {
         e.preventDefault()
+        if (title.length > 1){
 
         const payload = {
             title:title,
@@ -40,15 +41,11 @@ const ToDo = (userId) => {
             completed:false
             }
 
-        // console.log("payload",payload)
-
         let newToDo = await dispatch(createToDoMaker(payload))
-        dispatch(getAllToDos(userId))
+        dispatch(getAllToDos(userId.userId))
         setTitle("")
+    }}
 
-            // history.push(`/groups/${group.id}`)
-    //   }
-    }
     const handleTitle = (e) => setTitle(e.target.value)
 
     if (!isLoading){

@@ -17,11 +17,11 @@ export const updateToDo = (toDo) => ({
 });
 
 export const deleteToDo = (toDo) => ({
-  type: DELETE_Todo,
+  type: DELETE_ToDo,
   toDo,
 });
 
-export const createHabit = (toDo) => ({
+export const createToDo = (toDo) => ({
   type: CREATE_ToDo,
   toDo,
 });
@@ -34,7 +34,7 @@ export const updateToDoMaker = (toDo, toDoId) => async (dispatch) => {
   });
   const data = await res.json();
   if (res.ok) {
-    dispatch(updateHabit(toDo));
+    dispatch(updateToDo(toDo));
     return data;
   } else {
     throw res;
@@ -58,7 +58,7 @@ export const createToDoMaker = (toDo) => async (dispatch) => {
   });
   const data = await res.json();
   if (res.ok) {
-    dispatch(createHabit(toDo));
+    dispatch(createToDo(toDo));
     return data;
   } else {
     throw res;
@@ -98,12 +98,12 @@ const toDoReducer = (state = {}, action) => {
       }
       case UPDATE_TODO: {
         const  toDo = { ...state };
-        habits[action.toDo.id] = action.toDo;
+        toDo[action.toDo.id] = action.toDo;
         return { ...toDo };
       }
       case DELETE_ToDo:
       newState = { ...state };
-      delete newState[action.to_do.id];
+      delete newState[action.toDo.id];
       return { ...newState };
 
     default:
