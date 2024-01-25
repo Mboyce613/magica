@@ -4,6 +4,7 @@
 
 .entireAvatarSection{
     display: flex;
+    background-image: url("../Assets/background.png");
 }
 
 .avatarSection{
@@ -97,4 +98,5 @@
     height: 25px;
     display: flex;
     justify-content: space-around;
+    
 }

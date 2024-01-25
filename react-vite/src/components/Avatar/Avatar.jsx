@@ -7,6 +7,7 @@ import { getBackgroundById } from "../../redux/backround";
 import { getBodyById } from "../../redux/body";
 import { getFaceById } from "../../redux/face";
 import { getHairById } from "../../redux/hair";
+import { deleteAvatarById } from "../../redux/avatar";
 import { useModal } from "../../context/Modal";
 import AvatarLink from "./avatarLink";
 import AvatarModalPage from "./avatarModelPage";
@@ -54,6 +55,9 @@ function Avatar({userId}){
             )
     },[])
 
+    const handleDelete = (userId) =>{
+      dispatch(deleteAvatarById(userId))
+    }
 
     return (
       <>
@@ -90,7 +94,7 @@ function Avatar({userId}){
         </section>
         <section className="avatarButtons">
         {<OpenModalButton modalComponent={<AvatarModalPage userId={userId}/>} buttonText={'Edit Avatar'}/>}
-        <button>Reset Avatar</button>
+        <button onClick={()=>{handleDelete(userId)}}>Reset Avatar</button>
         </section>
         {/* </section> */}
       </>
