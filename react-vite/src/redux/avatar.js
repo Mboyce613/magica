@@ -66,6 +66,7 @@ export const updateAvatarById = (payload,userId) => async (dispatch)=>{
 }
 
 export const deleteAvatarById = (avatar) => async (dispatch)=>{
+    // console.log("TRYING TO DELETE AVATAR")
     const res = await csrfFetch(`/api/avatars/${avatar}`,{
         method: "DELETE"
     })
@@ -124,10 +125,11 @@ const avatarReducer = (state = {}, action)=>{
             newState = {...state}
             // console.log("ACTION", action, 'line 56')
             // console.log(action.avatar, '-----store')
-            newState.avatars.backgroundId = 1
-            newState.avatars.bodyId = 1
-            newState.avatars.faceId = 1
-            newState.avatars.hairId = 1
+            console.log("NEWSTATE LINE 128",newState)
+            newState.backgroundId = 1
+            newState.bodyId = 1
+            newState.faceId = 1
+            newState.hairId = 1
             return newState
 
         default:return state

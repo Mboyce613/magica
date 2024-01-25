@@ -59,6 +59,7 @@ def avatarDelete(id):
     db.session.commit()
 
     avatar = Avatar(
+            id = id,
             user_id = id,
             background_id = 1,
             hair_id = 1,
