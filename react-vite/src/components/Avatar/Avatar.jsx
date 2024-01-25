@@ -37,7 +37,7 @@ function Avatar({userId}){
     const face = useSelector((state)=>state.faces)
     const hair = useSelector((state)=>state.hairs)
 
-    
+
     // console.log('BACKGROUND LOG 16', backgrounds[1])
     // console.log("Avatar line 13",avatars)
     useEffect(()=>{
@@ -50,7 +50,7 @@ function Avatar({userId}){
           })
           .then(()=>{
             setIsLoaded(true)
-            
+
           }
             )
     },[])
@@ -87,9 +87,13 @@ function Avatar({userId}){
         {hair[avatar.hairId] && avatar.hairId === 2 &&<img className="avatarHair" src={Hat_Blue}/>}
         {hair[avatar.hairId] && avatar.hairId === 3 &&<img className="avatarHair" src={Hat_Green}/>}
         </section>
+
         <section className="avatarUserInfo">
-        <div>{sessionUser.username} the Mighty</div>
-        <div>Exp form habits crushed: {sessionUser.exp}</div>
+        <div>
+          <h1>Welcome {sessionUser.firstname} {sessionUser.lastname}</h1>
+        </div>
+        <div style={{fontSize:20}} >{sessionUser.username} the Mighty</div>
+        <div style={{fontSize:20}}>Exp form habits crushed: {sessionUser.exp}</div>
         </section>
         </section>
         <section className="avatarButtons">
@@ -100,6 +104,6 @@ function Avatar({userId}){
       </>
 
     )
-} 
+}
 
 export default Avatar;

@@ -77,14 +77,14 @@ function DailiesComponent (){
                             "completed":daily.completed
                         }
                         return <div key={daily.id}>
-                            <div>
+                            <div className="DailyCheckboxDiv" >
                                 <input type="checkbox"/>
-                            </div>
+
                             <OpenModalButton
                             buttonText={daily.title}
                             modalComponent={<DailyModal daily={daily}/>}
                             buttonClass={"habitModalButton"}
-                            />
+                            /></div>
                         </div>
                     })}
                 </div>
