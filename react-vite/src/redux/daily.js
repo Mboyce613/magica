@@ -70,7 +70,7 @@ export const deleteDaily = (daily) => async (dispatch)=>{
     })
     if(res.ok){
         const data = await res.json()
-        dispatch(editDaily(daily))
+        dispatch(removeDaily(daily))
         return data
     }
     return res
