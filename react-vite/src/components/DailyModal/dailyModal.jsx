@@ -9,6 +9,12 @@ import { deleteDaily, updateDaily } from "../../redux/daily";
 
 
 const DailyModal= ({ daily })=>{
+    const date = new Date();
+
+    let day = date.getDate();
+    let month = date.getMonth() + 1;
+    let year = date.getFullYear();
+    let currentDate = `${year}-${month}-${day}`;
     let dailyDays = daily.days
     const begDate = daily.start_date
     const formatedTags = daily.tags.split('"').filter(ele =>ele.length > 1 && !ele.includes(','))
@@ -20,7 +26,7 @@ const DailyModal= ({ daily })=>{
     const [notes, setNotes] = useState(daily.notes)
     const [difficulty, setDifficulty] = useState(daily.difficulty)
     const [duration, setDuration] = useState(daily.duration)
-    const [startDate, setStartDate] = useState(fixedStartDate)
+    const [startDate, setStartDate] = useState(currentDate)
     const daysChecklist = daily.checklist.split('"').filter(ele =>ele.length > 1 && !ele.includes(','))
     let fillDaysCheck ={}
     for(let i = 0;i < daysChecklist.length; i++){
@@ -80,9 +86,9 @@ const DailyModal= ({ daily })=>{
         {isLoaded && <div>
         <div>
             <h3>Edit Daily</h3>
-            <div>
-                <div onClick={handleCancel}>Cancel</div>
-                <div onClick={handleSave}>Save</div>
+            <div className="habitModalBox" >
+                <div className="submitHabitButton" onClick={handleCancel}>Cancel</div>
+                <div className="submitHabitButton" onClick={handleSave}>Save</div>
             </div>
             <h3>
                 Title
@@ -127,9 +133,9 @@ const DailyModal= ({ daily })=>{
         <input
             type="date"
             name="startDate"
-            min={Date()}
+            min={currentDate}
             onChange={(e)=>setStartDate(e.target.value)}
-            defaultValue={Date(Number(fixedStartDate))}
+            defaultValue={currentDate}
         />
         <h3>Repeats</h3>
         <select
@@ -152,7 +158,7 @@ const DailyModal= ({ daily })=>{
         ></input>
         </div>
         
-        <div onClick={handleDelete}>Delete this Daily</div>
+        <div class="fa-regular fa-trash-can" onClick={handleDelete}>Delete this Daily</div>
     </div>
     }
     </>)
