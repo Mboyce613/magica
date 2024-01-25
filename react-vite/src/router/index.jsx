@@ -12,7 +12,7 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <HomePage />,
+        element: <Splash />,
       },
       {
         path: "login",
@@ -27,8 +27,8 @@ export const router = createBrowserRouter([
         element: <CreateAvatarPage />,
       },
       {
-        path: "splash",
-        element: <Splash />
+        path: "home",
+        element: <HomePage />
       }
     ],
   },

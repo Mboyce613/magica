@@ -106,7 +106,7 @@ function CreateAvatarPage({userId}){
         }
         console.log(payload)
         dispatch(updateAvatarById(payload, sessionUser.id))
-        .then(navigate("/"))
+        .then(navigate("/home"))
       }
 
     return(
