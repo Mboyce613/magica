@@ -35,7 +35,8 @@ const ToDoModalPage = (toDo) =>{
                         difficulty:difficulty,
                         tags:tags,
                         dueDate:dueDate,
-                        userId:toDo.toDo.userId
+                        userId:toDo.toDo.userId,
+                        completed:false
                         }
 
 
