@@ -12,7 +12,7 @@
 }
 
 .background{
-    background-image: url("../../../../app/graphics/background.png");
+    background-image: url("../Assets/background.png");
 }
 
 .splashTitle{
@@ -41,12 +41,12 @@
 width: 100px;
 height: 50px;
 border-radius: 10px;
-background-image: url("../../../../app/graphics/background.png");
+background-image: url("../Assets/background.png");
 color: white;
 }
 
 .splashSection{
-    background-image: url("../../../../app/graphics/background.png");
+    background-image: url("../Assets/background.png");
     border: 5px solid;
     display: flex;
     justify-content: space-evenly;
