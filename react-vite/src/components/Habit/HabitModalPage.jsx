@@ -26,9 +26,9 @@ const HabitModalPage = (habit) =>{
 
 
     const handleSubmit =async (e) => {
-        if (title > 1){
-        e.preventDefault()
 
+        e.preventDefault()
+        if (title.length >= 1){
         const payload = {
                         title:title,
                         id:habit.habit.id,
