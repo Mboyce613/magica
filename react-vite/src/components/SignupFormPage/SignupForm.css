@@ -31,3 +31,7 @@
 .thatDangH1{
     background-image: url("../../../../app/graphics/background.png");
 }
+
+.errors{
+  color: red;
+}
