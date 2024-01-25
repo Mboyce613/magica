@@ -26,6 +26,7 @@ const HabitModalPage = (habit) =>{
 
 
     const handleSubmit =async (e) => {
+        if (title > 1){
         e.preventDefault()
 
         const payload = {
@@ -45,6 +46,10 @@ const HabitModalPage = (habit) =>{
 
         dispatch(updateHabitMaker(payload,habit.habit.id))
         closeModal()
+    }
+    else {
+        alert("Habit Name is required")
+    }
     }
 
     const handleTitle = (e) => setTitle(e.target.value)
