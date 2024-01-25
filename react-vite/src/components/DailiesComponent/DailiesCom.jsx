@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllDailies, addDaily } from "../../redux/daily";
+import OpenModalButton from "../OpenModalButton/OpenModalButton";
+import DailyModal from "../DailyModal/dailyModal";
 
 function DailiesComponent (){
     const [isLoaded, setIsLoaded] = useState(false)
@@ -42,12 +44,10 @@ function DailiesComponent (){
         <section>
             <div>
                 <div>Dailies</div>
-                <div>All</div>
-                <div>Due</div>
-                <div>Not Due</div>
             </div>
             <div>
-                <textarea
+                <input
+                    type='text'
                     value={dailyTitle}
                     placeholder="Add a Daily"
                     onChange={(e)=> setDailyTitle(e.target.value)}
@@ -56,11 +56,30 @@ function DailiesComponent (){
                 <div>
                     {Object.values(dailies).map(daily =>{
                         // console.log(daily)
+                        let tempDaily = {
+                            "id":daily.id,
+                            "user_id":daily.user_id,
+                            "title": daily.title,
+                            "notes": daily.notes,
+                            "difficulty":daily.difficulty,
+                            "duration":daily.duration,
+                            "tags":daily.tags,
+                            "start_date":daily.start_date,
+                            "days":daily.checklist,
+                            "checklist":daily.checklist,
+                            "streak":daily.streak,
+                            "completed":daily.completed
+                        }
+                        console.log(tempDaily)
                         return <div key={daily.id}>
                             <div>
                                 <input type="checkbox"/>
                             </div>
-                            <div>{daily.title}</div>
+                            <OpenModalButton 
+                            buttonText={daily.title}
+                            modalComponent={<DailyModal daily={daily}/>}
+                            buttonClass={"habitModalButton"}
+                            />
                         </div>
                     })}
                 </div>
