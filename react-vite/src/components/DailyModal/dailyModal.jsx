@@ -11,6 +11,7 @@ import { habitDeleteFetch } from "../../redux/habit";
 const DailyModal= ({ daily})=>{
 
     console.log(daily)
+    let dailyDays = daily.days
     const dispatch = useDispatch()
     const [isLoaded, setIsLoaded] = useState(false)
     const [title, setTitle] = useState(daily.title)
@@ -19,15 +20,16 @@ const DailyModal= ({ daily})=>{
     const [duration, setDuration] = useState(daily.duration)
     const [tags, setTags] = useState(daily.tags)
     const [startDate, setStartDate] = useState(daily.start)
-    const checklist = daily.checklist.
-    const [days, setDays] = useState(daily.days)
+    const daysChecklist = daily.checklist
+    const [daysSel, setDaysSel] = useState(dailyDays)
     const [checklistItem, setChecklistItem] = useState('')
     const [completed, setCompleted] = useState(daily.completed)
     
     useEffect(()=>{
-        if(daily.title.length)setIsLoaded(true)
+        if(daily.days.length)setIsLoaded(true)
     },[daily])
-    console.log(checklist)
+    // console.log(daysChecklist.split('"'), '---------')
+    // console.log(checklist)
     return (<>
         {isLoaded && <div>
         <div>
@@ -76,5 +78,8 @@ const DailyModal= ({ daily})=>{
     </div>
     }
     </>)
+    // return(
+    //     <div>hello</div>
+    // )
 }
 export default DailyModal
