@@ -38,7 +38,7 @@ const DailyModal= ({ daily })=>{
     const [completed, setCompleted] = useState(daily.completed)
 
     console.log(startDate, '----')
-    
+
     const handleCancel = (e) =>{
         closeModal()
     }
@@ -83,25 +83,26 @@ const DailyModal= ({ daily })=>{
     // console.log(daysChecklist.split('"'), '---------')
     // console.log(checklist)
     return (<>
-        {isLoaded && <div>
-        <div>
-            <h3>Edit Daily</h3>
-            <div className="habitModalBox" >
+        {isLoaded && <div className="habitModalBox">
+        <div >
+
+            <div className="buttonDiv"  >
                 <div className="submitHabitButton" onClick={handleCancel}>Cancel</div>
                 <div className="submitHabitButton" onClick={handleSave}>Save</div>
             </div>
+            <h3 >Edit Daily</h3>
             <h3>
                 Title
             </h3>
-            <input 
+            <input
                 type="text"
                 value={title}
                 onChange={(e)=>setTitle(e.target.value)}
             />
             <h3>Notes</h3>
-            <textarea 
+            <textarea
                 value={notes}
-                onChange={(e)=>setNotes(e.target.value)}    
+                onChange={(e)=>setNotes(e.target.value)}
             />
         </div>
         <h3>Checklist</h3>
@@ -118,7 +119,7 @@ const DailyModal= ({ daily })=>{
             onChange={(e)=>setChecklistItem(e.target.value)}
             onKeyDown={handleEnter}
         />
-        
+
         <h3>Difficulty</h3>
         <select
         type = "dropdown"
@@ -157,9 +158,9 @@ const DailyModal= ({ daily })=>{
             onChange={(e)=>setTags(e.target.value)}
         ></input>
         </div>
-        
-        <div class="fa-regular fa-trash-can" onClick={handleDelete}>Delete this Daily</div>
-    </div>
+        <div className="buttonDiv">
+        <button class="fa-regular fa-trash-can" onClick={handleDelete}>Delete this Daily</button>
+    </div></div>
     }
     </>)
     // return(
