@@ -18,6 +18,7 @@ import Face3 from '../../../../app/graphics/Face3.png'
 import Hat_Red from '../../../../app/graphics/Hat_Red.png'
 import Hat_Blue from '../../../../app/graphics/Hat_Blue.png'
 import Hat_Green from '../../../../app/graphics/Hat_Green.png'
+import { useModal } from "../../context/Modal";
 import './avatar.css'
 
 const AvatarModalPage = (userId) =>{
@@ -33,6 +34,7 @@ const AvatarModalPage = (userId) =>{
     const [avatarHair, setAvatarHair] = useState(avatar.hairId)
     const [avatarFace, setAvatarFace] = useState(avatar.faceId)
     const [avatarBody, setAvatarBody] = useState(avatar.bodyId)
+    const {closeModal} = useModal()
 
     useEffect(()=>{
         dispatch(getAllBackgrounds())
@@ -110,6 +112,7 @@ const AvatarModalPage = (userId) =>{
       }
       // console.log(payload)
       dispatch(updateAvatarById(payload, userId.userId))
+      closeModal()
     }
 
 

@@ -35,6 +35,7 @@ function HomePage(){
       <Avatar userId = {sessionUser.id}/>
       <hr className='solid'/>
       </div>
+      
       <div className="habitComponent">
       <Habit userId = {sessionUser.id}/>
       </div>
