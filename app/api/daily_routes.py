@@ -52,7 +52,7 @@ def post_daily():
     notes = data['notes']
     difficulty = data['difficulty']
     tags =data['tags']
-    start_date =datetime.datetime(int(date_to_start[0]), int(date_to_start[1]), int(date_to_start[2]))
+    start_date =datetime(int(date_to_start[0]), int(date_to_start[1]), int(date_to_start[2]))
     days =data['days']
     checklist =data['checklist']
     streak =data['streak']
@@ -64,7 +64,6 @@ def post_daily():
 
     db.session.add(new_daily)
     db.session.commit()
-
     return new_daily.to_dict()
     
 @daily_routes.route('/<int:userId>')
