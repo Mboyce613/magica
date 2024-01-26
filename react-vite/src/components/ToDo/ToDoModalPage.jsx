@@ -12,13 +12,12 @@ import { toDoDeleteFetch } from "../../redux/toDo";
 
 const ToDoModalPage = (toDo) =>{
     const date = new Date();
-
+    let newMonth
     let day = date.getDate();
     let month = date.getMonth() + 1;
     let year = date.getFullYear();
-    let currentDate = `${year}-${month}-${day}`;
-
-
+    String(month).length ===1?newMonth = `0${date.getMonth()+1}`:newMonth=month
+    let currentDate = `${year}-${newMonth}-${day}`;
 
     const [title,setTitle] = useState(toDo.toDo.title)
     const [notes,setNotes] = useState(toDo.toDo.notes)
@@ -29,6 +28,7 @@ const ToDoModalPage = (toDo) =>{
     const {closeModal} = useModal()
     const dispatch = useDispatch()
     let listItems = checklist?checklist.split("##"):["No Items"]
+    console.log(currentDate)
 
     listItems.pop()
 
