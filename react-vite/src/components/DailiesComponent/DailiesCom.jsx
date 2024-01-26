@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllDailies, addDaily } from "../../redux/daily";
 import OpenModalButton from "../OpenModalButton/OpenModalButton";
 import DailyModal from "../DailyModal/dailyModal";
+import "./dailies.css"
 
 function DailiesComponent (){
     const [isLoaded, setIsLoaded] = useState(false)
@@ -11,7 +12,7 @@ function DailiesComponent (){
     const sessionUser = useSelector(state => state.session.user)
     const dailies = useSelector(state => state.dailies)
     const dispatch = useDispatch()
-    
+
     const handleEnter = (e)=>{
         if(e.key === "Enter"){
             if(!dailyTitle.length){
@@ -41,9 +42,13 @@ function DailiesComponent (){
           })
     },[isLoaded])
     return (
+        <>
+        <div
+        className="habitBox"
+        >
         <section>
             <div>
-                <div>Dailies</div>
+                <div style={{fontSize:25,padding:5,backgroundColor:"orange"}}>Dailies</div>
             </div>
             <div>
                 <input
@@ -52,8 +57,9 @@ function DailiesComponent (){
                     placeholder="Add a Daily"
                     onChange={(e)=> setDailyTitle(e.target.value)}
                     onKeyDown={handleEnter}
+                    className="newHabit"
                 />
-                <div>
+                <div className="toDoNav">
                     {Object.values(dailies).map(daily =>{
                         // console.log(daily)
                         let tempDaily = {
@@ -70,22 +76,22 @@ function DailiesComponent (){
                             "streak":daily.streak,
                             "completed":daily.completed
                         }
-                        console.log(tempDaily)
                         return <div key={daily.id}>
-                            <div>
+                            <div className="DailyCheckboxDiv" >
                                 <input type="checkbox"/>
-                            </div>
-                            <OpenModalButton 
+
+                            <OpenModalButton
                             buttonText={daily.title}
                             modalComponent={<DailyModal daily={daily}/>}
                             buttonClass={"habitModalButton"}
-                            />
+                            /></div>
                         </div>
                     })}
                 </div>
             </div>
 
-        </section>
+        </section></div>
+        </>
     )
 }
 export default DailiesComponent

@@ -34,6 +34,7 @@ const ToDoModalPage = (toDo) =>{
 
     const handleSubmit =async (e) => {
         e.preventDefault()
+        if (title.length >= 1){
 
         const payload = {
                         title:title,
@@ -50,7 +51,9 @@ const ToDoModalPage = (toDo) =>{
 
         dispatch(updateToDoMaker(payload,toDo.toDo.id))
         closeModal()
-    }
+    }else{
+        alert ("Name is required")
+    }}
 
     const handleCancel = () => {
 
@@ -84,10 +87,11 @@ const ToDoModalPage = (toDo) =>{
         e.currentTarget.value = ""
         }
         }}
-    const addCheckItems = (checklist)=>{
-
+    const handleCheckDelete = (item)=>{
+        let oldChecklist = checklist.split("##")
+        oldChecklist.splice(oldChecklist.indexOf(item),1)
+        setChecklist(oldChecklist.join("##"))
     }
-    addCheckItems()
 
     return (
         <>
@@ -137,6 +141,7 @@ const ToDoModalPage = (toDo) =>{
                 <div>
                 <input type = "checkbox" onChange={handleDummy}/>
                 {item}
+                <button class="fa-regular fa-trash-can" style={{border:0}} value={item} onClick={(e)=>{e.preventDefault(),handleCheckDelete(item)}}></button>
                 </div>
                 ))}</ul>
 

@@ -14,14 +14,16 @@
     justify-content: space-between;
     padding: 2px;
     border: solid rgb(221, 219, 219);
+    border-radius: 5px;
 
 }
 .newHabit {
-width: 95%;
+width: 92.5%;
 height: 30px;
 padding: 5px;
 background-color: rgb(223, 220, 220);
 border-radius: 4px;
+margin: 10px;
 
 }
 

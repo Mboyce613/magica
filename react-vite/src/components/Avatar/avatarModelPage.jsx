@@ -18,6 +18,7 @@ import Face3 from '../../../../app/graphics/Face3.png'
 import Hat_Red from '../../../../app/graphics/Hat_Red.png'
 import Hat_Blue from '../../../../app/graphics/Hat_Blue.png'
 import Hat_Green from '../../../../app/graphics/Hat_Green.png'
+import { useModal } from "../../context/Modal";
 import './avatar.css'
 
 const AvatarModalPage = (userId) =>{
@@ -33,6 +34,7 @@ const AvatarModalPage = (userId) =>{
     const [avatarHair, setAvatarHair] = useState(avatar.hairId)
     const [avatarFace, setAvatarFace] = useState(avatar.faceId)
     const [avatarBody, setAvatarBody] = useState(avatar.bodyId)
+    const {closeModal} = useModal()
 
     useEffect(()=>{
         dispatch(getAllBackgrounds())
@@ -110,29 +112,35 @@ const AvatarModalPage = (userId) =>{
       }
       // console.log(payload)
       dispatch(updateAvatarById(payload, userId.userId))
+      closeModal()
     }
 
 
     return (
         <>
+        <div className="avatarModalDiv">
+        <section className="createAvatarBackground">
         <div>Choose your Avatar</div>
-        {backgrounds[1] &&<img src={Background_Red} className="modelselect" onClick={()=>{handleChangeBackgroundRed()}}/>}
-        {backgrounds[2] &&<img src={Background_Blue} className="modelselect" onClick={()=>{handleChangeBackgroundBlue()}}/>}
-        {backgrounds[3] &&<img src={Background_Green} className="modelselect" onClick={()=>{handleChangeBackgroundGreen()}}/>}
+        <section className="createAvatarOptions">
+        {backgrounds[1] &&<img src={Background_Red} className="modelselect createAvatarChoices createAvatarChoicesBackgrounds" onClick={()=>{handleChangeBackgroundRed()}}/>}
+        {backgrounds[2] &&<img src={Background_Blue} className="modelselect createAvatarChoices createAvatarChoicesBackgrounds" onClick={()=>{handleChangeBackgroundBlue()}}/>}
+        {backgrounds[3] &&<img src={Background_Green} className="modelselect createAvatarChoices createAvatarChoicesBackgrounds" onClick={()=>{handleChangeBackgroundGreen()}}/>}
         <div></div>
-        {hair[1] &&<img src={Hat_Red} className="modelselect" onClick={()=>{handleChangeHairRed()}}/>}
-        {hair[2] &&<img src={Hat_Blue} className="modelselect" onClick={()=>{handleChangeHairBlue()}}/>}
-        {hair[3] &&<img src={Hat_Green} className="modelselect" onClick={()=>{handleChangeHairGreen()}}/>}
+        {hair[1] &&<img src={Hat_Red} className="modelselect createAvatarChoices" onClick={()=>{handleChangeHairRed()}}/>}
+        {hair[2] &&<img src={Hat_Blue} className="modelselect createAvatarChoices" onClick={()=>{handleChangeHairBlue()}}/>}
+        {hair[3] &&<img src={Hat_Green} className="modelselect createAvatarChoices" onClick={()=>{handleChangeHairGreen()}}/>}
         <div></div>
-        {face[1] &&<img src={Face1} className="modelselect" onClick={()=>{handleChangeFace1()}}/>}
-        {face[2] &&<img src={Face2} className="modelselect" onClick={()=>{handleChangeFace2()}}/>}
-        {face[3] &&<img src={Face3} className="modelselect" onClick={()=>{handleChangeFace3()}}/>}
+        {face[1] &&<img src={Face1} className="modelselect createAvatarChoices" onClick={()=>{handleChangeFace1()}}/>}
+        {face[2] &&<img src={Face2} className="modelselect createAvatarChoices" onClick={()=>{handleChangeFace2()}}/>}
+        {face[3] &&<img src={Face3} className="modelselect createAvatarChoices" onClick={()=>{handleChangeFace3()}}/>}
         <div></div>
-        {body[1] &&<img src={BodyRed} className="modelselect" onClick={()=>{handleChangeBodyRed()}}/>}
-        {body[2] &&<img src={BodyBlue} className="modelselect" onClick={()=>{handleChangeBodyBlue()}}/>}
-        {body[3] &&<img src={BodyGreen} className="modelselect" onClick={()=>{handleChangeBodyGreen()}}/>}
+        {body[1] &&<img src={BodyRed} className="modelselect createAvatarChoices" onClick={()=>{handleChangeBodyRed()}}/>}
+        {body[2] &&<img src={BodyBlue} className="modelselect createAvatarChoices" onClick={()=>{handleChangeBodyBlue()}}/>}
+        {body[3] &&<img src={BodyGreen} className="modelselect createAvatarChoices" onClick={()=>{handleChangeBodyGreen()}}/>}
         <div></div>
-        <button onClick={()=>{handleSubmit()}}>Save</button>
+        </section>
+        <button className='splashbutton' onClick={()=>{handleSubmit()}}>Save</button>
+        </section> </div>
         </>
     )
 }

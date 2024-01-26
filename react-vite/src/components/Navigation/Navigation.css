@@ -5,6 +5,7 @@ justify-content: space-between;
 align-content: stretch;
 width: 100%;
 background-color: blueviolet;
+border-radius: 10px;
 /* align-items: flex-end; */
 }
 
@@ -32,7 +33,7 @@ padding: 10px;
 }
 
 .fa-dragon {
-  font-size: 30px;
+  font-size: 35px;
 }
 
 .notLoggedIn{
