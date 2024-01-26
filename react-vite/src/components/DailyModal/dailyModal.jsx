@@ -10,11 +10,12 @@ import { deleteDaily, updateDaily } from "../../redux/daily";
 
 const DailyModal= ({ daily })=>{
     const date = new Date();
-
+    let newMonth
     let day = date.getDate();
     let month = date.getMonth() + 1;
     let year = date.getFullYear();
-    let currentDate = `${year}-${month}-${day}`;
+    String(month).length ===1?newMonth = `0${date.getMonth()+1}`:newMonth=month
+    let currentDate = `${year}-${newMonth}-${day}`;
     let dailyDays = daily.days
     const begDate = daily.start_date
     const formatedTags = daily.tags.split('"').filter(ele =>ele.length > 1 && !ele.includes(','))
@@ -97,7 +98,12 @@ const DailyModal= ({ daily })=>{
             <input
                 type="text"
                 value={title}
-                onChange={(e)=>setTitle(e.target.value)}
+                onChange={(e)=>{
+                    if (title.length>=1){
+                    setTitle(e.target.value)}else{
+                        e.preventDefault()
+                        alert("Title is Required")}}}
+
             />
             <h3>Notes</h3>
             <textarea
