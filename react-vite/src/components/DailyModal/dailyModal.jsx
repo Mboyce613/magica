@@ -69,6 +69,7 @@ const DailyModal= ({ daily })=>{
     }
 
     const handleSave = () =>{
+        if (title.length >= 1){
         dispatch(updateDaily({
             "id":daily.id,
             "title": title,
@@ -81,7 +82,7 @@ const DailyModal= ({ daily })=>{
             "checklist":checklist,
             "completed":daily.completed,
         }))
-        closeModal()
+        closeModal()}else{alert("Title is Required")}
     }
 
     useEffect(()=>{
@@ -105,12 +106,7 @@ const DailyModal= ({ daily })=>{
             <input
                 type="text"
                 value={title}
-                onChange={(e)=>{
-                    if (title.length>=1){
-                    setTitle(e.target.value)}else{
-                        e.preventDefault()
-                        alert("Title is Required")}}}
-
+                onChange={(e)=>setTitle(e.target.value)}
             />
             <h3>Notes</h3>
             <textarea
