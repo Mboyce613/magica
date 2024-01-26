@@ -27,6 +27,7 @@ import Hat_Green from '../../../../app/graphics/Hat_Green.png'
 
 function Avatar({userId}){
     const sessionUser = useSelector((state) => state.session.user);
+    console.log("from av",sessionUser)
     if(!sessionUser) return <Navigate to='signup' replace={true}/>
     const [isLoaded, setIsLoaded] = useState(false)
     const dispatch = useDispatch()
@@ -53,7 +54,7 @@ function Avatar({userId}){
 
           }
             )
-    },[])
+    },[sessionUser])
 
     const handleDelete = (userId) =>{
       dispatch(deleteAvatarById(userId))

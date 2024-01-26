@@ -118,6 +118,7 @@ const AvatarModalPage = (userId) =>{
 
     return (
         <>
+        <div className="avatarModalDiv">
         <section className="createAvatarBackground">
         <div>Choose your Avatar</div>
         <section className="createAvatarOptions">
@@ -139,7 +140,7 @@ const AvatarModalPage = (userId) =>{
         <div></div>
         </section>
         <button className='splashbutton' onClick={()=>{handleSubmit()}}>Save</button>
-        </section>
+        </section> </div>
         </>
     )
 }

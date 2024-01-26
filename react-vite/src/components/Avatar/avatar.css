@@ -131,3 +131,7 @@
     width: 66px;
     height: 66px;
 }
+
+.avatarModalDiv {
+    border-radius: 10px;
+}
