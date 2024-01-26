@@ -20,9 +20,9 @@ export const editDaily = (daily)=>({
     daily
 })
 
-export const removeDaily = (daily)=>({
+export const removeDaily = (dailyId)=>({
     type:REMOVE_DAILY,
-    daily
+    dailyId
 })
 
 export const getAllDailies = (userId) => async (dispatch)=>{
@@ -44,7 +44,7 @@ export const addDaily = (daily) => async (dispatch)=>{
     })
     if(res.ok){
         const data = await res.json()
-        dispatch(recieveDaily(daily))
+        dispatch(recieveDaily(data))
         return data
     }
     return res
@@ -64,13 +64,14 @@ export const updateDaily = (daily) => async (dispatch) =>{
     return res
 }
 
-export const deleteDaily = (daily) => async (dispatch)=>{
-    const res = await csrfFetch(`/api/dailies/${daily.id}`,{
+export const deleteDaily = (dailyId) => async (dispatch)=>{
+    console.log(dailyId)
+    const res = await csrfFetch(`/api/dailies/${dailyId}`,{
         method:'DELETE'
     })
     if(res.ok){
         const data = await res.json()
-        dispatch(removeDaily(daily))
+        dispatch(removeDaily(dailyId))
         return data
     }
     return res
@@ -95,7 +96,7 @@ const dailyReducer = (state = {}, action)=>{
             return {...state, [action.daily.id]:action.daily}
         case REMOVE_DAILY:
             newState={...state}
-            delete newState[action.daily.id]
+            delete newState[action.dailyId]
             return newState
         default : return state
     }

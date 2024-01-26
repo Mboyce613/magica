@@ -30,7 +30,9 @@ function DailiesComponent (){
                     "checklist":"",
                     "streak":0,
                     "completed":"False"
-                })).then((res)=>setDailyTitle(''))
+                }))
+                setDailyTitle('')
+                dispatch(getAllDailies(sessionUser.id))
             }
         }
     }
