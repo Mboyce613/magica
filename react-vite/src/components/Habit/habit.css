@@ -102,3 +102,23 @@ margin: 10px;
     padding: 10px;
     border-radius: 5px;
 }
+
+.fa-heart {
+    font-size: 200px;
+
+}
+
+.ExpModalDiv{
+    display: flex;
+    padding: 100px;
+
+}
+
+.ExpModalDiv h1{
+    padding-left: 40px;
+}
+
+.fa-heart-crack {
+    font-size: 200px;
+
+}
