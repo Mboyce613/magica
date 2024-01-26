@@ -16,9 +16,7 @@ const DailyModal= ({ daily })=>{
     let year = date.getFullYear();
     let currentDate = `${year}-${month}-${day}`;
     let dailyDays = daily.days
-    const begDate = daily.start_date
     const formatedTags = daily.tags.split('"').filter(ele =>ele.length > 1 && !ele.includes(','))
-    const fixedStartDate = `${begDate.split(' ')[2]}-${begDate.split(' ')[1]}-${begDate.split(' ')[3]}`
     const { closeModal } = useModal()
     const dispatch = useDispatch()
     const [isLoaded, setIsLoaded] = useState(false)
@@ -87,8 +85,8 @@ const DailyModal= ({ daily })=>{
         <div>
             <h3>Edit Daily</h3>
             <div className="habitModalBox" >
-                <div className="submitHabitButton" onClick={handleCancel}>Cancel</div>
-                <div className="submitHabitButton" onClick={handleSave}>Save</div>
+                <div  onClick={handleCancel}>Cancel</div>
+                <div onClick={handleSave}>Save</div>
             </div>
             <h3>
                 Title
