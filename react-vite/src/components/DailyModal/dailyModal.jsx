@@ -18,7 +18,6 @@ const DailyModal= ({ daily })=>{
     let dailyDays = daily.days
     const begDate = daily.start_date
     const formatedTags = daily.tags.split('"').filter(ele =>ele.length > 1 && !ele.includes(','))
-    const fixedStartDate = `${begDate.split(' ')[2]}-${begDate.split(' ')[1]}-${begDate.split(' ')[3]}`
     const { closeModal } = useModal()
     const dispatch = useDispatch()
     const [isLoaded, setIsLoaded] = useState(false)
@@ -34,10 +33,10 @@ const DailyModal= ({ daily })=>{
     }
     const [tags, setTags] = useState(daily.tags)
     const [daysSel, setDaysSel] = useState(dailyDays)
-    const [checklistItem, setChecklistItem] = useState('')
+    const [checklist, setChecklist] = useState(daily.checklist)
     const [completed, setCompleted] = useState(daily.completed)
+    let listItems = checklist?checklist.split(","):["No Items"]
 
-    console.log(startDate, '----')
 
     const handleCancel = (e) =>{
         closeModal()
@@ -51,6 +50,23 @@ const DailyModal= ({ daily })=>{
         }
     }
 
+    const handleChecklist = (e) =>{
+        if (e.target.value.length > 1){
+        if (e.key === 'Enter'){
+        let oldChecklist = checklist
+        oldChecklist +=(`${e.target.value},`)
+        setChecklist(oldChecklist)
+        e.currentTarget.value = ""
+        }
+        }
+    }
+
+    const handleCheckDelete = (item)=>{
+        let oldChecklist = checklist.split(",")
+        oldChecklist.splice(oldChecklist.indexOf(item),1)
+        setChecklist(oldChecklist.join(","))
+    }
+
     const handleSave = () =>{
         dispatch(updateDaily({
             "id":daily.id,
@@ -58,23 +74,13 @@ const DailyModal= ({ daily })=>{
             "notes":notes,
             "difficulty":difficulty,
             "duration":duration,
-            "tags":`${formatedTags}`,
+            "tags":tags,
             "start_date":`${new Date(startDate).toISOString().slice(0, 10)}`,
             "days":dailyDays,
-            "checklist":daily.checklist,
+            "checklist":checklist,
             "completed":daily.completed,
         }))
         closeModal()
-    }
-
-    const handleEnter = (e)=>{
-        if(e.key === "Enter"){
-            if(!checklistItem.length){
-                return null
-            }else{
-                daysChecklist.push(checklistItem)
-            }
-        }
     }
 
     useEffect(()=>{
@@ -107,17 +113,22 @@ const DailyModal= ({ daily })=>{
         </div>
         <h3>Checklist</h3>
         <>
-        {daysChecklist.forEach(ele=>{
+        {/* {listItems.forEach(ele=>{
             <div key={ele.length}>
                 {ele}
             </div>
-        })}
+        })} */}
+        {listItems.map(item=>(
+                <div>
+                <input type = "checkbox"/>
+                {item}
+                <button class="fa-regular fa-trash-can" style={{border:0}} value={item} onClick={(e)=>{e.preventDefault(),handleCheckDelete(item)}}></button>
+                </div>
+                ))}
         </>
         <input
             type="text"
-            value={checklistItem}
-            onChange={(e)=>setChecklistItem(e.target.value)}
-            onKeyDown={handleEnter}
+            onKeyDown={handleChecklist}
         />
 
         <h3>Difficulty</h3>
@@ -154,7 +165,7 @@ const DailyModal= ({ daily })=>{
             <input
             type = "text"
             name = "Tags"
-            defaultValue={formatedTags}
+            defaultValue={tags}
             onChange={(e)=>setTags(e.target.value)}
         ></input>
         </div>
