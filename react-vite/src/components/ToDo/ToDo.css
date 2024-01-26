@@ -5,6 +5,10 @@
     padding: 2px;
     border: solid rgb(221, 219, 219);
     padding-top: 10px;
+    border-radius: 5px;
+}
+.toDoNav {
+    border-radius: 5px;
 }
 
 .listInput{

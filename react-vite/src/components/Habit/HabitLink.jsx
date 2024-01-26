@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import OpenModalButton from "../OpenModalButton/OpenModalButton";
 import HabitModelPage from "./HabitModalPage.jsx";
 // import { UseSelector } from "react-redux/es/hooks/useSelector.js";
@@ -7,12 +7,15 @@ import { updateUsersExp } from "../../redux/session.js";
 import { updateHabit } from "../../redux/habit.js";
 import useSound from "use-sound";
 import plusSound from "./sounds/plus.mp3"
+import { useEffect } from "react";
+import { getAllHabits } from "../../redux/habit.js";
 // import minusSound from "../../../public/sounds/minus.mp3"
 
 const HabitLink = (habit) =>{
     const sessionUser = useSelector((state) => state.session.user);
     const dispatch = useDispatch()
     const playSound = useSound(plusSound)
+    const [dummy,setDummy]=useState("")
 
     const handleCompleted = (e) => {
         if (!habit.habit.completed){
@@ -34,11 +37,16 @@ const HabitLink = (habit) =>{
             id:sessionUser.id
         }
         dispatch(updateUsersExp(payload,sessionUser.id))
+        setDummy("Random thing")
         playSound
         }}else{
             alert('Habit Already Done for Today!')
         }
     }
+    useEffect(() =>{
+        dispatch(getAllHabits(sessionUser.id))
+        console.log("working")
+    },[])
 
     const handleNotCompleted = (e) => {
         // useSound(minusSound)

@@ -27,6 +27,7 @@ import Hat_Green from '../../../../app/graphics/Hat_Green.png'
 
 function Avatar({userId}){
     const sessionUser = useSelector((state) => state.session.user);
+    console.log("from av",sessionUser)
     if(!sessionUser) return <Navigate to='signup' replace={true}/>
     const [isLoaded, setIsLoaded] = useState(false)
     const dispatch = useDispatch()
@@ -53,7 +54,7 @@ function Avatar({userId}){
 
           }
             )
-    },[])
+    },[sessionUser])
 
     const handleDelete = (userId) =>{
       dispatch(deleteAvatarById(userId))
@@ -93,7 +94,7 @@ function Avatar({userId}){
           <h1>Welcome {sessionUser.firstname} {sessionUser.lastname}</h1>
         </div>
         <div style={{fontSize:20}} >{sessionUser.username} the Mighty</div>
-        <div style={{fontSize:20}}>Exp form habits crushed: {sessionUser.exp}</div>
+        {/* <div style={{fontSize:20}}>Exp form habits crushed: {sessionUser.exp}</div> */}
         </section>
         </section>
         <section className="avatarButtons">

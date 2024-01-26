@@ -46,19 +46,19 @@ const DailyModal= ({ daily })=>{
     const handleDelete = (e) =>{
         let check = confirm('Are you sure you want to delete this Daily?')
         if(check === true) {
-            dispatch(deleteDaily(daily))
+            dispatch(deleteDaily(dailyId))
             closeModal()
         }
     }
 
     const handleChecklist = (e) =>{
         if (e.target.value.length > 1){
-        if (e.key === 'Enter'){
-        let oldChecklist = checklist
-        oldChecklist +=(`${e.target.value},`)
-        setChecklist(oldChecklist)
-        e.currentTarget.value = ""
-        }
+            if (e.key === 'Enter'){
+                let oldChecklist = checklist
+                oldChecklist +=(`${e.target.value},`)
+                setChecklist(oldChecklist)
+                e.currentTarget.value = ""
+            }
         }
     }
 
@@ -87,8 +87,9 @@ const DailyModal= ({ daily })=>{
     useEffect(()=>{
         if(daily.days.length)setIsLoaded(true)
     },[daily])
-    // console.log(daysChecklist.split('"'), '---------')
-    // console.log(checklist)
+    const dailyId = daily.id
+// console.log(daysChecklist.split('"'), '---------')
+// console.log(checklist)
     return (<>
         {isLoaded && <div className="habitModalBox">
         <div >
