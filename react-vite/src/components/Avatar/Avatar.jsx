@@ -94,7 +94,7 @@ function Avatar({userId}){
           <h1>Welcome {sessionUser.firstname} {sessionUser.lastname}</h1>
         </div>
         <div style={{fontSize:20}} >{sessionUser.username} the Mighty</div>
-        <div style={{fontSize:20}}>Exp form habits crushed: {sessionUser.exp}</div>
+        {/* <div style={{fontSize:20}}>Exp form habits crushed: {sessionUser.exp}</div> */}
         </section>
         </section>
         <section className="avatarButtons">
