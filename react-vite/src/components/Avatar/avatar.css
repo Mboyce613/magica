@@ -115,6 +115,17 @@
     align-items: center;
 }
 
+.updateAvatarBackground{
+    display: flex;
+    background-image: linear-gradient(
+    to bottom,
+    rgb(0 0 0 / 40%),
+    rgb(0 0 0 / 40%)
+  ), url(/src/components/Assets/background.png);
+    flex-direction: column;
+    align-items: center;
+}
+
 .createAvatarOptions{
     width: auto;
     height: auto;
@@ -130,8 +141,23 @@
 .createAvatarChoicesBackgrounds{
     width: 66px;
     height: 66px;
+    aspect-ratio: 1 / 1;
 }
 
 .avatarModalDiv {
     border-radius: 10px;
+    height: 500px;
+    width: 500px;
+
+}
+
+.createAvatarRow{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 300px;
+    height: 100px;
+    justify-content: space-around;
+    color: aqua;
+    font-weight: 900;
 }
