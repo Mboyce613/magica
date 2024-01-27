@@ -1,6 +1,10 @@
+import { useModal } from "../../context/Modal"
+
+
 const MinusModal = (sessionUser) =>{
     const user = sessionUser.sessionUser
-    console.log("from exp modal",user)
+    // console.log("from exp modal",user)
+    const {closeModal}= useModal()
     return (
         <div className="ExpModalDiv">
 
@@ -10,6 +14,10 @@ const MinusModal = (sessionUser) =>{
             <h1>Habit Failed.</h1>
             <h1>Don't Give Up!</h1>
             <h1>Better Luck Tomorrow!</h1>
+            <button
+            className="submitHabitButton"
+            onClick={()=>closeModal()}
+            >Close</button>
             </div>
         </div>
     )
