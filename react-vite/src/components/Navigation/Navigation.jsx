@@ -23,6 +23,7 @@ function Navigation() {
       </div>
 
       <div className="Profile" >
+      <NavLink to='/home'>Home</NavLink>
       <ProfileButton className="profileButton" />
       </div>
 
