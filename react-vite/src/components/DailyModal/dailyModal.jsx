@@ -37,7 +37,7 @@ const DailyModal= ({ daily })=>{
     const [checklist, setChecklist] = useState(daily.checklist)
     const [completed, setCompleted] = useState(daily.completed)
     let listItems = checklist?checklist.split(","):["No Items"]
-
+    listItems.pop()
 
     const handleCancel = (e) =>{
         closeModal()
