@@ -5,17 +5,22 @@ import HabitModelPage from "./HabitModalPage.jsx";
 import { useDispatch, useSelector } from "react-redux";
 import { updateUsersExp } from "../../redux/session.js";
 import { updateHabit } from "../../redux/habit.js";
-import useSound from "use-sound";
-import plusSound from "./sounds/plus.mp3"
 import { useEffect } from "react";
 import { getAllHabits } from "../../redux/habit.js";
-// import minusSound from "../../../public/sounds/minus.mp3"
+import ExpModal from "./ExpModal.jsx";
+import MinusModal from "./MinusModal.jsx";
+import PlusSound from "../Sound/PlusSound.jsx";
+import useSound from "use-sound";
+import plusSound from '../Sound/sounds/plus.mp3'
+import minusSound from '../Sound/sounds/minus.mp3'
+
 
 const HabitLink = (habit) =>{
     const sessionUser = useSelector((state) => state.session.user);
     const dispatch = useDispatch()
-    const playSound = useSound(plusSound)
     const [dummy,setDummy]=useState("")
+    const [playPlus] = useSound(plusSound,{volume:.1})
+    const [playMinus] = useSound(minusSound,{volume:.1})
 
     const handleCompleted = (e) => {
         if (!habit.habit.completed){
@@ -38,37 +43,44 @@ const HabitLink = (habit) =>{
         }
         dispatch(updateUsersExp(payload,sessionUser.id))
         setDummy("Random thing")
-        playSound
+        playPlus()
         }}else{
             alert('Habit Already Done for Today!')
         }
     }
-    useEffect(() =>{
-        dispatch(getAllHabits(sessionUser.id))
-        console.log("working")
-    },[])
-
     const handleNotCompleted = (e) => {
-        // useSound(minusSound)
+        playMinus()
     }
 
     return (
         <>
         <div className="habitNavBox">
-        <button
+        <OpenModalButton
+        buttonClass={"fa-solid fa-circle-plus"}
+        onButtonClick={handleCompleted}
+        modalComponent={<ExpModal sessionUser={sessionUser}/>}
+
+        />
+        {/* <button
         class="fa-solid fa-circle-plus"
         onClick={handleCompleted}
-        ></button>
+        ></button> */}
         {/* <div>Hello from HabitLink</div> */}
         <OpenModalButton
         buttonText={habit.habit.title}
         modalComponent={<HabitModelPage habit = {habit.habit}/>}
         buttonClass={"habitModalButton"}
         />
-        <button
+        <OpenModalButton
+        buttonClass={"fa-solid fa-circle-minus"}
+        onButtonClick={handleNotCompleted}
+        modalComponent={<MinusModal sessionUser={sessionUser}/>}
+
+        />
+        {/* <button
         class="fa-solid fa-circle-minus"
         onClick={handleNotCompleted}
-        ></button>
+        ></button> */}
         </div>
         </>
     )

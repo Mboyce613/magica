@@ -10,10 +10,12 @@ import { deleteDaily, updateDaily } from "../../redux/daily";
 
 const DailyModal= ({ daily })=>{
     const date = new Date();
+    let newMonth
     let day = date.getDate();
     let month = date.getMonth() + 1;
     let year = date.getFullYear();
-    let currentDate = `${year}-${month}-${day}`;
+    String(month).length ===1?newMonth = `0${date.getMonth()+1}`:newMonth=month
+    let currentDate = `${year}-${newMonth}-${day}`;
     let dailyDays = daily.days
     const begDate = daily.start_date
     const formatedTags = daily.tags.split('"').filter(ele =>ele.length > 1 && !ele.includes(','))
@@ -35,12 +37,12 @@ const DailyModal= ({ daily })=>{
     const [checklist, setChecklist] = useState(daily.checklist)
     const [completed, setCompleted] = useState(daily.completed)
     let listItems = checklist?checklist.split(","):["No Items"]
-    
-    
+
+
     const handleCancel = (e) =>{
         closeModal()
     }
-    
+
     const handleDelete = (e) =>{
         let check = confirm('Are you sure you want to delete this Daily?')
         if(check === true) {
@@ -48,7 +50,7 @@ const DailyModal= ({ daily })=>{
             closeModal()
         }
     }
-    
+
     const handleChecklist = (e) =>{
         if (e.target.value.length > 1){
             if (e.key === 'Enter'){
@@ -59,14 +61,15 @@ const DailyModal= ({ daily })=>{
             }
         }
     }
-    
+
     const handleCheckDelete = (item)=>{
         let oldChecklist = checklist.split(",")
         oldChecklist.splice(oldChecklist.indexOf(item),1)
         setChecklist(oldChecklist.join(","))
     }
-    
+
     const handleSave = () =>{
+        if (title.length >= 1){
         dispatch(updateDaily({
             "id":daily.id,
             "title": title,
@@ -79,9 +82,9 @@ const DailyModal= ({ daily })=>{
             "checklist":checklist,
             "completed":daily.completed,
         }))
-        closeModal()
+        closeModal()}else{alert("Title is Required")}
     }
-    
+
     useEffect(()=>{
         if(daily.days.length)setIsLoaded(true)
     },[daily])
