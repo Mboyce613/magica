@@ -65,7 +65,7 @@ export const updateDaily = (daily) => async (dispatch) =>{
 }
 
 export const deleteDaily = (dailyId) => async (dispatch)=>{
-    console.log(dailyId)
+    // console.log(dailyId)
     const res = await csrfFetch(`/api/dailies/${dailyId}`,{
         method:'DELETE'
     })

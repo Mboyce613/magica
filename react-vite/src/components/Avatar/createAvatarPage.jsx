@@ -104,7 +104,7 @@ function CreateAvatarPage({userId}){
           faceId: avatarFace,
           bodyId: avatarBody
         }
-        console.log(payload)
+        // console.log(payload)
         dispatch(updateAvatarById(payload, sessionUser.id))
         .then(navigate("/home"))
       }
