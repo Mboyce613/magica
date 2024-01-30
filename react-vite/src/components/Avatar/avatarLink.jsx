@@ -13,7 +13,7 @@ const AvatarLink = (background) =>{
 
     }
 
-    console.log("from avatarLink",)
+    // console.log("from avatarLink",)
     return (
         <>
         <div>

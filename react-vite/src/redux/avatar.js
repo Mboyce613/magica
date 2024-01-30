@@ -125,7 +125,7 @@ const avatarReducer = (state = {}, action)=>{
             newState = {...state}
             // console.log("ACTION", action, 'line 56')
             // console.log(action.avatar, '-----store')
-            console.log("NEWSTATE LINE 128",newState)
+            // console.log("NEWSTATE LINE 128",newState)
             newState.backgroundId = 1
             newState.bodyId = 1
             newState.faceId = 1

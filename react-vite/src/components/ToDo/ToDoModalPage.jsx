@@ -28,7 +28,7 @@ const ToDoModalPage = (toDo) =>{
     const {closeModal} = useModal()
     const dispatch = useDispatch()
     let listItems = checklist?checklist.split("##"):["No Items"]
-    console.log(currentDate)
+    // console.log(currentDate)
 
     listItems.pop()
 

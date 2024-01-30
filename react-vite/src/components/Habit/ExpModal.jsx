@@ -2,7 +2,7 @@ import { useModal } from "../../context/Modal"
 const ExpModal = (sessionUser) =>{
     const {closeModal} = useModal()
     const user = sessionUser.sessionUser
-    console.log("from exp modal",user)
+    // console.log("from exp modal",user)
     return (
         <div className="ExpModalDiv">
 

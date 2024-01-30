@@ -64,7 +64,7 @@ export const thunkLogin = (credentials) => async dispatch => {
 };
 
 export const thunkSignup = (user) => async (dispatch) => {
-  console.log("?USER?", user)
+  // console.log("?USER?", user)
   const response = await fetch("/api/auth/signup", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -97,8 +97,8 @@ function sessionReducer(state = initialState, action) {
       return { ...state, user: null };
     case UPDATE_USER_EXP: {
         const user = { ...state };
-        console.log("from user reducer", action)
-        console.log("from user reducer", user)
+        // console.log("from user reducer", action)
+        // console.log("from user reducer", user)
         user.user.exp = action.payload.exp;
         return { ...user };
       }
