@@ -50,6 +50,7 @@ function SignupFormPage() {
   return (
     <>
     <section className="signupForm">
+      <section className="signupSection">
       <h1>Sign Up</h1>
       {errors.server && <p className="errors">{errors.server}</p>}
       <form onSubmit={handleSubmit}>
@@ -115,6 +116,7 @@ function SignupFormPage() {
         {errors.confirmPassword && <p className="errors">{errors.confirmPassword}</p>}
         <button type="submit">Sign Up</button>
       </form>
+      </section>
       </section>
     </>
   );
