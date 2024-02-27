@@ -29,12 +29,11 @@ function HomePage(){
     return (
       <>
       <div className="mainBox">
-      <div
-      className="avatarComponent"
-      >
+      <div className="avatarComponent">
       <Avatar userId = {sessionUser.id}/>
       <hr className='solid'/>
       </div>
+      
       
       <div className="habitComponent">
       <Habit userId = {sessionUser.id}/>
