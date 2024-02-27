@@ -40,10 +40,10 @@ padding: 10px;
 }
 
 .notLoggedIn{
-  background-image: linear-gradient(to bottom,
+  /* background-image: linear-gradient(to bottom,
   rgb(255 255 0 / 40%),
   rgb(0 0 255 / 40%)
-), url("../Assets/background.png");
+), url("../Assets/background.png"); */
 padding: 10px;
 color: aqua;
 }

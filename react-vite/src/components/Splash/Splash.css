@@ -12,7 +12,9 @@
 }
 
 .background{
-    background-image: url("../Assets/background.png");
+    /* background-image: url("../Assets/background.png"); */
+    width: 100%;
+    height: 100%;
 }
 
 .splashTitle{
