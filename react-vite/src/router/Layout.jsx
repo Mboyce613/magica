@@ -14,11 +14,13 @@ export default function Layout() {
 
   return (
     <>
+    <div className="mainBackground">
       <ModalProvider>
         <Navigation />
         {isLoaded && <Outlet />}
         <Modal />
       </ModalProvider>
+      </div>
     </>
   );
 }
