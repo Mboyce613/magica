@@ -11,8 +11,8 @@ import ExpModal from "./ExpModal.jsx";
 import MinusModal from "./MinusModal.jsx";
 import PlusSound from "../Sound/PlusSound.jsx";
 import useSound from "use-sound";
-import plusSound from '../Sound/sounds/plus.mp3'
-import minusSound from '../Sound/sounds/minus.mp3'
+import plusSound from '../../../dist/assets/plus.mp3'
+import minusSound from '../../../dist/assets/minus.mp3'
 
 
 const HabitLink = (habit) =>{
