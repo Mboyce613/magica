@@ -29,15 +29,15 @@ function Navigation() {
 
     </ div> :
     <div className="notLoggedIn">
-      <div>
+      <div className="navlinkDiv">
       <NavLink to='/'>Home</NavLink>
       </div>
-      <div>
+      <div className="navlinkDiv">
         <NavLink to='signup'>Get Started</NavLink>
       </div>
-      <div>
+      <div className="navlinkDiv">
         <NavLink to='login'>Log In</NavLink>
-      </div>
+      </div >
     </div>
 
     }
