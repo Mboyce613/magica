@@ -15,7 +15,7 @@ const ToDoLink = (toDo) =>{
     return (
         <>
         <div className="toDoNavBox">
-            <div>
+            <div className="toDoCheck">
             <input
             className="listInput"
             type="checkbox" />
