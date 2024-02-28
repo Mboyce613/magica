@@ -31,7 +31,11 @@
     color: white;
     font-weight: 300;
     max-width: 100px;
-    text-decoration: underline;
+    /* text-decoration: underline; */
+    border-radius: 10px;
+    background-image: url("../Assets/background.png");
+    padding: 2px;
+    border: solid black;
 }
 
 .splashImage{
@@ -40,12 +44,25 @@
 }
 
 .splashbutton{
-width: 100px;
-height: 50px;
+width: 120px;
+height: 70px;
 border-radius: 10px;
 background-image: url("../Assets/background.png");
 color: white;
+border: solid black;
+box-shadow: 5px 5px 5px white;
 }
+
+.splashbutton:hover{
+    width: 120px;
+    height: 70px;
+    border-radius: 10px;
+    background-image: url("../Assets/background.png");
+    color: white;
+    border: solid black;
+    box-shadow: 5px 5px 5px aqua;
+    font-weight: bold;
+    }
 
 .splashSection{
     background-image: url("../Assets/background.png");
