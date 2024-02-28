@@ -48,12 +48,12 @@ function SignupFormPage() {
   };
 
   return (
-    <>
-    <section className="signupForm">
+    <div id="signup-all">
       <section className="signupSection">
       <h1>Sign Up</h1>
       {errors.server && <p className="errors">{errors.server}</p>}
       <form onSubmit={handleSubmit}>
+        <div className="text-box-signup">
         <label>
           Email
           <input
@@ -61,9 +61,11 @@ function SignupFormPage() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
-          />
+            />
         </label>
+        </div>
         {errors.email && <p className="errors">{errors.email}</p>}
+        <div className="text-box-signup">
         <label>
           Username
           <input
@@ -71,9 +73,11 @@ function SignupFormPage() {
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             required
-          />
+            />
         </label>
+        </div>
         {errors.username && <p className="errors">{errors.username}</p>}
+        <div className="text-box-signup">
         <label>
           First Name
           <input
@@ -81,9 +85,11 @@ function SignupFormPage() {
             value={firstname}
             onChange={(e) => setFirstname(e.target.value)}
             required
-          />
+            />
         </label>
+        </div>
         {errors.firstname && <p className="errors">{errors.firstname}</p>}
+        <div className="text-box-signup">
         <label>
           Last Name
           <input
@@ -91,9 +97,11 @@ function SignupFormPage() {
             value={lastname}
             onChange={(e) => setLastname(e.target.value)}
             required
-          />
+            />
         </label>
+        </div>
         {errors.lastname && <p className="errors">{errors.lastname}</p>}
+        <div className="text-box-signup">
         <label>
           Password
           <input
@@ -101,9 +109,11 @@ function SignupFormPage() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
-          />
+            />
         </label>
+        </div>
         {errors.password && <p className="errors">{errors.password}</p>}
+        <div className="text-box-signup">
         <label>
           Confirm Password
           <input
@@ -111,14 +121,16 @@ function SignupFormPage() {
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
             required
-          />
+            />
         </label>
+        </div>
         {errors.confirmPassword && <p className="errors">{errors.confirmPassword}</p>}
+        <div className="submit-button">
         <button type="submit">Sign Up</button>
+        </div>
       </form>
       </section>
-      </section>
-    </>
+    </div>
   );
 }
 

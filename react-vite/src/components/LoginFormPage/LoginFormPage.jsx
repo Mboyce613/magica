@@ -31,7 +31,7 @@ function LoginFormPage() {
     }
   };
 
-  const handleDemoUser = async (e)=>{
+  const handleDemoUser = async (e) => {
     e.preventDefault();
     setErrors({});
     setEmail('demo@aa.io')
@@ -42,8 +42,8 @@ function LoginFormPage() {
 
     const serverResponse = await dispatch(
       thunkLogin({
-        'email':demoEmail,
-        'password':demoPassword,
+        'email': demoEmail,
+        'password': demoPassword,
       })
     );
     if (serverResponse) {
@@ -54,37 +54,41 @@ function LoginFormPage() {
   };
 
   return (
-    <>
-    <section className="signupForm">
+    <div id="login-all">
       <section className="loginSection">
-      <h1>Log In</h1>
-      {errors.length > 0 &&
-        errors.map((message) => <p key={message}>{message}</p>)}
-      <form onSubmit={handleSubmit}>
-        <label>
-          Email
-          <input
-            type="text"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </label>
-        {errors.email && <p>{errors.email}</p>}
-        <label>
-          Passwords
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </label>
-        {errors.password && <p>{errors.password}</p>}
-        <button type="submit">Log In</button>
-      </form>
+        <h1>Log In</h1>
+        {errors.length > 0 &&
+          errors.map((message) => <p key={message}>{message}</p>)}
+        <form onSubmit={handleSubmit}>
+          <div className="text-box">
+            <label>
+              Email
+              <input
+                type="text"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </label>
+          </div>
+          {errors.email && <p>{errors.email}</p>}
+          <div className="text-box">
+            <label>
+              Passwords
+              <input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </label>
+          </div>
+          {errors.password && <p>{errors.password}</p>}
+          <div className="submit-button">
+            <button type="submit">Log In</button>
+          </div>
+        </form>
         <button onClick={handleDemoUser}>Demo User</button>
-        </section>
-        </section>
-    </>
+      </section>
+    </div>
   );
 }
 

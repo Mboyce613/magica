@@ -1,50 +1,63 @@
-
-.signupForm{
-    background-image: linear-gradient(to bottom,
-    rgb(255 255 0 / 40%),
-    rgb(0 0 255 / 40%)
-  ), url("../Assets/background.png");
+#signup-all {
+  display: flex;
+  background-image: linear-gradient(to bottom,
+      rgb(255 255 0 / 40%),
+      rgb(0 0 255 / 40%)), url("../Assets/background.png");
   padding: 10px;
+  height: 1000px;
+  justify-content: center;
 }
 
-.signupForm form{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    height: 500px;
-    align-items: baseline;
-    /* background-image: linear-gradient(to bottom,
+.signupForm form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 500px;
+  align-items: baseline;
+  /* background-image: linear-gradient(to bottom,
     rgb(255 255 0 / 40%),
     rgb(0 0 255 / 40%)
   ), url("../../../../app/graphics/background.png");; */
 }
 
-.signupForm label{
-    padding: 10px;
-    margin: 10px;
+.signupForm label {
+  padding: 10px;
+  margin: 10px;
 }
 
-.signupForm input{
-    margin: 10px;
+.signupForm input {
+  margin: 10px;
 }
 
-.signupSection{
+.text-box-signup {
+  display: flex;
+  width: 100%;
+  padding-bottom: 10px;
+}
+
+.text-box-signup input {
+  margin-left: -10px;
+  display: flex;
+  width: 250px;
+}
+
+.signupSection {
   background-color: rgba(194, 103, 193, 0.5);
   margin: 10px;
   padding: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-width: 400px;
+  width: 400px;
   border-radius: 10px;
   border: 2px solid;
-  max-height: fit-content;
+  max-height: 500px;
 }
 
-.thatDangH1{
-    background-image: url("../../../../app/graphics/background.png");
+.thatDangH1 {
+  background-image: url("../../../../app/graphics/background.png");
 }
 
-.errors{
+.errors {
   color: red;
 }
