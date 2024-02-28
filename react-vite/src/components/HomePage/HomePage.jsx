@@ -31,10 +31,10 @@ function HomePage(){
       <div className="mainBox">
       <div className="avatarComponent">
       <Avatar userId = {sessionUser.id}/>
-      <hr className='solid'/>
+      {/* <hr className='solid'/> */}
       </div>
-      
-      
+
+
       <div className="habitComponent">
       <Habit userId = {sessionUser.id}/>
       </div>

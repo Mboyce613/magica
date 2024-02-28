@@ -55,7 +55,7 @@ align-items: end;
 /* background-color: azure; */
 }
 .notLoggedIn .navlinkDiv{
-  background-color: rgb(0, 0, 0);
+  background-color: blueviolet;
   padding: 5px;
   margin: 10px;
   border-radius: 5px;
@@ -71,4 +71,8 @@ align-items: end;
 .notLoggedIn:visited{
   color: rgb(255, 255, 255);
   text-decoration: none;
+}
+
+.notLoggedIn a {
+  color: black;
 }

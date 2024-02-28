@@ -133,13 +133,11 @@ const HabitModalPage = (habit) =>{
         </div>
         <div>
             <h3>Notes:</h3>
-            <input
-            type = "text"
-            name = "notes"
-            defaultValue={habit.habit.notes}
-            onChange={handleNotes}
-            >
-            </input>
+            <textarea
+                name="notes"
+                defaultValue={habit.habit.notes}
+                onChange={handleNotes}
+            ></textarea>
         </div>
         <div>
             <h3>Is this a Positive habit to Build or a Negative habit to Break?</h3>

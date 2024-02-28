@@ -3,27 +3,29 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-auto-rows: minmax(100px,auto);
-    /* max-width: auto; */
-    width: 100%;
-    /* background-color: rgb(236, 234, 234); */
-    margin: auto;
-    /* grid-column-gap: 20px; */
+
     grid-template-areas:
     "avatar avatar avatar "
     "habit daily toDo "
     "habit daily toDo ";
-    justify-content: stretch;
-
+    gap: 20px;
 }
 
 .avatarComponent {
     grid-area: avatar;
+    margin-left: 20px;
+
 }
 
 .habitComponent {
     grid-area: habit;
     background-color: white;
-    max-width: 400px;
+    max-width: 90%;
+    padding: 2px;
+
+    display: flex;
+    /* justify-content: center; */
+    margin-left: 20px;
 
 }
 
@@ -33,7 +35,9 @@
     border-radius: 4px;
     padding: 2px;
     background-color: white;
-    max-width: 400px;
+    max-width: 90%;
+    margin-left: 20px;
+
 }
 
 .todoComponent {
@@ -42,7 +46,9 @@
     border-radius: 4px;
     padding: 2px;
     background-color: white;
-    max-width: 400px;
+    max-width: 90%;
+    margin-left: 20px;
+
 }
 
 html{
