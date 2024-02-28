@@ -1,12 +1,14 @@
 
 .navFlexBox {
-display:flex;
-justify-content: space-between;
-align-content: stretch;
-width: 100%;
-background-color: blueviolet;
-border-radius: 10px;
-/* align-items: flex-end; */
+  display: flex;
+  justify-content: space-between;
+  align-content: stretch;
+  width: 100%;
+  background-color: blueviolet;
+  border-radius: 10px;
+  max-width: 1400px;
+  margin: auto;
+  border: solid black;
 }
 
 .title {
