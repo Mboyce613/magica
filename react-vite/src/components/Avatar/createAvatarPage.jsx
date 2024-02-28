@@ -112,31 +112,31 @@ function CreateAvatarPage({userId}){
     return(
         <>
         <section className="createAvatarBackground">
-        <h1>Create Your Avatar!</h1>
+        <div className=' editAvatar ' >Create Your Avatar!</div>
         <section className="createAvatarOptions">
         <section className="createAvatarRow">
-        <text className='modelselect createAvatarChoices createAvatarChoicesBackgrounds'>Choose your background</text>
+        <text className='updatebg modelselect createAvatarChoices createAvatarChoicesBackgrounds'>Choose your back ground</text>
         {backgrounds[1] &&<img src={Background_Red} className="modelselect createAvatarChoices createAvatarChoicesBackgrounds" onClick={()=>{handleChangeBackgroundRed()}}/>}
         {backgrounds[2] &&<img src={Background_Blue} className="modelselect createAvatarChoices createAvatarChoicesBackgrounds" onClick={()=>{handleChangeBackgroundBlue()}}/>}
         {backgrounds[3] &&<img src={Background_Green} className="modelselect createAvatarChoices createAvatarChoicesBackgrounds" onClick={()=>{handleChangeBackgroundGreen()}}/>}
         </section>
         <div></div>
         <section className="createAvatarRow">
-        <div className='modelselect createAvatarChoices createAvatarChoicesBackgrounds'>Choose your Hair or Hat</div>
+        <div className='updatebg modelselect createAvatarChoices createAvatarChoicesBackgrounds'>Choose your Hair or Hat</div>
         {hair[1] &&<img src={Hat_Red} className="modelselect createAvatarChoices" onClick={()=>{handleChangeHairRed()}}/>}
         {hair[2] &&<img src={Hat_Blue} className="modelselect createAvatarChoices" onClick={()=>{handleChangeHairBlue()}}/>}
         {hair[3] &&<img src={Hat_Green} className="modelselect createAvatarChoices" onClick={()=>{handleChangeHairGreen()}}/>}
         </section>
         <div></div>
         <section className="createAvatarRow">
-        <div className='modelselect createAvatarChoices createAvatarChoicesBackgrounds'>Choose your Face</div>
+        <div className='updatebg modelselect createAvatarChoices createAvatarChoicesBackgrounds'>Choose your Face</div>
         {face[1] &&<img src={Face1} className="modelselect createAvatarChoices" onClick={()=>{handleChangeFace1()}}/>}
         {face[2] &&<img src={Face2} className="modelselect createAvatarChoices" onClick={()=>{handleChangeFace2()}}/>}
         {face[3] &&<img src={Face3} className="modelselect createAvatarChoices" onClick={()=>{handleChangeFace3()}}/>}
         </section>
         <div></div>
         <section className="createAvatarRow">
-        <div className='modelselect createAvatarChoices createAvatarChoicesBackgrounds'>Choose your Body</div>
+        <div className='updatebg modelselect createAvatarChoices createAvatarChoicesBackgrounds'>Choose your Body</div>
         {body[1] &&<img src={BodyRed} className="modelselect createAvatarChoices" onClick={()=>{handleChangeBodyRed()}}/>}
         {body[2] &&<img src={BodyBlue} className="modelselect createAvatarChoices" onClick={()=>{handleChangeBodyBlue()}}/>}
         {body[3] &&<img src={BodyGreen} className="modelselect createAvatarChoices" onClick={()=>{handleChangeBodyGreen()}}/>}

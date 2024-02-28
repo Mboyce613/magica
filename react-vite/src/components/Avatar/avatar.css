@@ -112,6 +112,10 @@
     background-image: url(/src/components/Assets/background.png);
     flex-direction: column;
     align-items: center;
+    margin: 0 auto;
+    padding: 30px;
+    border-radius: 5px;
+    border: 4mm ridge rgba(152, 50, 220, 0.749);
 }
 
 .updateAvatarBackground{
@@ -121,6 +125,9 @@
     rgb(0 0 0 / 40%),
     rgb(0 0 0 / 40%)
   ), url(/src/components/Assets/background.png);
+  border: 4mm ridge rgba(152, 50, 220, 0.749);
+  /* background-image: url(/src/components/Assets/background.png); */
+
     flex-direction: column;
     align-items: center;
 }
@@ -147,7 +154,9 @@
     border-radius: 10px;
     height: 500px;
     width: 500px;
-
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .createAvatarRow{
@@ -159,4 +168,20 @@
     justify-content: space-around;
     color: aqua;
     font-weight: 900;
+}
+
+.updatebg{
+    background-color: black;
+    border-radius: 5px;
+}
+
+.editAvatar{
+    background-color: black;
+    color: aqua;
+    font-weight: bold;
+    width: 150px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
