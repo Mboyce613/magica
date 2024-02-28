@@ -14,6 +14,7 @@ export default function Layout() {
 
   return (
     <>
+    <body className="backdrop">
     <div className="mainBackground">
       <ModalProvider>
         <Navigation />
@@ -21,6 +22,7 @@ export default function Layout() {
         <Modal />
       </ModalProvider>
       </div>
+      </body>
     </>
   );
 }
