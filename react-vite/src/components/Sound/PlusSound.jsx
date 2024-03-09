@@ -1,5 +1,5 @@
 import useSound from "use-sound";
-import plusSound from '../../../dist/assets/plus.mp3'
+import plusSound from '../../../src/assets/plus.mp3'
 
 const PlusSound = ()=>{
     const [play, {stop}] = useSound(plusSound,{volume:.1})
