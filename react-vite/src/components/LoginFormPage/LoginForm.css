@@ -8,7 +8,7 @@
     width: 400px;
     border-radius: 10px;
     border: 2px solid;
-    height: 300px;
+    height: 500px;
 }
 
 #login-all {
@@ -28,9 +28,9 @@
 }
 
 .text-box-signup input {
-    margin-left: -5px;
+    margin-left: -20px;
     display: flex;
-    width: 100px;
+    width: 150%;
 }
 
 .submit-button {
